@@ -1,8 +1,10 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Program from './sim_core/program';
 
 function App() {
+  let program = new Program();
   return (
     <div className="App">
       <header className="App-header">
