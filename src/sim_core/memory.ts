@@ -36,4 +36,8 @@ export class Memory {
                 break
         }
     }
+
+    getBuffer(): ArrayBuffer {
+        return this.buffer;
+    }
 }

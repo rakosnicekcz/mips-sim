@@ -1,11 +1,14 @@
 import * as R from "./registr";
+import * as P from "./pipeline";
+import * as M from "./memory"
 
 export enum EInstructionName {
-    add, sub
+    noop, add, sub, lw
 }
 
 export interface IInstruction {
     name: EInstructionName;
+    isJumpInstruction: boolean;
     arg0?: R.ERegisters;
     arg1?: R.ERegisters;
     arg2?: R.ERegisters;
@@ -14,26 +17,45 @@ export interface IInstruction {
 
 export class InstructionManager {
     private reg: R.Registers;
-    constructor(reg: R.Registers) {
+    private mem: M.Memory;
+    constructor(reg: R.Registers, mem: M.Memory) {
         this.reg = reg;
+        this.mem = mem;
     }
 
-    execute(ins: IInstruction) {
-        switch (ins.name) {
+    execute(ins: P.IPipelineIns): P.IPipelineIns {
+        switch (ins.instruction.name) {
             case EInstructionName.add:
-                if (ins.arg0 && ins.arg1 && ins.arg2) {
-                    this.reg.setVal(ins.arg0, this.reg.getVal(ins.arg1) + this.reg.getVal(ins.arg2));
-                } else {
-                    throw new Error("instruction ADD: undefined argument")
-                }
-                break;
+                return this.executeADD(ins);
             case EInstructionName.sub:
-                if (ins.arg0 && ins.arg1 && ins.arg2) {
-                    this.reg.setVal(ins.arg0, this.reg.getVal(ins.arg1) - this.reg.getVal(ins.arg2));
-                } else {
-                    throw new Error("instruction SUB: undefined argument")
-                }
-                break;
+                return this.executeADD(ins);
         }
+        return ins
+    }
+
+    executeMem(ins: P.IPipelineIns): P.IPipelineIns {
+        switch (ins.instruction.name) {
+            case EInstructionName.lw:
+                return this.executeLW(ins);
+        }
+        return ins
+    }
+
+    private executeADD(ins: P.IPipelineIns): P.IPipelineIns {
+        let array32 = new Int32Array(3);
+        if (ins.val0 && ins.val1) { // for TS to be happy
+            array32[0] = ins.val0;
+            array32[1] = ins.val1;
+            array32[2] = array32[0] + array32[1];
+        }
+        ins.exRes = array32[2];
+        return ins;
+    }
+
+    private executeLW(ins: P.IPipelineIns): P.IPipelineIns {
+        if (ins.val0) {
+            ins.exRes = this.mem.load(M.EMemBitLenOperation.word, ins.val0)
+        }
+        return ins;
     }
 }
