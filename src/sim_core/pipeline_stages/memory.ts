@@ -4,7 +4,7 @@ import * as M from "../memory"
 import * as Prg from "../program"
 import * as Pip from "../pipeline"
 
-class Memory {
+export class Memory {
     private data: Pip.IPipelineIns;
 
     private pipeline: Pip.Pipeline
@@ -21,5 +21,10 @@ class Memory {
         // TODO: cond jump
 
         this.data = this.instruction.executeMem(this.data)
+        console.log("MEM:", this.data);
+    }
+
+    runFallingEdge() {
+        this.pipeline.setMem(Pip.EPipelineMem.mem_wb, this.data);
     }
 }

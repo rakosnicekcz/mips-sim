@@ -23,11 +23,14 @@ export class Decode {
 
         this.data = this.pipeline.getMem(Pip.EPipelineMem.if_id);
         this.readRegisters();
+        console.log("ID:", this.data);
     }
 
     runFallingEdge() {
         if (this.data.instruction.isJumpInstruction) {
-            this.pipeline.setMem(Pip.EPipelineMem.if_id, { instruction: { name: I.EInstructionName.noop, isJumpInstruction: false, }, pc: this.data.pc })
+            let noop = Pip.NOOP
+            noop.pc = this.data.pc
+            this.pipeline.setMem(Pip.EPipelineMem.if_id, noop)
             // TODO setPCofLabel
         }
         this.pipeline.setMem(Pip.EPipelineMem.id_ex, this.data)

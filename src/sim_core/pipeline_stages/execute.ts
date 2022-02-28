@@ -22,6 +22,7 @@ export class Execute {
 
         this.data = this.pipeline.getMem(Pip.EPipelineMem.id_ex);
         this.data = this.instruction.execute(this.data);
+        console.log("EX:", this.data);
     }
 
     runFallingEdge() {

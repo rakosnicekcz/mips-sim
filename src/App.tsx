@@ -1,10 +1,16 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { Program } from './sim_core/program';
+import { Pipeline } from './sim_core/pipeline';
 
 function App() {
-  let program = new Program();
+  let pipeline = new Pipeline();
+  pipeline.run();
+  pipeline.run();
+  pipeline.run();
+  pipeline.run();
+  pipeline.run();
+  pipeline.run();
   return (
     <div className="App">
       <header className="App-header">

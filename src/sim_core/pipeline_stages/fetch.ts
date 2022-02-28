@@ -13,7 +13,7 @@ export class Fetch {
     private data: Pip.IPipelineIns;
     private pipeline: Pip.Pipeline
 
-    constructor(prg: Prg.Program, pipeline: Pip.Pipeline) {
+    constructor(pipeline: Pip.Pipeline, prg: Prg.Program) {
         this.program = prg
         this.pipeline = pipeline
     }
@@ -24,5 +24,6 @@ export class Fetch {
 
         this.data = this.program.getNextInstruction();
         this.pipeline.setMem(Pip.EPipelineMem.if_id, this.data);
+        console.log("IF:", this.data);
     }
 }

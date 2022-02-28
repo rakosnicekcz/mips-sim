@@ -3,12 +3,13 @@ import * as P from "./pipeline";
 import * as M from "./memory"
 
 export enum EInstructionName {
-    noop, add, sub, lw
+    noop = "noop", add = "add", sub = "sub", lw = "lw"
 }
 
 export interface IInstruction {
     name: EInstructionName;
     isJumpInstruction: boolean;
+    writeBack: boolean;
     arg0?: R.ERegisters;
     arg1?: R.ERegisters;
     arg2?: R.ERegisters;
@@ -43,7 +44,7 @@ export class InstructionManager {
 
     private executeADD(ins: P.IPipelineIns): P.IPipelineIns {
         let array32 = new Int32Array(3);
-        if (ins.val0 && ins.val1) { // for TS to be happy
+        if (ins.val0 !== undefined && ins.val1 !== undefined) { // for TS to be happy
             array32[0] = ins.val0;
             array32[1] = ins.val1;
             array32[2] = array32[0] + array32[1];

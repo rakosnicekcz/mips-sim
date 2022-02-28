@@ -7,11 +7,12 @@ export class Program {
     private Instructions: I.IInstruction[];
     private PC: number = 0;
     constructor() {
-        this.Instructions = [{ name: I.EInstructionName.add, isJumpInstruction: false, arg0: R.ERegisters.$0, arg1: R.ERegisters.$1, arg2: R.ERegisters.$2 }]
-        let a = new R.Registers();
-        a.printAllRegisters();
+        this.Instructions = [{ name: I.EInstructionName.add, isJumpInstruction: false, writeBack: true, arg0: R.ERegisters.$10, arg1: R.ERegisters.$11, arg2: R.ERegisters.$12 }]
     }
     getNextInstruction(): P.IPipelineIns {
+        if (this.PC >= this.Instructions.length) {
+            return P.NOOP
+        }
         return { instruction: this.Instructions[this.PC], pc: this.PC++ }
     }
 }
