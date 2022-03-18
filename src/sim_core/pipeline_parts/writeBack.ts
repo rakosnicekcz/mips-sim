@@ -16,8 +16,8 @@ export class WriteBack {
     }
 
     runRisingEdge() {
-        this.data = this.pipeline.getMem(Pip.EPipelineMem.ex_mem);
-        if (this.data.instruction.writeBack) {
+        this.data = this.pipeline.getMem(Pip.EPipelineMem.mem_wb);
+        if (this.data.instruction.description.writeBack) {
             if (this.data.instruction.arg0 && this.data.exRes) { //TS to be happy
                 this.registers.setVal(this.data.instruction.arg0, this.data.exRes)
             }

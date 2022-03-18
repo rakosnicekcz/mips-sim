@@ -9,19 +9,25 @@ export class Execute {
     private data: Pip.IPipelineIns;
 
     private pipeline: Pip.Pipeline
-    private instruction: I.InstructionManager
 
-    constructor(pipeline: Pip.Pipeline, instruction: I.InstructionManager) {
+    constructor(pipeline: Pip.Pipeline) {
         this.pipeline = pipeline;
-        this.instruction = instruction;
+    }
+
+    setFlush() {
+        this.flush = true;
     }
 
     runRisingEdge() {
 
-        //todo stall a flush
+        if (this.flush) {
+            this.flush = false;
+            this.data = Pip.NOOP;
+            return;
+        }
 
         this.data = this.pipeline.getMem(Pip.EPipelineMem.id_ex);
-        this.data = this.instruction.execute(this.data);
+        this.data = this.data.instruction.description.execute(this.data)
         console.log("EX:", this.data);
     }
 

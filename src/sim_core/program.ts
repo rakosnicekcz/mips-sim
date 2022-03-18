@@ -7,7 +7,10 @@ export class Program {
     private Instructions: I.IInstruction[];
     private PC: number = 0;
     constructor() {
-        this.Instructions = [{ name: I.EInstructionName.add, isJumpInstruction: false, writeBack: true, arg0: R.ERegisters.$10, arg1: R.ERegisters.$11, arg2: R.ERegisters.$12 }]
+        this.Instructions = [{
+            description: I.instruction_set.add,
+            arg0: R.ERegisters.$10, arg1: R.ERegisters.$11, arg2: R.ERegisters.$12
+        }]
     }
     getNextInstruction(): P.IPipelineIns {
         if (this.PC >= this.Instructions.length) {

@@ -1,3 +1,5 @@
+import deepcopy from "deepcopy";
+
 export enum EMemBitLenOperation {
     byte = 1,
     halfword = 2,
@@ -14,11 +16,11 @@ export class Memory {
         let view = new DataView(this.buffer)
         switch (oplen) {
             case EMemBitLenOperation.byte:
-                return view.getInt8(offset);
+                return deepcopy(view.getInt8(offset));
             case EMemBitLenOperation.halfword:
-                return view.getInt16(offset, true);
+                return deepcopy(view.getInt16(offset, true));
             case EMemBitLenOperation.word:
-                return view.getInt32(offset, true);
+                return deepcopy(view.getInt32(offset, true));
         }
     }
 
@@ -26,13 +28,13 @@ export class Memory {
         let view = new DataView(this.buffer)
         switch (oplen) {
             case EMemBitLenOperation.byte:
-                view.setInt8(offset, value);
+                view.setInt8(offset, deepcopy(value));
                 break
             case EMemBitLenOperation.halfword:
-                view.setInt16(offset, value, true);
+                view.setInt16(offset, deepcopy(value), true);
                 break
             case EMemBitLenOperation.word:
-                view.setInt32(offset, value, true);
+                view.setInt32(offset, deepcopy(value), true);
                 break
         }
     }

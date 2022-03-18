@@ -8,11 +8,11 @@ export class Memory {
     private data: Pip.IPipelineIns;
 
     private pipeline: Pip.Pipeline
-    private instruction: I.InstructionManager
+    private memory: M.Memory
 
-    constructor(pipeline: Pip.Pipeline, instruction: I.InstructionManager) {
+    constructor(pipeline: Pip.Pipeline, memory: M.Memory) {
         this.pipeline = pipeline;
-        this.instruction = instruction;
+        this.memory = memory;
     }
 
     runRisingEdge() {
@@ -20,7 +20,7 @@ export class Memory {
 
         // TODO: cond jump
 
-        this.data = this.instruction.executeMem(this.data)
+        this.data = this.data.instruction.description.executeMem(this.data, this.memory);
         console.log("MEM:", this.data);
     }
 

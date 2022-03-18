@@ -18,9 +18,25 @@ export class Fetch {
         this.pipeline = pipeline
     }
 
+    setFlush() {
+        this.flush = true
+    }
+
+    setStall() {
+        this.stall = true;
+    }
+
     runRisingEdge(): void {
 
-        //TODO: flush a stall
+        if (this.flush) {
+            this.flush = false;
+            this.pipeline.setMem(Pip.EPipelineMem.if_id, Pip.NOOP);
+            return
+        }
+        if (this.stall) {
+            this.stall = false
+            return
+        }
 
         this.data = this.program.getNextInstruction();
         this.pipeline.setMem(Pip.EPipelineMem.if_id, this.data);

@@ -17,9 +17,21 @@ export class Decode {
         this.registers = registers;
     }
 
+    setFlush() {
+        this.flush = true
+    }
+
+    setStall() {
+        this.stall = true;
+    }
+
     runRisingEdge() {
 
-        //todo stall a flush
+        if (this.flush || this.stall) {
+            this.flush = this.stall = false;
+            this.pipeline.setMem(Pip.EPipelineMem.if_id, Pip.NOOP)
+            return;
+        }
 
         this.data = this.pipeline.getMem(Pip.EPipelineMem.if_id);
         this.readRegisters();
@@ -27,7 +39,7 @@ export class Decode {
     }
 
     runFallingEdge() {
-        if (this.data.instruction.isJumpInstruction) {
+        if (this.data.instruction.description.isJumpInstruction) {
             let noop = Pip.NOOP
             noop.pc = this.data.pc
             this.pipeline.setMem(Pip.EPipelineMem.if_id, noop)

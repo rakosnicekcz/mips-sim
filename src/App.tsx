@@ -1,34 +1,70 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+//import './App.css';
 import { Pipeline } from './sim_core/pipeline';
+import { Parser } from './sim_core/parser'
+import { Controlled as CodeMirror } from 'react-codemirror2-react-17'
+
+import 'codemirror/lib/codemirror.css';
+import 'codemirror-dlx/theme/dlx-dark.css'
+require('codemirror-dlx/mode/dlx')
+
 
 function App() {
-  let pipeline = new Pipeline();
-  pipeline.run();
-  pipeline.run();
-  pipeline.run();
-  pipeline.run();
-  pipeline.run();
-  pipeline.run();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Neco></Neco>
   );
+}
+
+interface MyProps {
+}
+
+interface MyState {
+  value: string,
+  pipeline: Pipeline,
+  parser: Parser
+}
+
+class Neco extends React.Component<MyProps, MyState> {
+
+  constructor(props: any) {
+    super(props);
+    this.state = { value: "add $t1 $t2 $t3", pipeline: new Pipeline(), parser: new Parser() };
+  }
+
+  run = () => {
+    this.state.pipeline.run();
+  }
+
+  compile = () => {
+    this.state.parser.parse(this.state.value)
+  }
+
+  render() {
+    return (
+      <div>
+        <CodeMirror
+          value={this.state.value}
+          options={{
+            mode: 'dlx',
+            theme: 'dlx-dark',
+            lineNumbers: true
+          }}
+          onBeforeChange={(editor, data, value) => {
+            this.setState({ value });
+          }}
+          onChange={(editor, data, value) => {
+            this.setState({ value })
+          }}
+        />
+        <button onClick={this.run}>
+          RUN
+        </button>
+        <button onClick={this.compile}>
+          COMPILE
+        </button>
+      </div>
+    )
+  }
 }
 
 export default App;

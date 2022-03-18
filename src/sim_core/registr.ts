@@ -1,3 +1,5 @@
+import deepcopy from "deepcopy";
+
 export interface IRegister {
     name: ERegisters;
     value: Int32Array;
@@ -51,12 +53,12 @@ export class Registers {
 
     setVal(name: ERegisters, value: number): void {
         let index = this.registers.findIndex(x => x.name === name)
-        this.registers[index].value[0] = value;
+        this.registers[index].value[0] = deepcopy(value);
     }
 
     getVal(name: ERegisters): number {
         let index = this.registers.findIndex(x => x.name === name)
-        return this.registers[index].value[0];
+        return deepcopy(this.registers[index].value[0]);
     }
 
     printAllRegisters(): void {
