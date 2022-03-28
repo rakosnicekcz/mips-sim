@@ -2,6 +2,7 @@ import * as I from "./instruction"
 import * as R from "./registr"
 import * as M from "./memory"
 import * as P from "./program"
+import deepcopy from "deepcopy";
 
 enum ParsingArea {
     text,
@@ -59,7 +60,7 @@ export class Parser {
             }
         }
 
-        //console.log(this.Instructions, this.labels, this.staticData)
+        console.log(this.Instructions, this.labels, this.staticData)
     }
 
     getInstructions(): I.IInstruction[] {
@@ -82,7 +83,7 @@ export class Parser {
                 if (Object.values(I.EInstructionName).includes(lineParts[0].slice(0, -1) as unknown as I.EInstructionName)) {
                     throw new Error("Label cant have same name as instruction");
                 }
-                this.labels.push({ line: i, name: lineParts[0].slice(0, -1) })
+                this.labels.push({ line: i + 1, name: lineParts[0].slice(0, -1) })
             }
             return;
         }
@@ -141,64 +142,34 @@ export class Parser {
         }
 
         if (lineParts[0].endsWith(":")) {
-            if (Object.values(I.EInstructionName).includes(lineParts[0].slice(0, -1) as unknown as I.EInstructionName)) {
-                throw new Error("Label cant have same name as instruction");
-            }
-            this.labels.push({ line: i, name: lineParts[0].slice(0, -1) })
             lineParts.shift()
+        }
+
+        if (lineParts.length === 0) {
+            return
         }
 
         if (Object.values(I.EInstructionName).includes(lineParts[0] as unknown as I.EInstructionName)) {
             let insName = I.EInstructionName[lineParts[0] as keyof typeof I.EInstructionName]
-            let ins: I.IInstruction = { description: I.instruction_set[insName], line: i, paramType: [] };
-            this.findit(insName, ins, lineParts);
-            if (ins.description.isMemoryInstruction) {
-                // TODO MEMORY INS
-                if (lineParts[2].substring(0, 3) === "0x") {
-
-                }
-            } else if (I.instruction_set[insName].paramTypes.length + 1 === lineParts.length) {
-                for (let i = 0; i < I.instruction_set[insName].paramTypes.length; i++) {
-                    const type = I.instruction_set[insName].paramTypes[0][i]; // TU pozor!!! Nema byt nultý
-                    const param = lineParts[i + 1];
-                    if (type === I.EInstructionParamType.adress || type === I.EInstructionParamType.immidiate) {
-                        if (isNaN(Number(param))) {
-                            throw new Error("Not a Number");
-                        } else {
-                            ins.imm = param
-                        }
-                    } else if (type === I.EInstructionParamType.labelT) {
-                        if (this.labels.some(e => e.name === param)) {
-                            ins.imm = param
-                        }
-                    } else if (type === I.EInstructionParamType.labelD) {
-                        if (this.staticData.some(e => e.name === param)) {
-                            ins.imm = param
-                        }
-                    } else if (Object.values(R.ERegisters).includes(param as unknown as R.ERegisters)) {
-                        const regId = Object.values(R.ERegisters).indexOf(param as unknown as R.ERegisters);
-                        let reg = Object.values(R.ERegisters)[regId]
-                        if (!ins.arg0) {
-                            ins.arg0 = reg
-                        } else if (!ins.arg1) {
-                            ins.arg1 = reg
-                        } else {
-                            ins.arg2 = reg
-                        }
-                    } else {
-                        throw new Error("Wrong Instruction format");
-                    }
-                }
-            }
+            let ins: I.IInstruction = { description: I.instruction_set[insName], line: i + 1, paramType: [] };
+            ins = this.parseInstruction(insName, ins, lineParts);
             this.Instructions.push(ins)
         } else {
             throw new Error("Instruction do not exist;");
         }
     }
 
-    private findit(insName: I.EInstructionName, ins: I.IInstruction, lineParts: string[]): I.IInstruction {
+    private parseInstruction(insName: I.EInstructionName, ins: I.IInstruction, lineParts: string[]): I.IInstruction {
         paramTypeLoop:
         for (const paramType of I.instruction_set[insName].paramTypes) {
+            let instr = deepcopy(ins);
+
+            if (instr.description.isMemoryInstruction && lineParts.length === 3 && /^\w+\([a-zA-Z0-9_$]+\)$/.test(lineParts[2])) { //instr rt, imm(rs)
+                let parts = lineParts[2].split("(");
+                lineParts[2] = parts[0];
+                lineParts.push(parts[1].slice(0, -1))
+            }
+
             if (lineParts.length !== paramType.length + 1) {
                 continue;
             }
@@ -207,39 +178,47 @@ export class Parser {
                 const type = paramType[i];
                 const param = lineParts[i + 1];
 
+                let assignParams = (reg: R.ERegisters) => {
+                    if (!instr.arg0) {
+                        instr.arg0 = reg
+                    } else if (!instr.arg1) {
+                        instr.arg1 = reg
+                    } else {
+                        instr.arg2 = reg
+                    }
+                }
+
                 if (type === I.EInstructionParamType.adress || type === I.EInstructionParamType.immidiate) {
                     if (isNaN(Number(param))) {
                         continue paramTypeLoop;
                     } else {
-                        ins.imm = Number(param)
+                        instr.imm = Number(param)
                     }
                 } else if (type === I.EInstructionParamType.labelT) {
                     if (this.labels.some(e => e.name === param)) {
-                        ins.imm = param
+                        instr.imm = param
                     } else {
                         continue paramTypeLoop;
                     }
                 } else if (type === I.EInstructionParamType.labelD) {
                     if (this.staticData.some(e => e.name === param)) {
-                        ins.imm = param
+                        instr.imm = param
                     } else {
                         continue paramTypeLoop;
                     }
-                } else if (Object.values(R.ERegisters).includes(param as unknown as R.ERegisters)) {
+                } else if (Object.values(R.ERegisters).includes(param as unknown as R.ERegisters)) { // instruction name
                     const regId = Object.values(R.ERegisters).indexOf(param as unknown as R.ERegisters);
                     let reg = Object.values(R.ERegisters)[regId]
-                    if (!ins.arg0) {
-                        ins.arg0 = reg
-                    } else if (!ins.arg1) {
-                        ins.arg1 = reg
-                    } else {
-                        ins.arg2 = reg
-                    }
+                    assignParams(reg)
+                } else if (Object.keys(R.ERegisters).includes(param as unknown as R.ERegisters)) { // instruction alternative name
+                    const regId = Object.keys(R.ERegisters).indexOf(param as unknown as R.ERegisters);
+                    let reg = Object.values(R.ERegisters)[regId]
+                    assignParams(reg)
                 } else {
                     continue paramTypeLoop;
                 }
             }
-            return ins;
+            return instr;
         }
         throw new Error("Wrong instruction or format");
     }

@@ -251,7 +251,7 @@ export const instruction_set: TInstruction_set = {
         executeMem(ins: P.IPipelineIns, mem: M.Memory): P.IPipelineIns { return ins; }
     },
     [EInstructionName.lui]: {
-        name: EInstructionName.lui, isJumpInstruction: false, isMemoryInstruction: true, writeBack: true, isBranchInstruction: false,
+        name: EInstructionName.lui, isJumpInstruction: false, isMemoryInstruction: false, writeBack: true, isBranchInstruction: false,
         paramTypes: [[EInstructionParamType.register, EInstructionParamType.immidiate, EInstructionParamType.register],
         [EInstructionParamType.register, EInstructionParamType.labelD, EInstructionParamType.register],
         [EInstructionParamType.register, EInstructionParamType.adress], [EInstructionParamType.register, EInstructionParamType.labelD]],
