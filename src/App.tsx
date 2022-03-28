@@ -37,6 +37,9 @@ class Neco extends React.Component<MyProps, MyState> {
 
   compile = () => {
     this.state.parser.parse(this.state.value)
+    let prg = this.state.parser.getInstructions();
+    console.log(prg)
+    this.state.pipeline.setProgram(prg);
   }
 
   render() {

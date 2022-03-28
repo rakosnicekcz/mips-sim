@@ -46,8 +46,7 @@ export class Registers {
 
     constructor() {
         Object.keys(ERegisters).forEach(e => {
-            //@ts-ignore
-            this.registers.push({ name: ERegisters[e], value: new Int32Array(1) })
+            this.registers.push({ name: ERegisters[e as keyof typeof ERegisters], value: new Int32Array(1) })
         });
     }
 

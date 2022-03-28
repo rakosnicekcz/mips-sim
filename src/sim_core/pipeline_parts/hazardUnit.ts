@@ -19,7 +19,7 @@ export class HazardUnit {
     run() {
         const id_ex = this.pip.getMem(P.EPipelineMem.id_ex)
         const if_id = this.pip.getMem(P.EPipelineMem.if_id)
-        if (id_ex.instruction.description.isReadInstruction) {
+        if (id_ex.instruction.description.isMemoryInstruction) {
             if (if_id.instruction.arg1 === id_ex.instruction.arg0 ||
                 if_id.instruction.arg2 === id_ex.instruction.arg0) {
                 this.fetch.setStall();

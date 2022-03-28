@@ -7,6 +7,9 @@ import * as ID from "./pipeline_parts/decode"
 import * as EX from "./pipeline_parts/execute"
 import * as MEM from "./pipeline_parts/memory"
 import * as WB from "./pipeline_parts/writeBack"
+import * as H from "./pipeline_parts/hazardUnit"
+import * as F from "./pipeline_parts/forwardingUnit"
+
 import deepcopy from 'deepcopy';
 
 
@@ -15,7 +18,7 @@ export interface IPipelineIns {
     pc: number;
     val0?: number;
     val1?: number;
-    exRes?: number;
+    res?: number;
 }
 
 export enum EPipelineMem {
@@ -26,7 +29,7 @@ export enum EPipelineMem {
 }
 
 export const NOOP: IPipelineIns = {
-    instruction: { description: I.instruction_set.noop },
+    instruction: { description: I.instruction_set.noop, line: -1, paramType: [] },
     pc: 0,
 }
 
@@ -46,6 +49,9 @@ export class Pipeline {
     private mem_stage: MEM.Memory
     private wb_stage: WB.WriteBack
 
+    private hazardUnit: H.HazardUnit
+    private forwarding: F.ForwardingUnit
+
     constructor() {
         this.reg = new R.Registers();
         this.mem = new M.Memory();
@@ -57,11 +63,16 @@ export class Pipeline {
         this.mem_stage = new MEM.Memory(this, this.mem);
         this.wb_stage = new WB.WriteBack(this, this.reg)
 
+        this.hazardUnit = new H.HazardUnit(this.if_stage, this.id_stage, this)
+        this.forwarding = new F.ForwardingUnit(this)
+
         this.reg.setVal(R.ERegisters.$11, 10)//smazat!!!
-        this.reg.setVal(R.ERegisters.$12, 6)
+        this.reg.setVal(R.ERegisters.$12, 6)//smazat!!!
     }
 
     run() {
+        this.hazardUnit.run();
+        this.forwarding.run();
         this.wb_stage.runRisingEdge();
         this.mem_stage.runRisingEdge();
         this.ex_stage.runRisingEdge();
@@ -101,6 +112,10 @@ export class Pipeline {
             case EPipelineMem.mem_wb:
                 return deepcopy(this.mem_wb)
         }
+    }
+
+    setProgram(program: I.IInstruction[]) {
+        this.prg.setProgram(program)
     }
 
 }

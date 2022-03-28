@@ -6,6 +6,23 @@ export enum EMemBitLenOperation {
     word = 4
 }
 
+export enum EMemStaticOperations {
+    word = ".word",
+    half = ".half",
+    byte = ".byte",
+    ascii = ".ascii",
+    asciiz = ".asciiz",
+    space = ".space",
+    // align
+}
+
+export interface IMemStaticData {
+    address: number;
+    name: string;
+    type: EMemStaticOperations;
+    value: Int8Array;
+}
+
 export class Memory {
     private buffer: ArrayBuffer;
     constructor(bufferSize: number = 100) {

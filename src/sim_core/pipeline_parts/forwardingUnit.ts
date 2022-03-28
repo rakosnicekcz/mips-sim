@@ -20,9 +20,9 @@ export class ForwardingUnit {
         const mem = this.pip.getMem(pipelineMem);
 
         if (id_ex.instruction.arg1 === mem.instruction.arg0) {
-            id_ex.val0 = mem.exRes;
+            id_ex.val0 = mem.res;
         } else if (id_ex.instruction.arg2 === mem.instruction.arg0) {
-            id_ex.val1 = mem.exRes;
+            id_ex.val1 = mem.res;
         }
         this.pip.setMem(P.EPipelineMem.id_ex, id_ex)
     }
