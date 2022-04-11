@@ -9,6 +9,12 @@ enum ParsingArea {
     data
 }
 
+export interface IParsed {
+    instructions: I.IInstruction[];
+    labels: P.Ilabel[]
+    data: M.IMemStaticData[]
+}
+
 export class Parser {
     private parsingArea: ParsingArea = ParsingArea.text
     private globl: string
@@ -16,10 +22,11 @@ export class Parser {
     private Instructions: I.IInstruction[] = [];
     private staticData: M.IMemStaticData[] = [];
     private staticDataAdd: number = 0;
+    private alignNext: number = -1; // -1 = no align
 
-    parse(code: string) {
+    parse(code: string): IParsed {
         console.log(code)
-        let codeLines = code.split("\n").map((e) => { return e.split(/#(?![^"]*")/g)[0].trim() });
+        let codeLines = code.split("\n").map((e) => { return e.split(/#(?![^"]*")/g)[0].trim() }); // split for comments
         for (let i = 0; i < codeLines.length; i++) {
             let lineParts = this.getLineParts(codeLines[i])
             console.log(lineParts);
@@ -39,6 +46,7 @@ export class Parser {
                 this.parseData(lineParts, i);
             }
         }
+        this.parsingArea = ParsingArea.text;
 
         for (let i = 0; i < codeLines.length; i++) {
             let lineParts = this.getLineParts(codeLines[i])
@@ -61,19 +69,12 @@ export class Parser {
         }
 
         console.log(this.Instructions, this.labels, this.staticData)
-    }
-
-    getInstructions(): I.IInstruction[] {
-        return this.Instructions
-    }
-
-    getLabels() {
-        return this.labels
+        return { instructions: this.Instructions, labels: this.labels, data: this.staticData }
     }
 
     private getLineParts(line: string): string[] {
-        let lineParts = line.split(" ");
-        lineParts = lineParts.filter(e => { return e !== "" && e !== "," })
+        let lineParts = line.split(/\s+(?=(?:[^"]*"[^"]*")*[^"]*$)/g);
+        lineParts = lineParts.filter(e => { return !["", ","].includes(e.trim()) })
         return lineParts.map(e => { return e.trim().replace(/^,+|,+$/g, '') })
     }
 
@@ -83,16 +84,27 @@ export class Parser {
                 if (Object.values(I.EInstructionName).includes(lineParts[0].slice(0, -1) as unknown as I.EInstructionName)) {
                     throw new Error("Label cant have same name as instruction");
                 }
-                this.labels.push({ line: i + 1, name: lineParts[0].slice(0, -1) })
+                this.labels.push({ line: i + 1, address: i + 1, name: lineParts[0].slice(0, -1) })
             }
             return;
         }
 
-        let con: M.IMemStaticData = { address: this.staticDataAdd, name: "", type: M.EMemStaticOperations.byte, value: new Int8Array(1) }
+        let align = this.alignNext !== -1 ? this.alignNext : undefined
+        this.alignNext = -1;
+        let con: M.IMemStaticData = { address: this.staticDataAdd, name: "", type: M.EMemStaticOperations.byte, value: new Int8Array(1), align: align };
+
+        if (lineParts[0] === M.EMemStaticOperations.align) {
+            if (lineParts.length !== 2 || isNaN(Number(lineParts[1]))) {
+                throw new Error("Align must have one number parameter");
+            }
+            this.alignNext = Number(lineParts[1]);
+            return;
+        }
+
         if (/^[a-zA-Z][a-zA-Z0-9]*:$/.test(lineParts[0])) {
             con.name = lineParts[0].slice(0, -1);
         } else {
-            throw new Error("Wrong name of static value");
+            throw new Error("Wrong name of static value: " + lineParts[0]);
         }
 
         let directiveId = Object.keys(M.EMemStaticOperations).indexOf(lineParts[1].substring(1))
@@ -109,6 +121,7 @@ export class Parser {
                 con.value = new Int8Array(Number(lineParts[2]))
             }
         } else if (con.type === M.EMemStaticOperations.ascii || con.type === M.EMemStaticOperations.asciiz) {
+            lineParts.slice(2).join(" ");
             if (lineParts.length !== 3 || !/^".*"$/.test(lineParts[2])) {
                 throw new Error("Wrong ascii/z definition");
             }
@@ -119,7 +132,15 @@ export class Parser {
                 con.value = new Int8Array([...enc.encode(lineParts[2].slice(1, -1))]);
             }
         } else {
-            let vals = lineParts.slice(2).map(Number);
+            let vals = lineParts.slice(2).map(e => {
+                if (isNaN(Number(e))) {
+                    if (!/^'.'$/.test(e)) {
+                        throw new Error("Wrong number definition");
+                    }
+                    return e.charCodeAt(1);
+                }
+                return Number(e);
+            })
             if (vals.filter(e => isNaN(e)).length > 0) {
                 throw new Error("Wrong elements in array");
             }
@@ -132,7 +153,6 @@ export class Parser {
             }
         }
         this.staticDataAdd += con.value.byteLength
-        console.log(con)
         this.staticData.push(con)
     }
 
@@ -151,8 +171,9 @@ export class Parser {
 
         if (Object.values(I.EInstructionName).includes(lineParts[0] as unknown as I.EInstructionName)) {
             let insName = I.EInstructionName[lineParts[0] as keyof typeof I.EInstructionName]
-            let ins: I.IInstruction = { description: I.instruction_set[insName], line: i + 1, paramType: [] };
+            let ins: I.IInstruction = { description: I.instruction_set[insName], address: 0, line: i + 1, paramType: [] };
             ins = this.parseInstruction(insName, ins, lineParts);
+            ins = ins.description.checkParsed(ins)
             this.Instructions.push(ins)
         } else {
             throw new Error("Instruction do not exist;");
@@ -163,11 +184,13 @@ export class Parser {
         paramTypeLoop:
         for (const paramType of I.instruction_set[insName].paramTypes) {
             let instr = deepcopy(ins);
+            instr.paramType = paramType;
 
             if (instr.description.isMemoryInstruction && lineParts.length === 3 && /^\w+\([a-zA-Z0-9_$]+\)$/.test(lineParts[2])) { //instr rt, imm(rs)
                 let parts = lineParts[2].split("(");
                 lineParts[2] = parts[0];
                 lineParts.push(parts[1].slice(0, -1))
+                console.log("new lineParts", lineParts)
             }
 
             if (lineParts.length !== paramType.length + 1) {
@@ -179,7 +202,7 @@ export class Parser {
                 const param = lineParts[i + 1];
 
                 let assignParams = (reg: R.ERegisters) => {
-                    if (!instr.arg0) {
+                    if (!instr.arg0 && !instr.description.noRDparam) {
                         instr.arg0 = reg
                     } else if (!instr.arg1) {
                         instr.arg1 = reg
@@ -189,7 +212,9 @@ export class Parser {
                 }
 
                 if (type === I.EInstructionParamType.adress || type === I.EInstructionParamType.immidiate) {
-                    if (isNaN(Number(param))) {
+                    if (/^'.'$/.test(param)) {
+                        instr.imm = param.charCodeAt(1);
+                    } else if (isNaN(Number(param))) {
                         continue paramTypeLoop;
                     } else {
                         instr.imm = Number(param)

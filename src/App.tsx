@@ -21,25 +21,33 @@ interface MyProps {
 interface MyState {
   value: string,
   pipeline: Pipeline,
-  parser: Parser
+  parser: Parser,
+  inputValue: string,
+  outputValue: string
 }
 
 class Neco extends React.Component<MyProps, MyState> {
 
   constructor(props: any) {
     super(props);
-    this.state = { value: "add $t1 $t2 $t3", pipeline: new Pipeline(), parser: new Parser() };
+    this.setOutput = this.setOutput.bind(this);
+    this.state = { value: "add $t1 $t2 $t3", pipeline: new Pipeline(this.setOutput), parser: new Parser(), inputValue: "", outputValue: "" };
   }
 
   run = () => {
-    this.state.pipeline.run();
+    this.state.pipeline.run(this.state.inputValue);
   }
 
+  setOutput = (output: string) => {
+    this.setState({
+      outputValue: output
+    });
+  }
+
+
   compile = () => {
-    this.state.parser.parse(this.state.value)
-    let prg = this.state.parser.getInstructions();
-    console.log(prg)
-    this.state.pipeline.setProgram(prg);
+    let parsed = this.state.parser.parse(this.state.value)
+    this.state.pipeline.setProgram(parsed);
   }
 
   render() {
@@ -65,6 +73,12 @@ class Neco extends React.Component<MyProps, MyState> {
         <button onClick={this.compile}>
           COMPILE
         </button>
+        <input type="text" placeholder="output" value={this.state.outputValue} readOnly />
+        <input type="text" placeholder="intput" value={this.state.inputValue} onChange={(event) => {
+          this.setState({
+            inputValue: event.target.value
+          });
+        }} />
       </div>
     )
   }

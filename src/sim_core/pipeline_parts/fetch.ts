@@ -30,7 +30,7 @@ export class Fetch {
 
         if (this.flush) {
             this.flush = false;
-            this.pipeline.setMem(Pip.EPipelineMem.if_id, Pip.NOOP);
+            this.pipeline.setMem(Pip.EPipelineMem.if_id, Pip.NOP);
             return
         }
         if (this.stall) {

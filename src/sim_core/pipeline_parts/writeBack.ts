@@ -18,7 +18,9 @@ export class WriteBack {
     runRisingEdge() {
         this.data = this.pipeline.getMem(Pip.EPipelineMem.mem_wb);
         if (this.data.instruction.description.writeBack) {
-            if (this.data.instruction.arg0 && this.data.res) { //TS to be happy
+            if (this.data.resHiLo !== undefined) {
+                this.registers.setHiLo(this.data.resHiLo.hi, this.data.resHiLo.lo);
+            } else if (this.data.instruction.arg0 !== undefined && this.data.res !== undefined) { //TS to be happy
                 this.registers.setVal(this.data.instruction.arg0, this.data.res)
             }
         }

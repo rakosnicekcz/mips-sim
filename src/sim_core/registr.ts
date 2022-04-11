@@ -1,4 +1,5 @@
 import deepcopy from "deepcopy";
+import { stackRange } from "./memory"
 
 export interface IRegister {
     name: ERegisters;
@@ -37,10 +38,19 @@ export enum ERegisters {
     $28 = "$gp",
     $29 = "$sp",
     $30 = "$fp",
-    $31 = "$ra"
+    $31 = "$ra",
 }
 
+interface IDefaultValues {
+    register: ERegisters;
+    value: number;
+}
+
+const defaultValues: IDefaultValues[] = [{ register: ERegisters.$29, value: stackRange.to }]
+
 export class Registers {
+    private $hi: Int32Array = new Int32Array(1);
+    private $lo: Int32Array = new Int32Array(1);
 
     private registers: IRegister[] = [];
 
@@ -48,11 +58,26 @@ export class Registers {
         Object.keys(ERegisters).forEach(e => {
             this.registers.push({ name: ERegisters[e as keyof typeof ERegisters], value: new Int32Array(1) })
         });
+        defaultValues.forEach(e => this.setVal(e.register, e.value))
     }
 
     setVal(name: ERegisters, value: number): void {
+        if (name === ERegisters.$0) return;
         let index = this.registers.findIndex(x => x.name === name)
         this.registers[index].value[0] = deepcopy(value);
+    }
+
+    setHiLo(hi: number, lo: number): void {
+        this.$hi[0] = hi;
+        this.$lo[0] = lo;
+    }
+
+    getHi(): number {
+        return deepcopy(this.$hi[0]);
+    }
+
+    getLo(): number {
+        return deepcopy(this.$lo[0]);
     }
 
     getVal(name: ERegisters): number {

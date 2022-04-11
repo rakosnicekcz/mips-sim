@@ -11,10 +11,12 @@ export class Decode {
 
     private pipeline: Pip.Pipeline
     private registers: R.Registers
+    private program: Prg.Program
 
-    constructor(pipeline: Pip.Pipeline, registers: R.Registers) {
+    constructor(pipeline: Pip.Pipeline, registers: R.Registers, prg: Prg.Program) {
         this.pipeline = pipeline;
         this.registers = registers;
+        this.program = prg
     }
 
     setFlush() {
@@ -27,9 +29,9 @@ export class Decode {
 
     runRisingEdge() {
 
-        if (this.flush || this.stall) {
-            this.flush = this.stall = false;
-            this.pipeline.setMem(Pip.EPipelineMem.if_id, Pip.NOOP)
+        if (this.stall) {
+            this.stall = false;
+            this.data = Pip.NOP
             return;
         }
 
@@ -40,15 +42,30 @@ export class Decode {
 
     runFallingEdge() {
         if (this.data.instruction.description.isJumpInstruction) {
-            let noop = Pip.NOOP
+            let noop = Pip.NOP
             noop.pc = this.data.pc
             this.pipeline.setMem(Pip.EPipelineMem.if_id, noop)
-            // TODO setPCofLabel
+            if (typeof this.data.instruction.imm === "string") {
+                this.program.setPCofLabel(this.data.instruction.imm)
+                if (this.data.instruction.description.name === I.EInstructionName.jal) {
+                    this.registers.setVal(R.ERegisters.$31, this.data.instruction.address + 4)
+                }
+            } else if (this.data.val0) {
+                this.program.setPC(this.data.val0)
+            }
         }
         this.pipeline.setMem(Pip.EPipelineMem.id_ex, this.data)
     }
 
     private readRegisters(): void {
+        if (this.data.instruction.description.name === I.EInstructionName.mfhi) {
+            this.data.val0 = this.registers.getHi();
+            return;
+        }
+        if (this.data.instruction.description.name === I.EInstructionName.mflo) {
+            this.data.val0 = this.registers.getLo();
+            return;
+        }
         if (this.data.instruction.arg1) {
             this.data.val0 = this.registers.getVal(this.data.instruction.arg1)
         }

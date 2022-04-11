@@ -9,6 +9,7 @@ import * as MEM from "./pipeline_parts/memory"
 import * as WB from "./pipeline_parts/writeBack"
 import * as H from "./pipeline_parts/hazardUnit"
 import * as F from "./pipeline_parts/forwardingUnit"
+import { IParsed } from "./parser"
 
 import deepcopy from 'deepcopy';
 
@@ -19,6 +20,7 @@ export interface IPipelineIns {
     val0?: number;
     val1?: number;
     res?: number;
+    resHiLo?: { hi: number, lo: number }
 }
 
 export enum EPipelineMem {
@@ -28,8 +30,8 @@ export enum EPipelineMem {
     mem_wb
 }
 
-export const NOOP: IPipelineIns = {
-    instruction: { description: I.instruction_set.noop, line: -1, paramType: [] },
+export const NOP: IPipelineIns = {
+    instruction: { description: I.instruction_set.nop, address: -1, line: -1, paramType: [] },
     pc: 0,
 }
 
@@ -38,10 +40,10 @@ export class Pipeline {
     private mem: M.Memory;
     private prg: P.Program;
 
-    private if_id: IPipelineIns = NOOP;
-    private id_ex: IPipelineIns = NOOP;
-    private ex_mem: IPipelineIns = NOOP;
-    private mem_wb: IPipelineIns = NOOP;
+    private if_id: IPipelineIns = NOP;
+    private id_ex: IPipelineIns = NOP;
+    private ex_mem: IPipelineIns = NOP;
+    private mem_wb: IPipelineIns = NOP;
 
     private if_stage: IF.Fetch
     private id_stage: ID.Decode
@@ -52,29 +54,33 @@ export class Pipeline {
     private hazardUnit: H.HazardUnit
     private forwarding: F.ForwardingUnit
 
-    constructor() {
+    private setOutput: (output: string) => void
+
+    constructor(setOutput: (output: string) => void) {
+        this.setOutput = setOutput
+
         this.reg = new R.Registers();
         this.mem = new M.Memory();
         this.prg = new P.Program();
 
         this.if_stage = new IF.Fetch(this, this.prg)
-        this.id_stage = new ID.Decode(this, this.reg);
-        this.ex_stage = new EX.Execute(this)
-        this.mem_stage = new MEM.Memory(this, this.mem);
+        this.id_stage = new ID.Decode(this, this.reg, this.prg);
+        this.ex_stage = new EX.Execute(this, this.prg, this.mem)
+        this.mem_stage = new MEM.Memory(this, this.mem, this.prg, this.reg, this.setOutput);
         this.wb_stage = new WB.WriteBack(this, this.reg)
 
         this.hazardUnit = new H.HazardUnit(this.if_stage, this.id_stage, this)
-        this.forwarding = new F.ForwardingUnit(this)
+        this.forwarding = new F.ForwardingUnit(this);
 
-        this.reg.setVal(R.ERegisters.$11, 10)//smazat!!!
-        this.reg.setVal(R.ERegisters.$12, 6)//smazat!!!
+        this.reg.setVal(R.ERegisters.$11, 6)//smazat!!!
+        this.reg.setVal(R.ERegisters.$12, 4)//smazat!!!
     }
 
-    run() {
+    run(input: string) {
         this.hazardUnit.run();
         this.forwarding.run();
         this.wb_stage.runRisingEdge();
-        this.mem_stage.runRisingEdge();
+        this.mem_stage.runRisingEdge(input);
         this.ex_stage.runRisingEdge();
         this.id_stage.runRisingEdge();
         this.if_stage.runRisingEdge();
@@ -114,8 +120,12 @@ export class Pipeline {
         }
     }
 
-    setProgram(program: I.IInstruction[]) {
-        this.prg.setProgram(program)
+    setProgram(parsed: IParsed) {
+        this.prg.setProgram(parsed.instructions, parsed.labels)
+        this.mem.setData(parsed.data)
     }
 
+    stallIF() {
+        this.if_stage.setStall();
+    }
 }

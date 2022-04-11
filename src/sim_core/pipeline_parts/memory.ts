@@ -9,18 +9,33 @@ export class Memory {
 
     private pipeline: Pip.Pipeline
     private memory: M.Memory
+    private program: Prg.Program
+    private registers: R.Registers
 
-    constructor(pipeline: Pip.Pipeline, memory: M.Memory) {
+    private setOutput: (output: string) => void
+
+    constructor(pipeline: Pip.Pipeline, memory: M.Memory, program: Prg.Program, registers: R.Registers, setOutput: (output: string) => void) {
         this.pipeline = pipeline;
         this.memory = memory;
+        this.program = program
+        this.registers = registers
+        this.setOutput = setOutput;
     }
 
-    runRisingEdge() {
+    runRisingEdge(input: string) {
         this.data = this.pipeline.getMem(Pip.EPipelineMem.ex_mem);
 
         // TODO: cond jump
+        if (this.data.instruction.description.isBranchInstruction && this.data.res === 1) {
+            if (typeof this.data.instruction.imm === "string") {
+                this.program.setPCofLabel(this.data.instruction.imm);
+                this.pipeline.setMem(Pip.EPipelineMem.if_id, Pip.NOP);
+                this.pipeline.setMem(Pip.EPipelineMem.id_ex, Pip.NOP);
+                this.pipeline.stallIF();
+            }
+        }
 
-        this.data = this.data.instruction.description.executeMem(this.data, this.memory);
+        this.data = this.data.instruction.description.executeMem(this.data, this.memory, this.registers, input, this.setOutput);
         console.log("MEM:", this.data);
     }
 

@@ -9,9 +9,13 @@ export class Execute {
     private data: Pip.IPipelineIns;
 
     private pipeline: Pip.Pipeline
+    private program: Prg.Program
+    private memory: M.Memory
 
-    constructor(pipeline: Pip.Pipeline) {
+    constructor(pipeline: Pip.Pipeline, program: Prg.Program, memory: M.Memory) {
         this.pipeline = pipeline;
+        this.program = program;
+        this.memory = memory;
     }
 
     setFlush() {
@@ -22,12 +26,12 @@ export class Execute {
 
         if (this.flush) {
             this.flush = false;
-            this.data = Pip.NOOP;
+            this.data = Pip.NOP;
             return;
         }
 
         this.data = this.pipeline.getMem(Pip.EPipelineMem.id_ex);
-        this.data = this.data.instruction.description.execute(this.data)
+        this.data = this.data.instruction.description.execute(this.data, this.program, this.memory)
         console.log("EX:", this.data);
     }
 

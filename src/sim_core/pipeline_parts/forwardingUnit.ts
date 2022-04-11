@@ -19,9 +19,9 @@ export class ForwardingUnit {
         let id_ex = this.pip.getMem(P.EPipelineMem.id_ex)
         const mem = this.pip.getMem(pipelineMem);
 
-        if (id_ex.instruction.arg1 === mem.instruction.arg0) {
+        if (id_ex.instruction.arg1 === mem.instruction.arg0 && id_ex.instruction.arg1 !== undefined && mem.res !== undefined) {
             id_ex.val0 = mem.res;
-        } else if (id_ex.instruction.arg2 === mem.instruction.arg0) {
+        } else if (id_ex.instruction.arg2 === mem.instruction.arg0 && id_ex.instruction.arg2 !== undefined && mem.res !== undefined) {
             id_ex.val1 = mem.res;
         }
         this.pip.setMem(P.EPipelineMem.id_ex, id_ex)
