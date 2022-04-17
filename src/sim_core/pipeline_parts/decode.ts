@@ -31,7 +31,7 @@ export class Decode {
 
         if (this.stall) {
             this.stall = false;
-            this.data = Pip.NOP
+            this.data = { ...Pip.NOP, pc: this.data.pc }
             return;
         }
 
@@ -42,7 +42,7 @@ export class Decode {
 
     runFallingEdge() {
         if (this.data.instruction.description.isJumpInstruction) {
-            let noop = Pip.NOP
+            let noop = { ...Pip.NOP, pc: this.data.pc }
             noop.pc = this.data.pc
             this.pipeline.setMem(Pip.EPipelineMem.if_id, noop)
             if (typeof this.data.instruction.imm === "string") {

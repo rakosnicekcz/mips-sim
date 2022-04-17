@@ -21,7 +21,8 @@ export class ForwardingUnit {
 
         if (id_ex.instruction.arg1 === mem.instruction.arg0 && id_ex.instruction.arg1 !== undefined && mem.res !== undefined) {
             id_ex.val0 = mem.res;
-        } else if (id_ex.instruction.arg2 === mem.instruction.arg0 && id_ex.instruction.arg2 !== undefined && mem.res !== undefined) {
+        }
+        if (id_ex.instruction.arg2 === mem.instruction.arg0 && id_ex.instruction.arg2 !== undefined && mem.res !== undefined) {
             id_ex.val1 = mem.res;
         }
         this.pip.setMem(P.EPipelineMem.id_ex, id_ex)

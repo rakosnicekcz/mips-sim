@@ -64,10 +64,12 @@ export class Program {
 
     getNextInstruction(): P.IPipelineIns {
         let instruction = this.Instructions.find(x => x.address === this.PC)
+        let ins: P.IPipelineIns
         if (instruction === undefined) {
-            return P.NOP
+            ins = { ...P.NOP, pc: this.PC + 4 }
+        } else {
+            ins = { instruction: instruction, pc: this.PC + 4 }
         }
-        let ins: P.IPipelineIns = { instruction: instruction, pc: this.PC + 4 }
         this.PC += 4
         return ins
     }

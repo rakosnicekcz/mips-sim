@@ -35,6 +35,8 @@ export const NOP: IPipelineIns = {
     pc: 0,
 }
 
+export type TSetOutput = (output: string) => void;
+
 export class Pipeline {
     private reg: R.Registers;
     private mem: M.Memory;
@@ -53,10 +55,11 @@ export class Pipeline {
 
     private hazardUnit: H.HazardUnit
     private forwarding: F.ForwardingUnit
+    private isForwarding: boolean
 
-    private setOutput: (output: string) => void
+    private setOutput: TSetOutput
 
-    constructor(setOutput: (output: string) => void) {
+    constructor(setOutput: TSetOutput, isForwarding: boolean = true) {
         this.setOutput = setOutput
 
         this.reg = new R.Registers();
@@ -69,16 +72,14 @@ export class Pipeline {
         this.mem_stage = new MEM.Memory(this, this.mem, this.prg, this.reg, this.setOutput);
         this.wb_stage = new WB.WriteBack(this, this.reg)
 
-        this.hazardUnit = new H.HazardUnit(this.if_stage, this.id_stage, this)
+        this.hazardUnit = new H.HazardUnit(this.if_stage, this.id_stage, this, isForwarding)
         this.forwarding = new F.ForwardingUnit(this);
-
-        this.reg.setVal(R.ERegisters.$11, 6)//smazat!!!
-        this.reg.setVal(R.ERegisters.$12, 4)//smazat!!!
+        this.isForwarding = isForwarding
     }
 
     run(input: string) {
         this.hazardUnit.run();
-        this.forwarding.run();
+        if (this.isForwarding) { this.forwarding.run(); }
         this.wb_stage.runRisingEdge();
         this.mem_stage.runRisingEdge(input);
         this.ex_stage.runRisingEdge();
@@ -120,9 +121,11 @@ export class Pipeline {
         }
     }
 
-    setProgram(parsed: IParsed) {
+    setProgram(parsed: IParsed, isForwarding: boolean = true) {
         this.prg.setProgram(parsed.instructions, parsed.labels)
         this.mem.setData(parsed.data)
+        this.isForwarding = isForwarding
+        this.hazardUnit.setForwarding(isForwarding)
     }
 
     stallIF() {

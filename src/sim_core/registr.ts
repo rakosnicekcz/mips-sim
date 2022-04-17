@@ -41,6 +41,11 @@ export enum ERegisters {
     $31 = "$ra",
 }
 
+export enum EHiLoRegisters {
+    $hi = "hi",
+    $lo = "lo",
+}
+
 interface IDefaultValues {
     register: ERegisters;
     value: number;

@@ -12,9 +12,9 @@ export class Memory {
     private program: Prg.Program
     private registers: R.Registers
 
-    private setOutput: (output: string) => void
+    private setOutput: Pip.TSetOutput
 
-    constructor(pipeline: Pip.Pipeline, memory: M.Memory, program: Prg.Program, registers: R.Registers, setOutput: (output: string) => void) {
+    constructor(pipeline: Pip.Pipeline, memory: M.Memory, program: Prg.Program, registers: R.Registers, setOutput: Pip.TSetOutput) {
         this.pipeline = pipeline;
         this.memory = memory;
         this.program = program
@@ -29,8 +29,8 @@ export class Memory {
         if (this.data.instruction.description.isBranchInstruction && this.data.res === 1) {
             if (typeof this.data.instruction.imm === "string") {
                 this.program.setPCofLabel(this.data.instruction.imm);
-                this.pipeline.setMem(Pip.EPipelineMem.if_id, Pip.NOP);
-                this.pipeline.setMem(Pip.EPipelineMem.id_ex, Pip.NOP);
+                this.pipeline.setMem(Pip.EPipelineMem.if_id, { ...Pip.NOP, pc: this.data.pc });
+                this.pipeline.setMem(Pip.EPipelineMem.id_ex, { ...Pip.NOP, pc: this.data.pc });
                 this.pipeline.stallIF();
             }
         }

@@ -26,7 +26,7 @@ export class Execute {
 
         if (this.flush) {
             this.flush = false;
-            this.data = Pip.NOP;
+            this.data = { ...Pip.NOP, pc: this.data.pc };
             return;
         }
 

@@ -2,12 +2,25 @@ import React from 'react';
 //import './App.css';
 import { Pipeline } from './sim_core/pipeline';
 import { Parser } from './sim_core/parser'
-import { Controlled as CodeMirror } from 'react-codemirror2-react-17'
 
-import 'codemirror/lib/codemirror.css';
-import 'codemirror-dlx/theme/dlx-dark.css'
-require('codemirror-dlx/mode/dlx')
+import { SvgLoader, SvgProxy } from 'react-svgmt';
+import pipelineSVG from './pipeline-minify.svg';
 
+import AceEditor from "react-ace";
+import 'brace/mode/mips_assembler';
+
+import "brace/theme/tomorrow_night"
+import 'brace/theme/monokai';
+import "brace/theme/cobalt"
+import "brace/theme/twilight"
+import "brace/theme/sqlserver"
+
+type theme = { braceName: string, name: string }
+const themes: theme[] = [{ braceName: "tomorrow_night", name: "tomorrow night" },
+{ braceName: "monokai", name: "monokai" },
+{ braceName: "cobalt", name: "cobalt" },
+{ braceName: "twilight", name: "twilight" },
+{ braceName: "sqlserver", name: "sqlserver" }]
 
 function App() {
   return (
@@ -23,7 +36,9 @@ interface MyState {
   pipeline: Pipeline,
   parser: Parser,
   inputValue: string,
-  outputValue: string
+  outputValue: string,
+  isForwarding: boolean,
+  editor: string
 }
 
 class Neco extends React.Component<MyProps, MyState> {
@@ -31,7 +46,15 @@ class Neco extends React.Component<MyProps, MyState> {
   constructor(props: any) {
     super(props);
     this.setOutput = this.setOutput.bind(this);
-    this.state = { value: "add $t1 $t2 $t3", pipeline: new Pipeline(this.setOutput), parser: new Parser(), inputValue: "", outputValue: "" };
+    this.state = {
+      value: "add $t1 $t2 $t3",
+      pipeline: new Pipeline(this.setOutput, true),
+      parser: new Parser(),
+      inputValue: "",
+      outputValue: "",
+      isForwarding: true,
+      editor: themes[0].braceName
+    };
   }
 
   run = () => {
@@ -47,23 +70,24 @@ class Neco extends React.Component<MyProps, MyState> {
 
   compile = () => {
     let parsed = this.state.parser.parse(this.state.value)
-    this.state.pipeline.setProgram(parsed);
+    this.state.pipeline.setProgram(parsed, this.state.isForwarding);
   }
 
   render() {
     return (
       <div>
-        <CodeMirror
+        <AceEditor
+          className={"IDE"}
+          mode="mips_assembler"
+          theme={this.state.editor}
+          fontSize={16}
+          style={{ width: "100%", height: "665px" }}
+          name="mipsIDE"
+          editorProps={{ $blockScrolling: true }}
+          setOptions={{ tabSize: 4, wrap: false }}
+          showPrintMargin={false}
           value={this.state.value}
-          options={{
-            mode: 'dlx',
-            theme: 'dlx-dark',
-            lineNumbers: true
-          }}
-          onBeforeChange={(editor, data, value) => {
-            this.setState({ value });
-          }}
-          onChange={(editor, data, value) => {
+          onChange={(value) => {
             this.setState({ value })
           }}
         />
@@ -79,6 +103,22 @@ class Neco extends React.Component<MyProps, MyState> {
             inputValue: event.target.value
           });
         }} />
+        <label>
+          <input type="checkbox" checked={this.state.isForwarding} onChange={(event) => {
+            this.setState({
+              isForwarding: event.target.checked
+            });
+          }} />
+          Forwarding
+        </label>
+        <select value={this.state.editor} onChange={(event) => this.setState({ editor: event.target.value })}>
+          {themes.map((theme) => {
+            return <option value={theme.braceName} key={theme.braceName}>{theme.name}</option>
+          })}
+        </select>
+        <SvgLoader path={pipelineSVG} >
+        </SvgLoader>
+
       </div>
     )
   }
