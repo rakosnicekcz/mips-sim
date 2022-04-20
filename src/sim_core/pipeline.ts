@@ -12,7 +12,7 @@ import * as F from "./pipeline_parts/forwardingUnit"
 import { IParsed } from "./parser"
 
 import deepcopy from 'deepcopy';
-
+import { store } from '../App'
 
 export interface IPipelineIns {
     instruction: I.IInstruction;
@@ -31,12 +31,26 @@ export enum EPipelineMem {
 }
 
 export const NOP: IPipelineIns = {
-    instruction: { description: I.instruction_set.nop, address: -1, line: -1, paramType: [] },
+    instruction: { description: I.instruction_set.nop, address: -1, line: -1, paramType: [], originalNotation: "nop" },
     pc: 0,
 }
 
 export type TSetOutput = (output: string) => void;
 
+export interface StagesState {
+    if: IPipelineIns;
+    id: IPipelineIns;
+    ex: IPipelineIns;
+    mem: IPipelineIns;
+    wb: IPipelineIns;
+}
+
+const setStagesState = (value: StagesState) => {
+    store.dispatch({
+        type: 'SET_STAGES_STATE',
+        payload: value
+    })
+}
 export class Pipeline {
     private reg: R.Registers;
     private mem: M.Memory;
@@ -54,13 +68,14 @@ export class Pipeline {
     private wb_stage: WB.WriteBack
 
     private hazardUnit: H.HazardUnit
+    private isHazardUnit: boolean;
     private forwarding: F.ForwardingUnit
     private isForwarding: boolean
 
-    private setOutput: TSetOutput
+    private intervalID?: number
+    private executing: boolean
 
-    constructor(setOutput: TSetOutput, isForwarding: boolean = true) {
-        this.setOutput = setOutput
+    constructor(isForwarding: boolean = true, isHazardUnit: boolean = true) {
 
         this.reg = new R.Registers();
         this.mem = new M.Memory();
@@ -69,19 +84,48 @@ export class Pipeline {
         this.if_stage = new IF.Fetch(this, this.prg)
         this.id_stage = new ID.Decode(this, this.reg, this.prg);
         this.ex_stage = new EX.Execute(this, this.prg, this.mem)
-        this.mem_stage = new MEM.Memory(this, this.mem, this.prg, this.reg, this.setOutput);
+        this.mem_stage = new MEM.Memory(this, this.mem, this.prg, this.reg, this.if_stage);
         this.wb_stage = new WB.WriteBack(this, this.reg)
 
         this.hazardUnit = new H.HazardUnit(this.if_stage, this.id_stage, this, isForwarding)
         this.forwarding = new F.ForwardingUnit(this);
         this.isForwarding = isForwarding
+        this.isHazardUnit = isHazardUnit
     }
 
-    run(input: string) {
-        this.hazardUnit.run();
+    run(callback?: () => any) {
+        if (this.intervalID === undefined) {
+            this.intervalID = window.setInterval(() => {
+                this.step(callback)
+            }, 1000);
+        }
+    }
+
+    pause() {
+        if (this.intervalID !== undefined) {
+            window.clearInterval(this.intervalID);
+            this.intervalID = undefined;
+        }
+    }
+
+    step(callback?: () => any) {
+        if (!this.executing) {
+            return
+        }
+        let wb: IPipelineIns = this.mem_wb;
+
+        if (this.isHazardUnit) { this.hazardUnit.run(); }
         if (this.isForwarding) { this.forwarding.run(); }
-        this.wb_stage.runRisingEdge();
-        this.mem_stage.runRisingEdge(input);
+        let isHalt = this.wb_stage.runRisingEdge();
+        if (isHalt) {
+            this.pause();
+            if (callback) {
+                callback();
+            }
+            setStagesState({ if: NOP, id: NOP, ex: NOP, mem: NOP, wb: this.mem_wb })
+            return;
+        }
+        this.mem_stage.runRisingEdge();
         this.ex_stage.runRisingEdge();
         this.id_stage.runRisingEdge();
         this.if_stage.runRisingEdge();
@@ -89,6 +133,16 @@ export class Pipeline {
         this.ex_stage.runFallingEdge();
         this.id_stage.runFallingEdge();
         console.log("if_id:", this.if_id, "id_ex:", this.id_ex, "ex_mem:", this.ex_mem, "mem_wb:", this.mem_wb)
+
+        let completed: StagesState = {
+            if: this.if_stage.getData(),
+            id: this.id_ex,
+            ex: this.ex_mem,
+            mem: this.mem_wb,
+            wb: wb
+        }
+        console.log("completed:", completed)
+        setStagesState(completed)
     }
 
     setMem(mem: EPipelineMem, value: IPipelineIns): void {
@@ -121,14 +175,36 @@ export class Pipeline {
         }
     }
 
-    setProgram(parsed: IParsed, isForwarding: boolean = true) {
+    setProgram(parsed: IParsed, isForwarding: boolean = true, isHazardUnit: boolean = true) {
         this.prg.setProgram(parsed.instructions, parsed.labels)
         this.mem.setData(parsed.data)
         this.isForwarding = isForwarding
         this.hazardUnit.setForwarding(isForwarding)
+        this.isHazardUnit = isHazardUnit
     }
 
     stallIF() {
         this.if_stage.setStall();
+    }
+
+    reset() {
+        this.pause();
+        this.if_id = this.id_ex = this.ex_mem = this.mem_wb = NOP;
+
+        this.reg = new R.Registers();
+        this.mem = new M.Memory();
+        this.prg = new P.Program();
+
+        this.if_stage = new IF.Fetch(this, this.prg)
+        this.id_stage = new ID.Decode(this, this.reg, this.prg);
+        this.ex_stage = new EX.Execute(this, this.prg, this.mem)
+        this.mem_stage = new MEM.Memory(this, this.mem, this.prg, this.reg, this.if_stage);
+        this.wb_stage = new WB.WriteBack(this, this.reg)
+
+        this.hazardUnit = new H.HazardUnit(this.if_stage, this.id_stage, this, this.isForwarding)
+        this.forwarding = new F.ForwardingUnit(this);
+        this.reg.setAllRegisters()
+        this.executing = true
+        console.log(this)
     }
 }

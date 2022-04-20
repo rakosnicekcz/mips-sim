@@ -1,8 +1,13 @@
 import deepcopy from "deepcopy";
 import { stackRange } from "./memory"
+import { store } from '../App'
 
 export interface IRegister {
     name: ERegisters;
+    value: Int32Array;
+}
+export interface IAllRegister {
+    name: ERegisters | EHiLoRegisters;
     value: Int32Array;
 }
 
@@ -42,8 +47,8 @@ export enum ERegisters {
 }
 
 export enum EHiLoRegisters {
-    $hi = "hi",
-    $lo = "lo",
+    $hi = "$hi",
+    $lo = "$lo",
 }
 
 interface IDefaultValues {
@@ -52,6 +57,13 @@ interface IDefaultValues {
 }
 
 const defaultValues: IDefaultValues[] = [{ register: ERegisters.$29, value: stackRange.to }]
+
+const setRegistersForRedux = (registers: IAllRegister[]) => {
+    store.dispatch({
+        type: 'SET_REGISTERS',
+        payload: registers
+    })
+}
 
 export class Registers {
     private $hi: Int32Array = new Int32Array(1);
@@ -63,18 +75,22 @@ export class Registers {
         Object.keys(ERegisters).forEach(e => {
             this.registers.push({ name: ERegisters[e as keyof typeof ERegisters], value: new Int32Array(1) })
         });
-        defaultValues.forEach(e => this.setVal(e.register, e.value))
+        defaultValues.forEach(e => this.setVal(e.register, e.value, false))
     }
 
-    setVal(name: ERegisters, value: number): void {
+    setVal(name: ERegisters, value: number, rerender: boolean = true): void {
         if (name === ERegisters.$0) return;
         let index = this.registers.findIndex(x => x.name === name)
         this.registers[index].value[0] = deepcopy(value);
+        if (rerender) {
+            setRegistersForRedux([...this.registers, { name: EHiLoRegisters.$hi, value: this.$hi }, { name: EHiLoRegisters.$lo, value: this.$lo }])
+        }
     }
 
     setHiLo(hi: number, lo: number): void {
         this.$hi[0] = hi;
         this.$lo[0] = lo;
+        setRegistersForRedux([...this.registers, { name: EHiLoRegisters.$hi, value: this.$hi }, { name: EHiLoRegisters.$lo, value: this.$lo }])
     }
 
     getHi(): number {
@@ -92,5 +108,9 @@ export class Registers {
 
     printAllRegisters(): void {
         console.log(this.registers)
+    }
+
+    setAllRegisters(): void {
+        setRegistersForRedux([...this.registers, { name: EHiLoRegisters.$hi, value: this.$hi }, { name: EHiLoRegisters.$lo, value: this.$lo }])
     }
 }

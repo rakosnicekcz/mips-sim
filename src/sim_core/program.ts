@@ -17,13 +17,7 @@ export class Program {
     private LabelsT: Ilabel[];
     private PC: number = textSegmentStart;
     constructor() {
-        this.Instructions = [{
-            description: I.instruction_set.add,
-            address: textSegmentStart,
-            line: 1,
-            paramType: I.instruction_set.add.paramTypes[0],
-            arg0: R.ERegisters.$10, arg1: R.ERegisters.$11, arg2: R.ERegisters.$12
-        }]
+        this.Instructions = []
     }
 
     setProgram(program: I.IInstruction[], labels: Ilabel[]): void {

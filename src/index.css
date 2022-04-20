@@ -11,3 +11,46 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.svgLoader {
+  min-width: 950px;
+}
+
+.svgLoaderContainer {
+  position: relative;
+  overflow-x: auto;
+}
+
+.if_stage,
+.id_stage,
+.ex_stage,
+.mem_stage,
+.wb_stage {
+  position: absolute
+}
+
+.if_stage {
+  background-color: #ffade6;
+}
+
+.id_stage {
+  background-color: #adffe5;
+}
+
+.ex_stage {
+  background-color: #e6ffad;
+}
+
+.mem_stage {
+  background-color: #ffd4ad
+}
+
+.wb_stage {
+  background-color: #ffadad
+}
+
+.registersContainer {
+  position: absolute;
+  top: 0;
+  right: 0;
+}

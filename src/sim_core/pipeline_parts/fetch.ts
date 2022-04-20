@@ -30,7 +30,8 @@ export class Fetch {
 
         if (this.flush) {
             this.flush = false;
-            this.pipeline.setMem(Pip.EPipelineMem.if_id, { ...Pip.NOP, pc: this.data.pc });
+            this.data = { ...Pip.NOP, pc: this.data.pc }
+            this.pipeline.setMem(Pip.EPipelineMem.if_id, this.data);
             return
         }
         if (this.stall) {
@@ -42,4 +43,6 @@ export class Fetch {
         this.pipeline.setMem(Pip.EPipelineMem.if_id, this.data);
         console.log("IF:", this.data);
     }
+
+    getData(): Pip.IPipelineIns { return this.data }
 }

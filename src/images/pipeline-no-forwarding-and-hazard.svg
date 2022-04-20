@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" viewBox="0 0 307 171" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="a" x1="-48.266" x2="-11.574" y1="264.37" y2="263.21" gradientTransform="matrix(1.9932 0 0 4.8974 24.603 -1483.5)" gradientUnits="userSpaceOnUse">
+      <stop offset="0"/>
+      <stop stop-opacity="0" offset="1"/>
+    </linearGradient>
+  </defs>
+  <g transform="matrix(.3225 0 0 .3225 33.059 23.813)">
+    <path d="m-81.354 62.837v202.76h14.445" fill="none" stroke="#000" stroke-width="1.0487"/>
+    <g transform="matrix(.8321 0 0 .84796 517.79 -216.84)" stroke-width=".48977">
+      <g transform="translate(-337.24 45.072)">
+        <rect x="25.058" y="213.27" width="24.884" height="356.2" fill="#9fe600" stroke="#000" stroke-width="1.0374"/>
+        <text transform="matrix(0, 2.290659, -2.268492, 0, 879.251831, 212.757401)" x="84.461647" y="372.68658" fill="#000000" font-family="Arial" font-size="4.9368px" stroke-width=".20634px" text-align="center" text-anchor="middle" style="font-variant: normal; line-height: 0%; white-space: pre;">ID / EX</text>
+      </g>
+    </g>
+    <g transform="matrix(.8321 0 0 .69478 765.98 -116.15)" stroke-width=".54107">
+      <g transform="translate(-337.24 45.072)">
+        <rect x="25.058" y="175.06" width="24.884" height="394.4" fill="#9fe600" stroke="#000" stroke-width="1.146"/>
+        <text transform="matrix(0, 2.795687, -2.268492, 0, 879.037231, 128.306183)" x="84.461647" y="372.68658" fill="#000000" font-family="Arial" font-size="4.9368px" stroke-width=".20634px" text-align="center" text-anchor="middle" style="font-variant: normal; line-height: 0%; white-space: pre;">EX / MEM</text>
+      </g>
+    </g>
+    <g transform="matrix(.82494 0 0 .64336 922.23 -91.115)" stroke-width=".56471">
+      <g transform="translate(-337.24 45.072)">
+        <rect x="25.058" y="175.06" width="24.884" height="394.4" fill="#9fe600" stroke="#000" stroke-width="1.1961"/>
+        <text transform="matrix(0, 3.01913, -2.473909, 0, 955.648315, 104.430046)" x="84.461647" y="372.68658" fill="#000000" font-family="Arial" font-size="4.9368px" stroke-width=".20634px" text-align="center" text-anchor="middle" style="font-variant: normal; line-height: 0%; white-space: pre;">MEM / WB</text>
+      </g>
+    </g>
+    <g transform="matrix(2.0814 0 0 2.0803 -23.232 -657.57)" stroke-width=".48058">
+      <g transform="translate(0 .5899)">
+        <path d="m219.83 359.13 21.115 10.183v25.458l-21.115 10.183v-15.275l5.2786-2.5458v-10.183l-5.2786-2.5458z" fill="#729fcf" stroke="#000" stroke-width=".39542"/>
+        <text transform="scale(1.018 .98236)" x="225.56029" y="379.54227" fill="#000000" font-family="Arial" font-size="6.5495px" stroke-width=".19771px" text-align="center" text-anchor="middle" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="225.56029" y="379.54227" font-family="Arial" font-size="6.5495px" stroke-width=".19771px" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">ALU</tspan></text>
+        <text transform="scale(1.018 .98236)" x="231.78372" y="386.60477" fill="#000000" font-family="Arial" font-size="3.9866px" stroke-width=".19771px" text-align="center" text-anchor="middle" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="231.78372" y="386.60477" font-family="Arial" font-size="3.9866px" stroke-width=".19771px" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">Zero</tspan></text>
+        <text transform="scale(1.018 .98236)" x="230.711" y="396.03113" fill="#000000" font-family="Arial" font-size="3.7107px" stroke-width=".19771px" text-align="center" text-anchor="middle" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="230.711" y="396.03113" font-family="Arial" font-size="3.7107px" stroke-width=".19771px" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">Result</tspan></text>
+      </g>
+    </g>
+    <g transform="matrix(.8321 0 0 .80861 480.83 -4.6046)">
+      <rect x="100" y="175" width="75" height="100" fill="#c00" fill-rule="evenodd" stroke="#000" stroke-width="1.0031"/>
+      <text style="font-family: Arial; font-size: 12px; line-height: 15px; stroke-width: 0.50154px; text-anchor: middle; white-space: pre;"><tspan x="137.875" y="217.104">Data</tspan><tspan x="137.875" y="232.104">Memory</tspan></text>
+    </g>
+    <g transform="matrix(.8321 0 0 .80861 -.52776 85.145)">
+      <path d="m469.25 164v50l20-10v-30z" fill="#d3d7cf" stroke="#000" stroke-width="1.0031"/>
+      <text transform="rotate(90)" x="188.6875" y="-475" fill="#000000" font-family="Arial" font-size="12px" stroke-width=".50154" text-align="center" text-anchor="middle" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="188.6875" y="-475" font-family="Arial" font-size="12px" stroke-width=".50154" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">MUX</tspan></text>
+    </g>
+    <g transform="matrix(.8321 0 0 .80861 318.96 57.461)">
+      <path d="m469.25 164v50l20-10v-30z" fill="#d3d7cf" stroke="#000" stroke-width="1.0031"/>
+      <text transform="matrix(0, 1.000001, -0.999999, 0, 0.185166, 0.074985)" x="188.6875" y="-475" fill="#000000" font-family="Arial" font-size="12px" stroke-width=".50154" text-align="center" text-anchor="middle" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="188.6875" y="-475" font-family="Arial" font-size="12px" stroke-width=".50154" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">MUX</tspan></text>
+    </g>
+    <g transform="matrix(.8321 0 0 .80861 -1.0032 18.091)">
+      <path d="m469.25 164v50l20-10v-30z" fill="#d3d7cf" stroke="#000" stroke-width="1.0031"/>
+      <text transform="rotate(90)" x="188.6875" y="-475" fill="#000000" font-family="Arial" font-size="12px" stroke-width=".50154" text-align="center" text-anchor="middle" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="188.6875" y="-475" font-family="Arial" font-size="12px" stroke-width=".50154" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">MUX</tspan></text>
+    </g>
+    <path d="m322.53 310.16c-233.25-545.69-116.62-272.85 0 0z" stroke-width=".11046"/>
+    <g transform="matrix(1.9932 0 0 1.9944 27.168 -629.88)">
+      <rect x="70.003" y="362.19" width="32.108" height="46.017" fill="#68ffb5" fill-rule="evenodd" stroke="#000" stroke-width=".41267"/>
+      <text transform="scale(1.0147 .98549)" x="84.461647" y="372.68658" fill="#000000" font-family="Arial" font-size="4.9368px" stroke-width=".20634px" text-align="center" text-anchor="middle" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="84.461647" y="372.68658" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1.25">Register</tspan><tspan x="84.461647" y="378.8576" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1.25">File</tspan></text>
+    </g>
+    <text transform="scale(1.0144 .98578)" x="220.42908" y="180.43051" fill="none" font-family="Arial" font-size="8.6539px" stroke="#000000" stroke-width=".4114px" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="220.42908" y="180.43051" font-family="Arial" font-size="8.6539px" stroke-width=".4114px" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1"> </tspan></text>
+    <g transform="matrix(.8321 0 0 .80861 -87.49 81.984)" stroke-width=".50154">
+      <g transform="translate(0 1.7706)">
+        <ellipse cx="330.39" cy="258.63" rx="25.04" ry="18.905" fill="#edd400" stroke="#000" stroke-width="1.0031"/>
+        <text x="330.69839" y="253.79686" fill="#000000" font-family="Arial" font-size="10.952px" stroke-width=".50154px" text-align="center" text-anchor="middle" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="330.69839" y="253.79686" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1.25">Sign</tspan><tspan x="330.69839" y="267.48685" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1.25">Extend</tspan></text>
+      </g>
+    </g>
+    <g transform="matrix(1.2537 0 0 1.2135 -242.44 -283.42)" stroke-width=".33355">
+      <ellipse cx="329.67" cy="260" rx="20.272" ry="16.823" fill="#ff51ff" stroke="#000" stroke-width=".66711"/>
+      <text transform="matrix(1.955757, 0, 0, 1.963564, 164.214935, -471.788239)" x="84.461647" y="372.68658" fill="#000000" font-family="Arial" font-size="4.9368px" stroke-width=".20634px" text-align="center" text-anchor="middle" style="font-variant: normal; line-height: 0%; white-space: pre;">Control<tspan x="84.4616470336914" dy="1em">​</tspan>Unit</text>
+    </g>
+    <path d="m91.781 266.42h35.096" stroke="#000" stroke-width=".8228"/>
+    <path d="m132.72 233.33h125.11" stroke="#000" stroke-width=".8228"/>
+    <path d="m278.43 233.65h110.95" stroke="#000" stroke-width=".8228"/>
+    <path d="m278.67 244.42h110.95" stroke="#000" stroke-width=".8228"/>
+    <path d="m406.94 237.49h98.949" stroke="#000" stroke-width=".8228"/>
+    <path d="m526.59 237.51h136.97" stroke="#000" stroke-width=".8228"/>
+    <path d="m132.31 244.68h125.49" stroke="#000" stroke-width=".8228"/>
+    <path d="m233.11 291.66v16.05" stroke="#000" stroke-width=".8228"/>
+    <path d="m161.93 121.36h-29.123v171.02h29.123" fill="none" stroke="#000" stroke-width=".8228"/>
+    <path d="m132.79 141.48h29.123" fill="none" stroke="#000" stroke-width=".8228"/>
+    <text transform="scale(1.0144 .98578)" x="207.43219" y="292.67523" fill="#000000" font-family="Arial" font-size="8.6539px" stroke-width=".4114px" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="207.43219" y="292.67523" font-family="Arial" font-size="8.6539px" stroke-width=".4114px" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">Imm</tspan></text>
+    <g transform="matrix(1.9932 0 0 1.9944 2.8508 -603.94)" stroke-width=".50154">
+      <rect x="107.79" y="457.45" width="14.925" height="6.8231" fill="#d3d7cf" fill-rule="evenodd" stroke="#000" stroke-width=".41267"/>
+    </g>
+    <text transform="scale(1.0144 .98578)" x="178.29507" y="235.09642" fill="#000000" font-family="Arial" font-size="8.6539px" stroke-width=".4114px" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="178.29507" y="235.09642" font-family="Arial" font-size="8.6539px" stroke-width=".4114px" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">Rt</tspan></text>
+    <text transform="scale(1.0144 .98578)" x="177.895" y="246.65279" fill="#000000" font-family="Arial" font-size="8.6539px" stroke-width=".4114px" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="177.895" y="246.65279" font-family="Arial" font-size="8.6539px" stroke-width=".4114px" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">Rd</tspan></text>
+    <ellipse cx="132.8" cy="141.48" rx="2.0802" ry="2.0215" stroke="#000" stroke-width=".8228"/>
+    <path d="m207.69 292.22h48.667" stroke="#000" stroke-width=".8228"/>
+    <path d="m230.94 120.94h26.834" stroke="#000" stroke-width=".8228"/>
+    <path d="m400.09 71.036h106" stroke="#000" stroke-width=".8228"/>
+    <path d="m230.75 175.96h27.294" stroke="#000" stroke-width=".8228"/>
+    <path d="m406.47 171.24h26.757" stroke="#000" stroke-width=".8228"/>
+    <ellipse cx="132.8" cy="292.22" rx="2.0802" ry="2.0215" stroke="#000" stroke-width=".8228"/>
+    <ellipse cx="233.14" cy="292.39" rx="2.0802" ry="2.0215" stroke="#000" stroke-width=".8228"/>
+    <ellipse cx="132.89" cy="121.4" rx="2.0802" ry="2.0215" stroke="#000" stroke-width=".8228"/>
+    <ellipse cx="241.37" cy="19.392" rx="2.0802" ry="2.0215" stroke="#000" stroke-width=".8228"/>
+    <ellipse cx="109.01" cy="71.425" rx="2.0802" ry="2.0215" stroke="#000" stroke-width=".8228"/>
+    <path d="m132.7 265.69-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
+    <path d="m166.68 120.61-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
+    <path d="m145.1 31.226-6.3831-1.7384-0.0659 4.9282 6.4455-1.5932z" stroke-width=".087576"/>
+    <path d="m166.21 140.83-6.3831-1.7384-0.0659 4.9282 6.4455-1.5932z" stroke-width=".087576"/>
+    <path d="m166.62 156.88-6.3831-1.7384-0.0659 4.9282 6.4455-1.5932z" stroke-width=".087576"/>
+    <path d="m166.38 173.1-6.3831-1.7384-0.0659 4.9282 6.4455-1.5932z" stroke-width=".087576"/>
+    <path d="m166.77 291.64-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
+    <path d="m67.799 333.73 6.3831 1.7384 0.06598-4.9282-6.4456 1.5932z" stroke-width=".087576"/>
+    <path d="m233.88 308.13 1.7373-6.387-4.9253-0.066 1.5922 6.4495z" stroke-width=".087576"/>
+    <path d="m258.42 291.78-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
+    <path d="m67.833 366.36 6.3831 1.7383 0.06598-4.9282-6.4456 1.5932z" stroke-width=".087576"/>
+    <path d="m71.268 265.44-6.3831-1.7383-0.06598 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
+    <g transform="matrix(.8321 0 0 .80861 -96.133 84.072)">
+      <rect x="100" y="175" width="74.997" height="100" fill="#c00" fill-rule="evenodd" stroke="#000" stroke-width="1.0017"/>
+    </g>
+    <text transform="scale(.99188 1.0082)" x="-11.616109" y="266.42798" fill="#000000" font-family="Arial" font-size="8.654px" stroke-width=".4114px" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="-11.616109" y="266.42798" font-family="Arial" font-size="8.654px" stroke-width=".4114px" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">Address</tspan></text>
+    <text transform="scale(.99188 1.0082)" x="30.76956" y="266.04584" fill="#000000" font-family="Arial" font-size="8.654px" stroke-width=".4114px" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="30.76956" y="266.04584" font-family="Arial" font-size="8.654px" stroke-width=".4114px" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">Instr</tspan></text>
+    <g transform="matrix(.8321 0 0 .80861 -83.651 84.072)">
+      <rect x="25" y="175" width="25" height="100" fill="#9fe600" stroke="#000" stroke-width="1.0031"/>
+      <text transform="matrix(1.192019, 0, 0, 1.246833, -164.847382, 17.322353)" style="font-family: Arial; font-size: 9.62647px; line-height: 6.8925px; stroke-width: 0.4114px; white-space: pre; text-anchor: middle;" x="170.15199279785156" y="169.81199645996094">PC</text>
+    </g>
+    <g transform="matrix(1.9932 0 0 1.9944 -.95535 -635.44)">
+      <path d="m0.40289 365.24 12.524 6.0815v16.217l-12.524 6.0815v-12.163l4.1746-2.0272-4.1746-2.0272z" fill="#729fcf" stroke="#000" stroke-width=".41267"/>
+      <text transform="matrix(0 .98549 -1.0147 0 0 0)" x="384.97623" y="-7.1869755" fill="#000000" font-family="'DejaVu Sans'" font-size="4.9368px" stroke-width=".20634px" text-align="center" text-anchor="middle" style="line-height: 0%; white-space: pre;"><tspan x="384.97623" y="-7.1869755" font-size="4.9368px" stroke-width=".20634px" style="line-height:1">+</tspan></text>
+    </g>
+    <g transform="matrix(-1.9932 0 0 -1.9944 68.364 1104.6)">
+      <path d="m0.40289 365.24 12.524 6.0815v16.217l-12.524 6.0815v-12.163l4.1746-2.0272-4.1746-2.0272z" fill="#729fcf" stroke="#000" stroke-width=".41267"/>
+      <text transform="matrix(0 .98549 -1.0147 0 0 0)" x="384.97623" y="-7.1869755" fill="#000000" font-family="'DejaVu Sans'" font-size="4.9368px" stroke-width=".20634px" text-align="center" text-anchor="middle" style="line-height: 0%; white-space: pre;"><tspan x="384.97623" y="-7.1869755" font-size="4.9368px" stroke-width=".20634px" style="line-height:1">+</tspan></text>
+    </g>
+    <g transform="matrix(1.5469 0 0 1.5677 379.85 -523.35)">
+      <path d="m0.40289 365.24 12.524 6.0815v16.217l-12.524 6.0815v-12.163l4.1746-2.0272-4.1746-2.0272z" fill="#729fcf" stroke="#000" stroke-width=".52835"/>
+      <text transform="matrix(0 .98549 -1.0147 0 0 0)" x="384.97623" y="-7.1869755" fill="#000000" font-family="Arial" font-size="4.9368px" stroke-width=".26418px" text-align="center" text-anchor="middle" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="384.97623" y="-7.1869755" font-family="Arial" font-size="4.9368px" stroke-width=".26418px" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">+</tspan></text>
+    </g>
+    <path d="m49.485 266.01h20.802" stroke="#000" stroke-width=".8228"/>
+    <path d="m-42.046 266.01h29.123" fill="none" stroke="#000" stroke-width=".8228"/>
+    <path d="m-33.725 266.05v-128.82h29.123" fill="none" stroke="#000" stroke-width=".8228"/>
+    <path d="m-12.736 265.28-6.3831-1.7384-0.06598 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
+    <path d="m16.116 72.18h29.123" fill="none" stroke="#000" stroke-width=".8228"/>
+    <path d="m-24.172 104.02h23.674" fill="none" stroke="#000" stroke-width=".74184"/>
+    <text transform="scale(1.0144 .98578)" x="-32.088844" y="109.3675" fill="#000000" font-family="Arial" font-size="8.6539px" stroke-width=".4114px" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="-32.088844" y="109.3675" font-family="Arial" font-size="8.6539px" stroke-width=".4114px" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">4</tspan></text>
+    <text transform="matrix(1.0144, 0, 0, 0.98578, 1.076018, 0)" x="256.64957" y="11.744957" fill="#000000" font-family="Arial" font-size="8.6539px" stroke-width=".4114px" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="256.64957" y="11.744957" font-family="Arial" font-size="8.6539px" stroke-width=".4114px" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">WB</tspan></text>
+    <text transform="matrix(1.0144, 0, 0, 0.98578, 0.880381, -0.4891)" x="260.28271" y="22.727993" fill="#000000" font-family="Arial" font-size="8.6539px" stroke-width=".4114px" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="260.28271" y="22.727993" font-family="Arial" font-size="8.6539px" stroke-width=".4114px" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">M</tspan></text>
+    <ellipse cx="45.849" cy="71.892" rx="2.0802" ry="2.0215" stroke="#000" stroke-width=".8228"/>
+    <ellipse cx="-33.725" cy="266.01" rx="2.0802" ry="2.0215" stroke="#000" stroke-width=".8228"/>
+    <g transform="matrix(-.8321 0 0 -.80861 405.83 216.44)">
+      <path d="m469.25 164v50l20-10v-30z" fill="#d3d7cf" stroke="#000" stroke-width="1.0031"/>
+      <g stroke-width=".50154">
+        <g transform="rotate(180 269.98 142.41)">
+          <rect x="137.86" y="91.247" width="24.878" height="269.59" fill="#9fe600" fill-rule="evenodd" stroke="#000" stroke-width="1.0017"/>
+          <text transform="matrix(0, 2.402131, -2.268492, 0, 992.114563, 17.346138)" x="84.461647" y="372.68658" fill="#000000" font-family="Arial" font-size="4.9368px" stroke-width=".20634px" text-align="center" text-anchor="middle" style="font-variant: normal; line-height: 0%; white-space: pre;">IF / ID</text>
+        </g>
+      </g>
+      <text transform="matrix(0, 1.000001, -0.999999, 0, 0.321403, 0.328785)" x="188.6875" y="-475" fill="#000000" font-family="Arial" font-size="12px" stroke-width=".50154" text-align="center" text-anchor="middle" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="188.6875" y="-475" font-family="Arial" font-size="12px" stroke-width=".50154" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">MUX</tspan></text>
+    </g>
+    <path d="m24.93 121.82h20.802v-49.639h24.963" fill="url(#a)" stroke="#000" stroke-width=".8228"/>
+    <path d="m-62.513 264.99-6.3831-1.7384-0.06598 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
+    <path d="m0.011638 136.76-6.3831-1.7384-0.065979 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
+    <path d="m-0.24638 103.35-6.3831-1.7384-0.06598 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
+    <path d="m71.286 71.451-6.3831-1.7383-0.06598 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
+    <path d="m15.011 72.845 6.3831 1.7383 0.06598-4.9282-6.4456 1.5932z" stroke-width=".087576"/>
+    <path d="m15.65 61.842 6.3831 1.7383 0.06598-4.9282-6.4456 1.5932z" stroke-width=".087576"/>
+    <path d="m15.635 51.078 6.3831 1.7383 0.06598-4.9282-6.4456 1.5932z" stroke-width=".087576"/>
+    <path d="m45.739 71.38v28.716" fill="none" stroke="#000" stroke-width=".82881"/>
+    <path d="m-81.815 63.277h80.032" fill="none" image-rendering="auto" stroke="#000" stroke-width=".8739px"/>
+    <path d="m91.894 71.5h164.77" fill="none" stroke="#000" stroke-width=".8204px"/>
+    <ellipse cx="132.65" cy="244.75" rx="2.0802" ry="2.0215" stroke="#000" stroke-width=".8228"/>
+    <ellipse cx="132.8" cy="233.76" rx="2.0802" ry="2.0215" stroke="#000" stroke-width=".8228"/>
+    <ellipse cx="352.69" cy="163.33" rx="2.0802" ry="2.0215" stroke="#000" stroke-width=".8228"/>
+    <ellipse cx="360.23" cy="182.01" rx="2.0802" ry="2.0215" stroke="#000" stroke-width=".8228"/>
+    <text transform="scale(1.0144 .98578)" x="7.1522942" y="18.257309" fill="#000000" font-family="Arial" font-size="8.6539px" stroke-width=".4114px" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="7.1522942" y="18.257309" font-family="Arial" font-size="8.6539px" stroke-width=".4114px" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">PCSrc</tspan></text>
+    <path d="m258.16 243.88-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
+    <path d="m258.3 232.53-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
+    <path d="m390.05 233.06-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
+    <path d="m390.27 243.69-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
+    <path d="m258.19 120.22-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
+    <path d="M 434.359 105.458 L 427.976 103.719 L 427.91 108.648 L 434.356 107.054 L 434.359 105.458 Z" stroke-width=".087576"/>
+    <path d="m380.16 83.793-6.3832-1.7383-0.0659 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
+    <path d="m505.91 70.233-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
+    <path d="m258.16 70.774-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
+    <path d="m257.47 7.2125-6.3831-1.7383-0.0659 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
+    <path d="m258.39 175.44-6.3831-1.7383-0.0659 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
+    <path d="m389.11 162.41-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
+    <path d="m434.78 170.52-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
+    <path d="m478.18 130.96h26.296" stroke="#000" stroke-width=".8228"/>
+    <path d="m506.03 130.24-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
+    <path d="m505.79 41.69-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
+    <path d="m478.33 149.98h26.757" stroke="#000" stroke-width=".8228"/>
+    <path d="m527.44 150.05h36.16" stroke="#000" stroke-width=".8228"/>
+    <path d="m506.64 149.26-6.3831-1.7383-0.0659 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
+    <path d="m506.14 199.16-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
+    <path d="m506.62 236.75-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
+    <path d="m664.32 236.69-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
+    <path d="m563.77 149.35-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
+    <path d="m526.74 199.91h36.16" stroke="#000" stroke-width=".8228"/>
+    <path d="m564.43 199.22-6.3831-1.7383-0.0659 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
+    <path d="m626.19 199.91h36.16" stroke="#000" stroke-width=".8228"/>
+    <path d="m685.56 224.64h23.282" stroke="#000" stroke-width=".8228"/>
+    <path d="m685.36 199.88h23.874" stroke="#000" stroke-width=".8228"/>
+    <path d="m664.24 199.21-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
+    <path d="m709.11 223.89-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
+    <path d="m709.07 199.15-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
+    <path d="m389.58 181.14-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
+    <path d="m279.18 293.88h80.818v-111.94h28.49" fill="none" stroke="#000" stroke-width=".8204px"/>
+    <path d="m352.71 163.43v36.445h152.74" fill="none" stroke="#000" stroke-width=".8204px"/>
+    <path d="m726.99 210.29h15.61v148.67h-590.87v-185.12h14.454" fill="none" stroke="#000" stroke-width=".8204px"/>
+    <path d="m685.37 238.63h13.876v127.85h-559.65v-208.84h25.439" fill="none" stroke="#000" stroke-width=".8204px"/>
+    <rect x="257.97" y="2.8965" width="20.813" height="10.558" fill="none" stroke="#000" stroke-width=".51162"/>
+    <rect x="258.03" y="13.481" width="20.813" height="10.558" fill="none" stroke="#000" stroke-width=".51162"/>
+    <text transform="scale(1.0144 .98578)" x="502.57941" y="45.938835" fill="#000000" font-family="Arial" font-size="8.654px" stroke-width=".4114px" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="502.57941" y="45.938835" font-family="Arial" font-size="8.654px" stroke-width=".4114px" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">WB</tspan></text>
+    <rect x="506.11" y="37.014" width="20.813" height="10.558" fill="none" stroke="#000" stroke-width=".51162"/>
+    <rect x="258.33" y="24.058" width="20.118" height="10.558" fill="#ff51ff" stroke="#000" stroke-width=".51162"/>
+    <path d="m257.83 8.03h-16.353v21.906h15.739" fill="none" stroke="#000" stroke-width=".8204px"/>
+    <path d="m257.41 18.69-6.3831-1.7383-0.0659 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
+    <path d="m257.58 29.199-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
+    <text transform="matrix(1.0144, 0, 0, 0.98578, 0.684741, 0)" x="257.86053" y="33.291187" fill="#000000" font-family="Arial" font-size="8.6539px" stroke-width=".4114px" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="257.86053" y="33.291187" font-family="Arial" font-size="8.6539px" stroke-width=".4114px" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">EX</tspan></text>
+    <g transform="matrix(1.9654 0 0 1.9944 43.184 -632.08)" stroke-width=".50509">
+      <rect x="235.84" y="340.89" width="10.093" height="5.2935" fill="#ff51ff" stroke="#000" stroke-width=".25841"/>
+      <g transform="matrix(.98969 0 0 1 19.555 -6.2135)">
+        <rect x="300" y="348.65" width="10.093" height="5.2935" fill="#ff51ff" stroke="#000" stroke-width=".25976"/>
+        <text transform="matrix(0.521506, 0, 0, 0.494274, 39.27953, 330.157898)" x="502.57941" y="45.938835" fill="#000000" font-family="Arial" font-size="8.654px" stroke-width=".4114px" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="502.57941" y="45.938835" font-family="Arial" font-size="8.654px" stroke-width=".4114px" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">WB</tspan></text>
+      </g>
+      <text transform="matrix(0.516129, 0, 0, 0.494274, -20.439903, 322.394867)" x="502.57941" y="45.938835" fill="#000000" font-family="Arial" font-size="8.654px" stroke-width=".4114px" style="font-variant: normal; line-height: 0%; white-space: pre;">M</text>
+    </g>
+    <text transform="matrix(0.99188, 0, 0, 1.0082, 0, 0.626141)" x="169.90927" y="120.16353" fill="#000000" font-family="Arial" font-size="6.8925px" stroke-width=".4114px" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="169.90927" y="120.16353" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">Read</tspan><tspan x="169.90927" y="127.05606" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">register 1</tspan></text>
+    <text transform="matrix(0.99188, 0, 0, 1.0082, -1.103941, -0.220789)" x="212.86661" y="119.59492" fill="#000000" font-family="Arial" font-size="6.8925px" stroke-width=".4114px" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="212.86661" y="119.59492" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">Read</tspan><tspan x="212.86661" y="126.48745" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">data 1</tspan></text>
+    <text transform="matrix(0.99188, 0, 0, 1.0082, -2.870246, -1.987098)" x="212.47597" y="172.61533" fill="#000000" font-family="Arial" font-size="6.8925px" stroke-width=".4114px" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="212.47597" y="172.61533" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">Read</tspan><tspan x="212.47597" y="179.50786" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">data 2</tspan></text>
+    <text transform="scale(.99188 1.0082)" x="570.72308" y="151.09346" fill="#000000" font-family="Arial" font-size="8.0663px" stroke-width=".4114px" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="570.72308" y="151.09346" font-family="Arial" font-size="8.0663px" stroke-width=".4114px" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">Address</tspan></text>
+    <text transform="scale(.99188 1.0082)" x="570.51306" y="196.87006" fill="#000000" font-family="Arial" font-size="8.0663px" stroke-width=".4114px" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="570.51306" y="196.87006" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">Write</tspan><tspan x="570.51306" y="204.93637" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">Data</tspan></text>
+    <text transform="scale(.99188 1.0082)" x="610.39014" y="196.09341" fill="#000000" font-family="Arial" font-size="8.0663px" stroke-width=".4114px" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="610.39014" y="196.09341" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">Read</tspan><tspan x="610.39014" y="204.15973" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">Data</tspan></text>
+    <text transform="matrix(0.99188, 0, 0, 1.0082, 0.313076, -0.156538)" x="169.38089" y="138.46715" fill="#000000" font-family="Arial" font-size="6.8925px" stroke-width=".4114px" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="169.38089" y="138.46715" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">Read</tspan><tspan x="169.38089" y="145.35968" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">register 2</tspan></text>
+    <text transform="matrix(0.99188, 0, 0, 1.0082, 0, 1.565347)" x="169.93964" y="153.64964" fill="#000000" font-family="Arial" font-size="6.8925px" stroke-width=".4114px" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="169.93964" y="153.64964" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">Write</tspan><tspan x="169.93964" y="160.54218" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">register</tspan></text>
+    <text transform="matrix(0.99188, 0, 0, 1.0082, 0, 2.974156)" x="170.15155" y="169.81178" fill="#000000" font-family="Arial" font-size="6.8925px" stroke-width=".4114px" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="170.15155" y="169.81178" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">Write</tspan><tspan x="170.15155" y="176.70432" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">data</tspan></text>
+    <path d="m278.93 7.5444h180.09v34.959h47.119" fill="none" stroke="#000" stroke-width=".8204px"/>
+    <path d="m506.01 52.748-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
+    <path d="m664.12 55.657-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
+    <path d="m278.47 19.324h169.66v34.293h57.439" fill="none" stroke="#000" stroke-width=".8204px"/>
+    <path d="m526.81 42.626h109.13v13.825h28.329" fill="none" stroke="#000" stroke-width=".8204px"/>
+    <path d="m108.95 70.865v262.06h-41.049" fill="none" stroke="#000" stroke-width=".8204px"/>
+    <path d="m72.241 365.75h40.148v-18.089h121.45v-25.443" fill="none" stroke="#000" stroke-width=".8204px"/>
+    <path d="m43.04 347.97h-137.02v-315.86h124.74v18.223h-14.454" fill="none" stroke="#000" stroke-width=".8204px"/>
+    <path d="m360.69 181.89v-97.188h19.946" fill="none" stroke="#000" stroke-width=".8204px"/>
+    <path d="m278.93 72.495h43.984v-13.23h57.771" fill="none" stroke="#000" stroke-width=".82041px"/>
+    <path d="m380.09 58.541-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
+    <path d="m527.11 70.422h16.381v-75.267h-502.91v65.961h-24.674" fill="none" stroke="#000" stroke-width=".8204px"/>
+    <text transform="matrix(1.0144, 0, 0, 0.98578, 1.444883, 0)" x="376.4588" y="126.7964" fill="#000000" font-family="Arial" font-size="8.6539px" stroke-width=".4114px" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="376.4588" y="126.7964" font-family="Arial" font-size="8.6539px" stroke-width=".4114px" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">ALUSrc</tspan></text>
+    <text transform="matrix(1.0144, 0, 0, 0.98578, 2.363925, 0)" x="375.82877" y="294.86844" fill="#000000" font-family="Arial" font-size="8.6539px" stroke-width=".4114px" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="375.82877" y="294.86844" font-family="Arial" font-size="8.6539px" stroke-width=".4114px" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">RegDst</tspan></text>
+    <text transform="scale(1.0144 .98578)" x="220.14743" y="323.29858" fill="#000000" font-family="Arial" font-size="8.654px" stroke-width=".4114px" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="220.14743" y="323.29858" font-family="Arial" font-size="8.654px" stroke-width=".4114px" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">&lt;&lt; 2</tspan></text>
+    <path d="m398.71 151.36v-23.879" fill="none" stroke="#ff51ff" stroke-width=".51162"/>
+    <text transform="scale(1.0144 .98578)" x="435.40256" y="86.624535" fill="#000000" font-family="Arial" font-size="8.6539px" stroke-width=".4114px" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="435.40256" y="86.624535" font-family="Arial" font-size="8.6539px" stroke-width=".4114px" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">ALUCtrl</tspan></text>
+    <text transform="scale(1.0144 .98578)" x="374.79352" y="-24.052597" fill="#000000" font-family="Arial" font-size="8.6539px" stroke-width=".4114px" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="374.79352" y="-24.052597" font-family="Arial" font-size="8.6539px" stroke-width=".4114px" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">RegWrite</tspan></text>
+    <path d="m458.53 99.706v-12.373" fill="none" stroke="#ff51ff" stroke-width=".51162"/>
+    <text transform="matrix(1.0144, 0, 0, 0.98578, 3.974196, 0)" x="684.74866" y="167.1871" fill="#000000" font-family="Arial" font-size="8.6539px" stroke-width=".4114px" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="684.74866" y="167.1871" font-family="Arial" font-size="8.6539px" stroke-width=".4114px" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">MemtoReg</tspan></text>
+    <path d="m719.18 190.96v-23.879" fill="none" stroke="#ff51ff" stroke-width=".51162"/>
+    <text transform="matrix(1.0144, 0, 0, 0.98578, 5.375751, 0)" x="562.19049" y="108.66978" fill="#000000" font-family="Arial" font-size="8.6539px" stroke-width=".4114px" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="562.19049" y="108.66978" font-family="Arial" font-size="8.6539px" stroke-width=".4114px" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">MemWrite</tspan></text>
+    <text transform="matrix(1.0144, 0, 0, 0.98578, 5.212852, -0.162908)" x="603.58801" y="128.83971" fill="#000000" font-family="Arial" font-size="8.6539px" stroke-width=".4114px" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="603.58801" y="128.83971" font-family="Arial" font-size="8.6539px" stroke-width=".4114px" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">MemRead</tspan></text>
+    <path d="m594.86 133.27v-23.879" fill="none" stroke="#ff51ff" stroke-width=".51162"/>
+    <g transform="matrix(-1.9932 0 0 -1.9944 845.52 1177.7)" stroke-width=".50154">
+      <path d="m223.96 461.34v-11.973" fill="none" stroke="#ff51ff" stroke-width=".2566"/>
+    </g>
+    <path d="m692.58 53.651v-74.19h-458.6v74.538h-31.666v35.427" fill="none" stroke="#ff51ff" stroke-width=".51162"/>
+    <path transform="matrix(-3.5267 0 0 -6.9293 1306.4 4227.1)" d="m313.44 597.57h-0.82798l0.41399-0.71705z" fill="#ff51ff" stroke="#ff51ff" stroke-width=".10349"/>
+    <path transform="matrix(-3.5267 0 0 -6.9293 1111.6 4181.6)" d="m313.44 597.57h-0.82798l0.41399-0.71705z" fill="#ff51ff" stroke="#ff51ff" stroke-width=".10349"/>
+    <path transform="matrix(3.5267 0 0 6.9293 -704.84 -3881)" d="m313.44 597.57h-0.82798l0.41399-0.71705z" fill="#ff51ff" stroke="#ff51ff" stroke-width=".10349"/>
+    <path d="m629.38 153.81h8.9596v-25.454" fill="none" stroke="#ff51ff" stroke-width=".51162"/>
+    <path d="m7.7011 44.046v-24.66h142.6" fill="none" stroke="#ff51ff" stroke-width=".51162"/>
+    <g transform="translate(-4.0608 -30.746)">
+      <g transform="matrix(.79225 0 0 .79024 -9.9845 89.131)" stroke-width="1.0385">
+        <rect x="-87.424" y="453.48" width="171.13" height="27.845" fill-opacity=".7561" stroke="#000" style="fill: rgb(255, 173, 230); paint-order: fill;"/>
+        <text text-align="center" id="if_instr" style="font-size: 20.296px; line-height: 25.37px; paint-order: fill; text-anchor: middle; white-space: pre;" x="-1.48104" y="473.915">lw $1 16($65)</text>
+      </g>
+      <g transform="matrix(.79225 0 0 .79024 190.39 89.13)" stroke-width="1.0385">
+        <rect x="-87.424" y="453.48" width="171.13" height="27.845" fill-opacity=".7561" stroke="#000" style="fill: rgb(173, 255, 229);"/>
+        <text text-align="center" id="id_instr" style="font-size: 20.296px; line-height: 25.37px; text-anchor: middle; white-space: pre;" x="-1.48104" y="473.915">lw $1 16($65)</text>
+      </g>
+      <g transform="matrix(.79225 0 0 .79024 412.32 89.13)" stroke-width="1.0385">
+        <rect x="-87.424" y="453.48" width="171.13" height="27.845" fill-opacity=".7561" stroke="#000" style="fill: rgb(230, 255, 173);"/>
+        <text text-align="center" id="ex_instr" style="font-size: 20.296px; line-height: 25.37px; text-anchor: middle; white-space: pre;" x="-1.48104" y="473.915">lw $1 16($65)</text>
+      </g>
+      <g transform="matrix(.79225 0 0 .79024 461.01 89.13)" stroke-width="1.2638">
+        <g transform="translate(184.33)">
+          <rect x="-87.424" y="453.48" width="171.13" height="27.845" fill-opacity=".7561" stroke="#000" stroke-width="1.0385" style="fill: rgb(255, 212, 173);"/>
+          <text x="-1.4810432" y="473.9147" fill="#000000" font-family="sans-serif" font-size="20.296px" stroke-width="1.0385" text-align="center" text-anchor="middle" style="line-height: 1.25; white-space: pre;"><tspan x="-1.4810426" y="473.9147" stroke-width="1.0385" text-align="center" id="mem_instr" text-anchor="middle">lw $1 16($65)</tspan></text>
+          <text transform="matrix(1.605624, 0, 0, 1.636202, -1052.614502, 161.556488)" style="font-family: Arial; font-size: 9.62647px; line-height: 6.8925px; stroke-width: 0.4114px; white-space: pre; text-anchor: middle;" y="169.81199645996094" x="170.15199279785156">Instruction Fetch<tspan x="170.15199279785156" dy="1em">​</tspan></text>
+          <text transform="matrix(1.605624, 0, 0, 1.636202, -799.850342, 161.556488)" style="font-family: Arial; font-size: 9.62647px; line-height: 6.8925px; stroke-width: 0.4114px; white-space: pre; text-anchor: middle;" y="169.81199645996094" x="170.15199279785156">Instruction Decode<tspan x="170.15199279785156" dy="1em">​</tspan></text>
+          <text transform="matrix(1.605624, 0, 0, 1.636202, -520.021179, 161.556488)" style="font-family: Arial; font-size: 9.62647px; line-height: 6.8925px; stroke-width: 0.4114px; white-space: pre; text-anchor: middle;" y="169.81199645996094" x="170.15199279785156">Execute<tspan x="170.15199279785156" dy="1em">​</tspan></text>
+          <text transform="matrix(1.605624, 0, 0, 1.636202, -274.479065, 161.556488)" style="font-family: Arial; font-size: 9.62647px; line-height: 6.8925px; stroke-width: 0.4114px; white-space: pre; text-anchor: middle;" y="169.81199645996094" x="170.15199279785156">Instruction Decode<tspan x="170.15199279785156" dy="1em">​</tspan></text>
+          <text transform="matrix(1.605624, 0, 0, 1.636202, -56.449024, 161.556488)" style="font-family: Arial; font-size: 9.62647px; line-height: 6.8925px; stroke-width: 0.4114px; white-space: pre; text-anchor: middle;" y="169.81199645996094" x="170.15199279785156">Write Back<tspan x="170.15199279785156" dy="1em">​</tspan></text>
+        </g>
+      </g>
+      <g transform="matrix(.79225 0 0 .79024 779.76 89.13)" stroke-width="1.0385">
+        <rect x="-87.424" y="453.48" width="171.13" height="27.845" fill-opacity=".7561" stroke="#000" style="fill: rgb(255, 173, 173);"/>
+        <text text-align="center" id="wb_instr" style="font-size: 20.296px; line-height: 25.37px; text-anchor: middle; white-space: pre;" x="-1.48104" y="473.915">lw $1 16($65)</text>
+      </g>
+    </g>
+    <path transform="matrix(-3.5267 0 0 -6.9293 1502.7 4290)" d="m313.44 597.57h-0.82798l0.41399-0.71705z" fill="#ff51ff" stroke="#ff51ff" stroke-width=".10349"/>
+    <path transform="matrix(-3.5267 0 0 -6.9293 1698.8 4271.5)" d="m313.44 597.57h-0.82798l0.41399-0.71705z" fill="#ff51ff" stroke="#ff51ff" stroke-width=".10349"/>
+    <path transform="matrix(0 -3.5267 6.9293 0 -3508.2 1257.7)" d="m313.44 597.57h-0.82798l0.41399-0.71705z" fill="#ff51ff" stroke="#ff51ff" stroke-width=".10349"/>
+    <path transform="matrix(-3.5267 0 0 -6.9293 1823.2 4329.5)" d="m313.44 597.57h-0.82798l0.41399-0.71705z" fill="#ff51ff" stroke="#ff51ff" stroke-width=".10349"/>
+    <path d="m132.95 121.42v-89.424h9.2295" fill="none" stroke="#000" stroke-width=".8204px"/>
+    <path transform="matrix(-3.5267 0 0 -6.9293 1562.5 4237.1)" d="m313.44 597.57h-0.82798l0.41399-0.71705z" fill="#ff51ff" stroke="#ff51ff" stroke-width=".10349"/>
+    <text transform="matrix(0.991879, 0, 0, 1.008202, -150.473663, 70.340103)" style="font-family: Arial; font-size: 9.62647px; line-height: 6.8925px; stroke-width: 0.4114px; white-space: pre; text-anchor: middle;" x="170.15199279785156" y="169.81199645996094">Instruction<tspan x="170.15199279785156" dy="1em">​</tspan>Memory</text>
+    <path d="M 278.385 120.996 L 344.684 120.996 L 344.684 106.253 L 431.765 106.253" fill="none" stroke="#000" stroke-width=".82041px" style=""/>
+    <path d="M 278.932 175.899 L 326.439 175.899 L 326.439 163.127 L 388.837 163.127" fill="none" stroke="#000" stroke-width=".82041px" style=""/>
+    <path d="M 689.255 56.972 L 689.255 49.885" fill="none" stroke="#ff51ff" stroke-width=".51162" style="" transform="matrix(0, 1, -1, 0, 742.683504, -635.826506)"/>
+    <path d="M 196.508 33.824 L 220.863 33.824 L 220.863 19.304 L 252.852 19.304" fill="none" stroke="#000" stroke-width=".82041px" style=""/>
+  </g>
+</svg>

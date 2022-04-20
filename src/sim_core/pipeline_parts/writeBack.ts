@@ -15,8 +15,11 @@ export class WriteBack {
         this.registers = registers;
     }
 
-    runRisingEdge() {
+    runRisingEdge(): boolean { // return true on halt 
         this.data = this.pipeline.getMem(Pip.EPipelineMem.mem_wb);
+        if (this.data.instruction.description.name === I.EInstructionName.halt) {
+            return true
+        }
         if (this.data.instruction.description.writeBack) {
             if (this.data.resHiLo !== undefined) {
                 this.registers.setHiLo(this.data.resHiLo.hi, this.data.resHiLo.lo);
@@ -25,5 +28,6 @@ export class WriteBack {
             }
         }
         this.registers.printAllRegisters()
+        return false
     }
 }

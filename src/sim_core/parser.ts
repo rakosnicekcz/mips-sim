@@ -24,6 +24,15 @@ export class Parser {
     private staticDataAdd: number = 0;
     private alignNext: number = -1; // -1 = no align
 
+    reset() {
+        this.parsingArea = ParsingArea.text
+        this.Instructions = [];
+        this.labels = [];
+        this.staticData = [];
+        this.staticDataAdd = 0;
+        this.alignNext = -1;
+    }
+
     parse(code: string): IParsed {
         console.log(code)
         let codeLines = code.split("\n").map((e) => { return e.split(/#(?![^"]*")/g)[0].trim() }); // split for comments
@@ -171,7 +180,10 @@ export class Parser {
 
         if (Object.values(I.EInstructionName).includes(lineParts[0] as unknown as I.EInstructionName)) {
             let insName = I.EInstructionName[lineParts[0] as keyof typeof I.EInstructionName]
-            let ins: I.IInstruction = { description: I.instruction_set[insName], address: 0, line: i + 1, paramType: [] };
+            let ins: I.IInstruction = {
+                description: I.instruction_set[insName], address: 0, line: i + 1, paramType: [],
+                originalNotation: lineParts.join(", ").replace(",", "")
+            };
             ins = this.parseInstruction(insName, ins, lineParts);
             ins = ins.description.checkParsed(ins)
             this.Instructions.push(ins)
