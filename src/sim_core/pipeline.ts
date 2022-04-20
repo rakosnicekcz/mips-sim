@@ -73,7 +73,6 @@ export class Pipeline {
     private isForwarding: boolean
 
     private intervalID?: number
-    private executing: boolean
 
     constructor(isForwarding: boolean = true, isHazardUnit: boolean = true) {
 
@@ -109,11 +108,7 @@ export class Pipeline {
     }
 
     step(callback?: () => any) {
-        if (!this.executing) {
-            return
-        }
         let wb: IPipelineIns = this.mem_wb;
-
         if (this.isHazardUnit) { this.hazardUnit.run(); }
         if (this.isForwarding) { this.forwarding.run(); }
         let isHalt = this.wb_stage.runRisingEdge();
@@ -141,7 +136,6 @@ export class Pipeline {
             mem: this.mem_wb,
             wb: wb
         }
-        console.log("completed:", completed)
         setStagesState(completed)
     }
 
@@ -204,7 +198,5 @@ export class Pipeline {
         this.hazardUnit = new H.HazardUnit(this.if_stage, this.id_stage, this, this.isForwarding)
         this.forwarding = new F.ForwardingUnit(this);
         this.reg.setAllRegisters()
-        this.executing = true
-        console.log(this)
     }
 }

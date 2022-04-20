@@ -3,6 +3,7 @@ import * as R from "./registr"
 import * as M from "./memory"
 import * as P from "./program"
 import deepcopy from "deepcopy";
+import { setError } from "../App"
 
 enum ParsingArea {
     text,
@@ -48,7 +49,7 @@ export class Parser {
                 this.parsingArea = ParsingArea.data
             } else if (lineParts[0] === ".globl" && lineParts.length === 2) {
                 if (this.globl) {
-                    throw new Error(".globl can be set only once");
+                    setError(".globl can be set only once")
                 }
                 this.globl = lineParts[1];
             } else {
@@ -69,7 +70,7 @@ export class Parser {
                 this.parsingArea = ParsingArea.data
             } else if (lineParts[0] === ".globl" && lineParts.length === 2) {
                 if (this.globl) {
-                    throw new Error(".globl can be set only once");
+                    setError(".globl can be set only once");
                 }
                 this.globl = lineParts[1];
             } else {
@@ -91,7 +92,7 @@ export class Parser {
         if (this.parsingArea !== ParsingArea.data) {
             if (lineParts[0].endsWith(":")) {
                 if (Object.values(I.EInstructionName).includes(lineParts[0].slice(0, -1) as unknown as I.EInstructionName)) {
-                    throw new Error("Label cant have same name as instruction");
+                    setError("Label cant have same name as instruction");
                 }
                 this.labels.push({ line: i + 1, address: i + 1, name: lineParts[0].slice(0, -1) })
             }
@@ -104,7 +105,7 @@ export class Parser {
 
         if (lineParts[0] === M.EMemStaticOperations.align) {
             if (lineParts.length !== 2 || isNaN(Number(lineParts[1]))) {
-                throw new Error("Align must have one number parameter");
+                setError("Align must have one number parameter");
             }
             this.alignNext = Number(lineParts[1]);
             return;
@@ -113,26 +114,26 @@ export class Parser {
         if (/^[a-zA-Z][a-zA-Z0-9]*:$/.test(lineParts[0])) {
             con.name = lineParts[0].slice(0, -1);
         } else {
-            throw new Error("Wrong name of static value: " + lineParts[0]);
+            setError("Wrong name of static value: " + lineParts[0]);
         }
 
         let directiveId = Object.keys(M.EMemStaticOperations).indexOf(lineParts[1].substring(1))
         if (directiveId === -1) {
-            throw new Error("Wrong Directive");
+            setError("Wrong Directive");
         } else {
             con.type = Object.values(M.EMemStaticOperations)[directiveId]
         }
 
         if (con.type === M.EMemStaticOperations.space) {
             if (isNaN(Number(lineParts[2])) || lineParts.length !== 3) {
-                throw new Error("Wrong Space definition");
+                setError("Wrong Space definition");
             } else {
                 con.value = new Int8Array(Number(lineParts[2]))
             }
         } else if (con.type === M.EMemStaticOperations.ascii || con.type === M.EMemStaticOperations.asciiz) {
             lineParts.slice(2).join(" ");
             if (lineParts.length !== 3 || !/^".*"$/.test(lineParts[2])) {
-                throw new Error("Wrong ascii/z definition");
+                setError("Wrong ascii/z definition");
             }
             let enc = new TextEncoder();
             if (con.type === M.EMemStaticOperations.asciiz) {
@@ -144,14 +145,14 @@ export class Parser {
             let vals = lineParts.slice(2).map(e => {
                 if (isNaN(Number(e))) {
                     if (!/^'.'$/.test(e)) {
-                        throw new Error("Wrong number definition");
+                        setError("Wrong number definition");
                     }
                     return e.charCodeAt(1);
                 }
                 return Number(e);
             })
             if (vals.filter(e => isNaN(e)).length > 0) {
-                throw new Error("Wrong elements in array");
+                setError("Wrong elements in array");
             }
             if (con.type === M.EMemStaticOperations.byte) {
                 con.value = new Int8Array(vals)
@@ -188,7 +189,7 @@ export class Parser {
             ins = ins.description.checkParsed(ins)
             this.Instructions.push(ins)
         } else {
-            throw new Error("Instruction do not exist;");
+            setError(`Instruction ${lineParts[0]} do not exist;`);
         }
     }
 
@@ -257,6 +258,7 @@ export class Parser {
             }
             return instr;
         }
-        throw new Error("Wrong instruction or format");
+        setError(`Wrong Instruction format on line ${ins.line}`);
+        throw new Error("");
     }
 }

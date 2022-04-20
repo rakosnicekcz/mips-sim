@@ -34,3 +34,16 @@ export const setRegisters = (registers: R.IAllRegister[]) => {
         payload: registers
     }
 }
+
+export const setError = (msg: string) => {
+    return {
+        type: 'SET_ERROR',
+        payload: msg
+    }
+}
+
+export const clearError = () => {
+    return {
+        type: 'CLEAR_ERROR'
+    }
+}

@@ -5,6 +5,7 @@ import * as Prg from "./program";
 import Long from "long"
 import compare from 'just-compare';
 import { store } from '../App'
+import { setError } from "../App"
 
 export enum EInstructionName {
     nop = "nop",
@@ -368,7 +369,7 @@ export const instruction_set: TInstruction_set = {
         checkParsed(ins: IInstruction): IInstruction {
             if (typeof ins.imm === "number") {
                 if (ins.imm < 0 || ins.imm > 31) {
-                    throw new Error("SLL immidiate must be between 0 and 31")
+                    setError(`line ${ins.line}: SLL immidiate must be between 0 and 31`)
                 }
             }
             return ins
@@ -389,7 +390,7 @@ export const instruction_set: TInstruction_set = {
         checkParsed(ins: IInstruction): IInstruction {
             if (typeof ins.imm === "number") {
                 if (ins.imm < 0 || ins.imm > 31) {
-                    throw new Error("SLL immidiate must be between 0 and 31")
+                    setError(`line ${ins.line}: SLL immidiate must be between 0 and 31`)
                 }
             }
             return ins
@@ -486,15 +487,17 @@ export const instruction_set: TInstruction_set = {
         changedValues: [editableValues.RD], requireSpecial: [],
         execute(ins: P.IPipelineIns, prg: Prg.Program, mem: M.Memory): P.IPipelineIns {
             if (typeof ins.instruction.imm === 'number') {
-                if (ins.instruction.imm > 0xffff) {
-                    throw new Error("LUI immidiate value is too big");
-                }
                 ins.res = ins.instruction.imm << 16
             }
             return ins
         },
         ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins; },
-        checkParsed(ins: IInstruction): IInstruction { return ins }
+        checkParsed(ins: IInstruction): IInstruction {
+            if (typeof ins.imm !== 'number' || ins.imm > 0xffff) {
+                setError(`line ${ins.line}: LUI immidiate is higher then 0xffff`);
+            }
+            return ins
+        }
     },
     [EInstructionName.la]: {
         name: EInstructionName.la, isJumpInstruction: false, isMemoryInstruction: false, isMemoryLoadInstruction: false,
@@ -753,7 +756,7 @@ export const instruction_set: TInstruction_set = {
                 case 5: // read_int
                     let num = Number(inp);
                     if (isNaN(num) || inp.length === 0) {
-                        throw new Error("Invalid input")
+                        setError("Invalid input")
                     }
                     reg.setVal(R.ERegisters.$2, num)
                     break;
@@ -773,8 +776,6 @@ export const instruction_set: TInstruction_set = {
                     add = mem.allocateHeap(regA0);
                     reg.setVal(R.ERegisters.$2, add)
                     break;
-                case 10: // exit
-                    throw new Error("Exit :D")
                 case 11: // print_char
                     let char = String.fromCharCode(regA0);
                     setOutputValue(char);
@@ -784,7 +785,7 @@ export const instruction_set: TInstruction_set = {
                     reg.setVal(R.ERegisters.$2, val);
                     break;
                 default:
-                    throw new Error("Unknown syscall")
+                    setError(`line ${ins.instruction.line}: Unknown syscall ${regV0}`)
             }
 
             return ins

@@ -40,10 +40,22 @@ export const registersReducer = (state: R.IAllRegister[] = [], action) => {
     }
 }
 
+export const errorReducer = (state = { isError: false, message: "" }, action) => {
+    switch (action.type) {
+        case 'SET_ERROR':
+            return { isError: true, message: action.payload };
+        case 'CLEAR_ERROR':
+            return { isError: false, message: "" };
+        default:
+            return state;
+    }
+}
+
 export const rootReducer = combineReducers({
     outputValue: outputValueReducer,
     inputValue: inputValueReducer,
     stagesState: stagesStateReducer,
-    registers: registersReducer
+    registers: registersReducer,
+    error: errorReducer
 })
 

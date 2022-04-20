@@ -1,4 +1,5 @@
 import deepcopy from "deepcopy";
+import { setError } from "../App"
 
 export enum EMemBitLenOperation {
     byte = 1,
@@ -62,7 +63,8 @@ export class Memory {
             return this.loadFromBuffer(oplen, this.dataBuffer, address)
         }
         console.log(dataRange, address)
-        throw new Error("Address out of boundary");
+        setError(`memory load: address ${address} out of boundary`);
+        throw new Error("");
     }
 
     private loadFromBuffer(oplen: EMemBitLenOperation, buffer: ArrayBuffer, address: number) {
@@ -72,12 +74,12 @@ export class Memory {
                 return deepcopy(view.getInt8(address));
             case EMemBitLenOperation.halfword:
                 if (address % 2 !== 0) {
-                    throw new Error("Wrong address alligment");
+                    setError(`memory load: address ${address} not halfword aligned`);
                 }
                 return deepcopy(view.getInt16(address, true));
             case EMemBitLenOperation.word:
                 if (address % 4 !== 0) {
-                    throw new Error("Wrong address alligment");
+                    setError(`memory load: address ${address} not word aligned`);
                 }
                 return deepcopy(view.getInt32(address, true));
         }
@@ -101,7 +103,7 @@ export class Memory {
             address -= dataRange.from
             this.storeToBuffer(oplen, this.dataBuffer, address, value)
         } else {
-            throw new Error("Wrong operation with memory: " + address);
+            setError("Wrong operation with memory: " + address);
         }
     }
 
@@ -113,13 +115,13 @@ export class Memory {
                 return;
             case EMemBitLenOperation.halfword:
                 if (address % 2 !== 0) {
-                    throw new Error("Wrong address alligment " + address);
+                    setError(`memory store: address ${address} not halfword aligned`);
                 }
                 view.setInt16(address, value, true)
                 return;
             case EMemBitLenOperation.word:
                 if (address % 4 !== 0) {
-                    throw new Error("Wrong address alligment: " + address);
+                    setError(`memory store: address ${address} not word aligned`);
                 }
                 view.setInt32(address, value, true)
                 return;
@@ -160,7 +162,8 @@ export class Memory {
         if (e) {
             return e
         }
-        throw new Error("Label not found");
+        setError(`Label ${label} not found`);
+        throw new Error("");
     }
 
     printBuffers() {

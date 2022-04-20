@@ -29,7 +29,7 @@ export class Fetch {
     runRisingEdge(): void {
 
         if (this.flush) {
-            this.flush = false;
+            this.flush = this.stall = false;
             this.data = { ...Pip.NOP, pc: this.data.pc }
             this.pipeline.setMem(Pip.EPipelineMem.if_id, this.data);
             return

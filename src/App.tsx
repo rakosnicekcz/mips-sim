@@ -29,6 +29,8 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import Modal from '@mui/material/Modal';
+import Typography from '@mui/material/Typography';
 
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
@@ -41,6 +43,7 @@ import HandymanIcon from '@mui/icons-material/Handyman';
 import MoveDownIcon from '@mui/icons-material/MoveDown';
 import PauseCircleOutlineOutlinedIcon from '@mui/icons-material/PauseCircleOutlineOutlined';
 import StopCircleOutlinedIcon from '@mui/icons-material/StopCircleOutlined';
+import ErrorIcon from '@mui/icons-material/Error';
 
 import AceEditor, { IMarker } from "react-ace";
 import 'brace/mode/mips_assembler';
@@ -57,9 +60,27 @@ const pipelineSVGs: TpipelineSVG[] = [
 	{ forwarding: false, hazard: false, path: pipelineSVG_noAll }
 ]
 
+const modalStyle = {
+	position: 'absolute' as 'absolute',
+	top: '50%',
+	left: '50%',
+	transform: 'translate(-50%, -50%)',
+	width: 400,
+	bgcolor: 'background.paper',
+	border: '2px solid #000',
+	boxShadow: 24,
+	p: 4,
+};
+
+
 export const store = createStore(
 	rootReducer
 )
+
+export function setError(error: string) {
+	store.dispatch(actions.setError(error))
+	throw new Error(error)
+}
 
 function App() {
 	return (
@@ -87,8 +108,10 @@ function Nic() {
 	const outputValue = useSelector((state: RootState) => state.outputValue);
 	const stagesState: StagesState = useSelector((state: RootState) => state.stagesState);
 	const registers: R.IAllRegister[] = useSelector((state: RootState) => state.registers);
+	const error = useSelector((state: RootState) => state.error);
 	const dispatch = useDispatch()
 
+	const maxSvgTextLen = 17;
 	let markers: IMarker[] = []
 
 	for (const prop in stagesState) {
@@ -136,8 +159,39 @@ function Nic() {
 		setRunning(false)
 	}
 
+	let closeErrorModal = () => {
+		dispatch(actions.clearError())
+		setAssembled(false)
+	}
+
+	let justifySVGtextlength = (text: string) => {
+		if (text.length > maxSvgTextLen) {
+			return text.substring(0, maxSvgTextLen - 3) + "..."
+		}
+		return text
+	}
+
 	return (<div>
 		<Box sx={{ flexGrow: 1 }}>
+			<Modal
+				open={error.isError}
+				onClose={closeErrorModal}
+				aria-labelledby="modal-modal-title"
+				aria-describedby="modal-modal-description"
+			>
+				<Box sx={modalStyle}>
+
+					<Stack direction="row" alignItems="center" gap={1} style={{ color: "red" }}>
+						<ErrorIcon />
+						<Typography id="modal-modal-title" variant="h6" component="h2">
+							Error
+						</Typography>
+					</Stack>
+					<Typography id="modal-modal-description" sx={{ mt: 2 }}>
+						{error.message}
+					</Typography>
+				</Box>
+			</Modal>
 			<Grid container spacing={0}>
 				<Grid item xl={3} sm={4} xs={12}>
 					<AceEditor
@@ -162,11 +216,11 @@ function Nic() {
 				<Grid item xl={9} sm={8} xs={12}>
 					<div className="svgLoaderContainer">
 						<SvgLoader path={pipelineSVGpath} className="svgLoader">
-							<SvgProxy selector="#if_instr" children={stagesState.if.instruction.originalNotation} />
-							<SvgProxy selector="#id_instr" children={stagesState.id.instruction.originalNotation} />
-							<SvgProxy selector="#ex_instr" children={stagesState.ex.instruction.originalNotation} />
-							<SvgProxy selector="#mem_instr" children={stagesState.mem.instruction.originalNotation} />
-							<SvgProxy selector="#wb_instr" children={stagesState.wb.instruction.originalNotation} />
+							<SvgProxy selector="#if_instr" children={justifySVGtextlength(stagesState.if.instruction.originalNotation)} />
+							<SvgProxy selector="#id_instr" children={justifySVGtextlength(stagesState.id.instruction.originalNotation)} />
+							<SvgProxy selector="#ex_instr" children={justifySVGtextlength(stagesState.ex.instruction.originalNotation)} />
+							<SvgProxy selector="#mem_instr" children={justifySVGtextlength(stagesState.mem.instruction.originalNotation)} />
+							<SvgProxy selector="#wb_instr" children={justifySVGtextlength(stagesState.wb.instruction.originalNotation)} />
 						</SvgLoader>
 						<div className='registersContainer'>
 							<Accordion>

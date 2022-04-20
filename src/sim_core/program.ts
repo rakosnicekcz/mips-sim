@@ -2,6 +2,7 @@ import * as I from "./instruction";
 import * as R from "./registr";
 import * as M from "./memory";
 import * as P from "./pipeline"
+import { setError } from "../App"
 
 export interface Ilabel {
     line: number,
@@ -35,7 +36,9 @@ export class Program {
     getLabel(name: string): Ilabel {
         let label = this.LabelsT.find(x => x.name === name)
         if (label === undefined) {
-            throw new Error(`Label ${name} not found`)
+            setError(`Label ${name} not found`)
+            throw new Error("");
+
         }
         return label
     }
@@ -51,7 +54,7 @@ export class Program {
     setPC(address: number): void {
         console.log("setPC", address)
         if (address < textSegmentStart || address > textSegmentEnd) {
-            throw new Error(`PC out of range`)
+            setError(`PC ${address} out of range`)
         }
         this.PC = address
     }
