@@ -20,12 +20,14 @@ export class ForwardingUnit {
         const mem = this.pip.getMem(pipelineMem);
 
         let forwardedVal0 = (id_ex.logs !== undefined && id_ex.logs.forwardedVal0 !== undefined) ? id_ex.logs.forwardedVal0 : 2
-        if (id_ex.instruction.arg1 === mem.instruction.arg0 && id_ex.instruction.arg1 !== undefined && mem.res !== undefined) {
+        if (id_ex.instruction.arg1 === mem.instruction.arg0 && id_ex.instruction.arg1 !== undefined && mem.res !== undefined
+            && id_ex.instruction.arg1 !== R.ERegisters.$0) {
             id_ex.val0 = mem.res;
             forwardedVal0 = pipelineMem === P.EPipelineMem.ex_mem ? 1 : 0
         }
         let forwardedVal1 = (id_ex.logs !== undefined && id_ex.logs.forwardedVal1 !== undefined) ? id_ex.logs.forwardedVal1 : 2
-        if (id_ex.instruction.arg2 === mem.instruction.arg0 && id_ex.instruction.arg2 !== undefined && mem.res !== undefined) {
+        if (id_ex.instruction.arg2 === mem.instruction.arg0 && id_ex.instruction.arg2 !== undefined && mem.res !== undefined
+            && id_ex.instruction.arg2 !== R.ERegisters.$0) {
             id_ex.val1 = mem.res;
             forwardedVal1 = pipelineMem === P.EPipelineMem.ex_mem ? 1 : 0
         }

@@ -53,7 +53,7 @@ export class HazardUnit {
         } else if (this.checkJalRewrite(if_id, ex_mem)) {
             this.stall();
         } else if (if_id.instruction.description.isJumpInstruction &&
-            (id_ex.instruction.description.isBranchInstruction || ex_mem.instruction.description.isBranchInstruction)) {
+            id_ex.instruction.description.isBranchInstruction) {
             this.stall();
         }
     }
@@ -98,16 +98,25 @@ export class HazardUnit {
         if (ins.instruction.arg2 !== undefined) {
             required.push(ins.instruction.arg2);
         }
+
+        if (required.includes(I.editableValues.$0)) {
+            required.splice(required.indexOf(I.editableValues.$0), 1);
+        }
+
         return required
     }
 
     private getChangedValues(ins: P.IPipelineIns): I.TEditableValue[] {
-        return ins.instruction.description.changedValues.map(e => {
+        let changed = ins.instruction.description.changedValues.map(e => {
             if (e === I.editableValues.RD && ins.instruction.arg0 !== undefined) {
                 return ins.instruction.arg0;
             }
             return e
         })
+        if (changed.includes(I.editableValues.$0)) {
+            changed.splice(changed.indexOf(I.editableValues.$0), 1);
+        }
+        return changed
     }
 
     setForwarding(isForwarding: boolean): void {
