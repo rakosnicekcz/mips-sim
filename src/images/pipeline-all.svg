@@ -8,12 +8,14 @@
   </defs>
   <g transform="matrix(.3225 0 0 .3225 33.059 23.813)">
     <path d="m-81.354 62.837v202.76h14.445" fill="none" stroke="#000" stroke-width="1.0487"/>
+    <path d="m726.99 210.29h15.61v148.67h-590.87v-185.12h14.454" fill="none" stroke="#000" stroke-width=".8204px"/>
     <g transform="matrix(.8321 0 0 .84796 517.79 -216.84)" stroke-width=".48977">
       <g transform="translate(-337.24 45.072)">
         <rect x="25.058" y="213.27" width="24.884" height="356.2" fill="#9fe600" stroke="#000" stroke-width="1.0374"/>
         <text transform="matrix(0, 2.290659, -2.268492, 0, 879.251831, 212.757401)" x="84.461647" y="372.68658" fill="#000000" font-family="Arial" font-size="4.9368px" stroke-width=".20634px" text-align="center" text-anchor="middle" style="font-variant: normal; line-height: 0%; white-space: pre;">ID / EX</text>
       </g>
     </g>
+    <path d="m542.16 150.75v230.15h-229.75v-275.37h15.126" fill="none" stroke="#000" stroke-width=".8204px" class="forwardingUnit"/>
     <g transform="matrix(.8321 0 0 .69478 765.98 -116.15)" stroke-width=".54107">
       <g transform="translate(-337.24 45.072)">
         <rect x="25.058" y="175.06" width="24.884" height="394.4" fill="#9fe600" stroke="#000" stroke-width="1.146"/>
@@ -38,7 +40,7 @@
       <rect x="100" y="175" width="75" height="100" fill="#c00" fill-rule="evenodd" stroke="#000" stroke-width="1.0031"/>
       <text style="font-family: Arial; font-size: 12px; line-height: 15px; stroke-width: 0.50154px; text-anchor: middle; white-space: pre;"><tspan x="137.875" y="217.104">Data</tspan><tspan x="137.875" y="232.104">Memory</tspan></text>
     </g>
-    <g transform="matrix(.8321 0 0 .80861 -62.097 -45.237)">
+    <g transform="matrix(0.8321, 0, 0, 0.80861, -62.097, -45.237)" class="forwardingUnit">
       <path d="m469.25 164v50l20-10v-30z" fill="#d3d7cf" stroke="#000" stroke-width="1.0031"/>
       <text transform="rotate(90)" x="188.6875" y="-475" fill="#000000" font-family="Arial" font-size="12px" stroke-width=".50154" text-align="center" text-anchor="middle" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="188.6875" y="-475" font-family="Arial" font-size="12px" stroke-width=".50154" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">MUX</tspan></text>
     </g>
@@ -46,7 +48,7 @@
       <path d="m469.25 164v50l20-10v-30z" fill="#d3d7cf" stroke="#000" stroke-width="1.0031"/>
       <text transform="matrix(0, 1.000001, -0.999999, 0, 0.357556, -0.08456)" x="188.6875" y="-475" fill="#000000" font-family="Arial" font-size="12px" stroke-width=".50154" text-align="center" text-anchor="middle" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="188.6875" y="-475" font-family="Arial" font-size="12px" stroke-width=".50154" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">MUX</tspan></text>
     </g>
-    <g transform="matrix(.8321 0 0 .80861 -62.319 10.513)">
+    <g transform="matrix(.8321 0 0 .80861 -62.319 10.513)" class="forwardingUnit">
       <path d="m469.25 164v50l20-10v-30z" fill="#d3d7cf" stroke="#000" stroke-width="1.0031"/>
       <text transform="rotate(90)" x="188.6875" y="-475" fill="#000000" font-family="Arial" font-size="12px" stroke-width=".50154" text-align="center" text-anchor="middle" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="188.6875" y="-475" font-family="Arial" font-size="12px" stroke-width=".50154" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">MUX</tspan></text>
     </g>
@@ -76,7 +78,7 @@
     </g>
     <g transform="matrix(1.2537 0 0 1.2135 -242.44 -283.42)" stroke-width=".33355">
       <ellipse cx="329.67" cy="260" rx="20.272" ry="16.823" fill="#ff51ff" stroke="#000" stroke-width=".66711"/>
-      <g transform="matrix(.80543 0 0 .80275 27.49 93.957)" stroke-width=".41482">
+      <g transform="matrix(.80543 0 0 .80275 27.49 93.957)" stroke-width=".41482" class="forwardingUnit">
         <g transform="translate(4.0487 -14.698)">
           <rect transform="matrix(1.5899 0 0 1.6436 182.36 -281.22)" x="235.55" y="478.43" width="43.218" height="23.785" ry="6.3812" fill="#ed7f00" stroke="#000" stroke-width=".46224"/>
           <text x="590.49567" y="521.50134" fill="#000000" font-family="Arial" font-size="10.68px" stroke-width=".41482px" text-align="center" text-anchor="middle" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="590.49567" y="521.50134" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1.25">Forwarding</tspan><tspan x="590.49567" y="534.85083" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1.25">Unit</tspan></text>
@@ -99,7 +101,7 @@
     <path d="m406.94 237.49h98.949" stroke="#000" stroke-width=".8228"/>
     <path d="m526.59 237.51h136.97" stroke="#000" stroke-width=".8228"/>
     <path d="m132.31 244.68h125.49" stroke="#000" stroke-width=".8228"/>
-    <path d="m132.11 256.54h126.13" stroke="#000" stroke-width=".8228"/>
+    <path d="m132.11 256.54h126.13" stroke="#000" stroke-width=".8228" class="forwardingUnit"/>
     <path d="m233.11 291.66v16.05" stroke="#000" stroke-width=".8228"/>
     <path d="m161.93 121.36h-29.123v171.02h29.123" fill="none" stroke="#000" stroke-width=".8228"/>
     <path d="m132.79 141.48h29.123" fill="none" stroke="#000" stroke-width=".8228"/>
@@ -116,25 +118,25 @@
     <path d="m108.95-24.061v94.989" stroke="#000" stroke-width=".8228" class="hazardUnit"/>
     <path d="m196.29 32.175h13.1" stroke="#000" stroke-width=".8228" class="hazardUnit"/>
     <path d="m226.8 19.476h30.589" stroke="#000" stroke-width=".8228"/>
-    <path d="m279.29 121.13h48.463" stroke="#000" stroke-width=".8228"/>
+    <path d="m279.29 121.13h48.463" stroke="#000" stroke-width=".8228" class="forwardingUnit"/>
     <path d="m345.3 106.32h88.527" stroke="#000" stroke-width=".8228"/>
     <path d="m400.09 71.036h106" stroke="#000" stroke-width=".8228"/>
     <path d="m230.75 175.96h27.294" stroke="#000" stroke-width=".8228"/>
-    <path d="m278.67 176.37h48.872" stroke="#000" stroke-width=".8228"/>
-    <path d="m311.78 162.05h15.86" stroke="#000" stroke-width=".8228"/>
-    <path d="m294.76 149.63h32.723" stroke="#000" stroke-width=".8228"/>
-    <path d="m345.61 163.28h43.235" stroke="#000" stroke-width=".8228"/>
+    <path d="m278.67 176.37h48.872" stroke="#000" stroke-width=".8228" class="forwardingUnit"/>
+    <path d="m311.78 162.05h15.86" stroke="#000" stroke-width=".8228" class="forwardingUnit"/>
+    <path d="m294.76 149.63h32.723" stroke="#000" stroke-width=".8228" class="forwardingUnit"/>
+    <path d="m345.61 163.28h43.235" stroke="#000" stroke-width=".8228" class="forwardingUnit"/>
     <path d="m406.47 171.24h26.757" stroke="#000" stroke-width=".8228"/>
     <ellipse cx="132.8" cy="292.22" rx="2.0802" ry="2.0215" stroke="#000" stroke-width=".8228"/>
     <ellipse cx="233.14" cy="292.39" rx="2.0802" ry="2.0215" stroke="#000" stroke-width=".8228"/>
     <ellipse cx="287.23" cy="233.33" rx="2.0802" ry="2.0215" stroke="#000" stroke-width=".8228"/>
-    <ellipse cx="294.62" cy="358.86" rx="2.0802" ry="2.0215" stroke="#000" stroke-width=".8228"/>
+    <ellipse cx="294.62" cy="358.86" rx="2.0802" ry="2.0215" stroke="#000" stroke-width=".8228" class="forwardingUnit"/>
     <ellipse cx="542.26" cy="150.22" rx="2.0828" ry="2.0215" stroke="#000" stroke-width=".8228"/>
-    <ellipse cx="534.68" cy="42.48" rx="2.0828" ry="2.0215" stroke="#000" stroke-width=".8228"/>
-    <ellipse cx="542.1" cy="224.54" rx="2.0828" ry="2.0215" stroke="#000" stroke-width=".8228"/>
-    <ellipse cx="562.27" cy="237.55" rx="2.0828" ry="2.0215" stroke="#000" stroke-width=".8228"/>
-    <ellipse cx="474.21" cy="366.79" rx="2.0828" ry="2.0215" stroke="#000" stroke-width=".8228"/>
-    <ellipse cx="132.69" cy="256.76" rx="2.0802" ry="2.0215" stroke="#000" stroke-width=".8228"/>
+    <ellipse cx="534.68" cy="42.48" rx="2.0828" ry="2.0215" stroke="#000" stroke-width=".8228" class="forwardingUnit"/>
+    <ellipse cx="542.1" cy="224.54" rx="2.083" ry="2.022" stroke="#000" stroke-width=".8228" class="forwardingUnit"/>
+    <ellipse cx="562.27" cy="237.55" rx="2.0828" ry="2.0215" stroke="#000" stroke-width=".8228" class="forwardingUnit"/>
+    <ellipse cx="474.21" cy="366.79" rx="2.0828" ry="2.0215" stroke="#000" stroke-width=".8228" class="forwardingUnit"/>
+    <ellipse cx="132.69" cy="256.76" rx="2.0802" ry="2.0215" stroke="#000" stroke-width=".8228" class="forwardingUnit"/>
     <ellipse cx="132.89" cy="121.4" rx="2.0802" ry="2.0215" stroke="#000" stroke-width=".8228"/>
     <ellipse cx="297.28" cy="19.311" rx="2.0802" ry="2.0215" stroke="#000" stroke-width=".8228" class="hazardUnit"/>
     <ellipse cx="109.09" cy="11.719" rx="2.0802" ry="2.0215" stroke="#000" stroke-width=".8228" class="hazardUnit"/>
@@ -150,12 +152,12 @@
     <path d="m67.799 333.73 6.3831 1.7384 0.06598-4.9282-6.4456 1.5932z" stroke-width=".087576"/>
     <path d="m233.88 308.13 1.7373-6.387-4.9253-0.066 1.5922 6.4495z" stroke-width=".087576"/>
     <path d="m258.42 291.78-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
-    <path d="m358.15 335.79-6.3831-1.9232-0.066 5.4525 6.4456-1.7627z" stroke-width=".087576"/>
-    <path d="m427.57 339.71 6.3831 1.9233 0.066-5.4525-6.4456 1.7627z" stroke-width=".087576"/>
-    <path d="m427.94 332.65 6.3831 1.9232 0.066-5.4525-6.4456 1.7627z" stroke-width=".087576"/>
-    <path d="m428.02 325.69 6.3831 1.9232 0.066-5.4525-6.4456 1.7626z" stroke-width=".087576"/>
-    <path d="m427.72 317.72 6.3831 1.9232 0.0659-5.4525-6.4456 1.7627z" stroke-width=".087576"/>
-    <path d="m358.11 320.92-6.3831-1.9232-0.066 5.4525 6.4456-1.7627z" stroke-width=".087576"/>
+    <path d="m358.15 335.79-6.3831-1.9232-0.066 5.4525 6.4456-1.7627z" stroke-width=".087576" class="forwardingUnit"/>
+    <path d="m427.57 339.71 6.3831 1.9233 0.066-5.4525-6.4456 1.7627z" stroke-width=".087576" class="forwardingUnit"/>
+    <path d="m427.94 332.65 6.3831 1.9232 0.066-5.4525-6.4456 1.7627z" stroke-width=".087576" class="forwardingUnit"/>
+    <path d="m428.02 325.69 6.3831 1.9232 0.066-5.4525-6.4456 1.7626z" stroke-width=".087576" class="forwardingUnit"/>
+    <path d="m427.72 317.72 6.3831 1.9232 0.0659-5.4525-6.4456 1.7627z" stroke-width=".087576" class="forwardingUnit"/>
+    <path d="m358.11 320.92-6.3831-1.9232-0.066 5.4525 6.4456-1.7627z" stroke-width=".087576" class="forwardingUnit"/>
     <path d="m67.833 366.36 6.3831 1.7383 0.06598-4.9282-6.4456 1.5932z" stroke-width=".087576"/>
     <path d="m71.268 265.44-6.3831-1.7383-0.06598 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
     <g transform="matrix(.8321 0 0 .80861 -96.133 84.072)">
@@ -163,9 +165,21 @@
     </g>
     <text transform="scale(.99188 1.0082)" x="-11.616109" y="266.42798" fill="#000000" font-family="Arial" font-size="8.654px" stroke-width=".4114px" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="-11.616109" y="266.42798" font-family="Arial" font-size="8.654px" stroke-width=".4114px" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">Address</tspan></text>
     <text transform="scale(.99188 1.0082)" x="30.76956" y="266.04584" fill="#000000" font-family="Arial" font-size="8.654px" stroke-width=".4114px" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="30.76956" y="266.04584" font-family="Arial" font-size="8.654px" stroke-width=".4114px" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">Instr</tspan></text>
-    <g transform="matrix(.8321 0 0 .80861 -83.651 84.072)">
+    <g transform="matrix(0.8321, 0, 0, 0.80861, -83.24044, 83.667953)">
       <rect x="25" y="175" width="25" height="100" fill="#9fe600" stroke="#000" stroke-width="1.0031"/>
       <text transform="matrix(1.192019, 0, 0, 1.246833, -164.847382, 17.322353)" style="font-family: Arial; font-size: 9.62647px; line-height: 6.8925px; stroke-width: 0.4114px; white-space: pre; text-anchor: middle;" x="170.15199279785156" y="169.81199645996094">PC</text>
+      <g transform="matrix(0.999999, 0, 0, 1.000001, -3.289171, -66.991211)">
+        <rect x="386.637" y="85.404" width="8.093" height="56.246" stroke="#000" stroke-width="1.0031" style="fill: rgb(255, 255, 255);"/>
+        <text style="font-family: Arial, sans-serif; font-size: 10.1px; white-space: pre;" transform="matrix(0.863417, 0, 0, 0.863416, 56.756466, -3.97502)" x="383.777" y="110" id="id_readData1">a<tspan x="383.7770080566406" dy="0.8em">​</tspan>a<tspan x="383.7770080566406" dy="0.8em">​</tspan>a<tspan x="383.7770080566406" dy="0.8em">​</tspan>a<tspan x="383.7770080566406" dy="0.8em">​</tspan>b<tspan x="383.7770080566406" dy="0.8em">​</tspan>b<tspan x="383.7770080566406" dy="0.8em">​</tspan>b<tspan x="383.7770080566406" dy="0.8em">​</tspan>b</text>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, -10.805085, 3.285147)" class="forwardingUnit">
+        <rect x="1134.564" y="580.46" width="14.664" height="96.239" stroke="#000" stroke-width="1.0031" style="fill: rgb(255, 255, 255);" transform="matrix(0, -1, 1, 0, -18.104132, 1506.329712)"/>
+        <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px;" transform="matrix(0.491907, 0, 0, 0.506196, 572.027039, 369.247955)" id="mem_forward_result">0xaaaabbbb</text>
+      </g>
+      <g transform="matrix(0.999999, 0, 0, 1.000001, 216.094391, -29.303658)">
+        <rect x="1134.564" y="580.46" width="14.664" height="96.239" stroke="#000" stroke-width="1.0031" style="fill: rgb(255, 255, 255);" transform="matrix(0, -1, 1, 0, -18.104132, 1506.329712)"/>
+        <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px;" transform="matrix(0.491907, 0, 0, 0.506196, 572.027039, 369.247955)" id="wb_writeData">0xaaaabbbb</text>
+      </g>
     </g>
     <g transform="matrix(1.9932 0 0 1.9944 -.95535 -635.44)">
       <path d="m0.40289 365.24 12.524 6.0815v16.217l-12.524 6.0815v-12.163l4.1746-2.0272-4.1746-2.0272z" fill="#729fcf" stroke="#000" stroke-width=".41267"/>
@@ -216,20 +230,20 @@
     <ellipse cx="132.8" cy="233.76" rx="2.0802" ry="2.0215" stroke="#000" stroke-width=".8228"/>
     <ellipse cx="352.69" cy="163.33" rx="2.0802" ry="2.0215" stroke="#000" stroke-width=".8228"/>
     <ellipse cx="360.23" cy="182.01" rx="2.0802" ry="2.0215" stroke="#000" stroke-width=".8228"/>
-    <ellipse cx="312.4" cy="161.95" rx="2.0802" ry="2.0215" stroke="#000" stroke-width=".8228"/>
-    <ellipse cx="294.88" cy="149.58" rx="2.0802" ry="2.0215" stroke="#000" stroke-width=".8228"/>
-    <text transform="scale(1.0144 .98578)" x="177.89503" y="258.27155" fill="#000000" font-family="Arial" font-size="8.6539px" stroke-width=".4114px" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="177.89503" y="258.27155" font-family="Arial" font-size="8.6539px" stroke-width=".4114px" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">Rs</tspan></text>
+    <ellipse cx="312.4" cy="161.95" rx="2.0802" ry="2.0215" stroke="#000" stroke-width=".8228" class="forwardingUnit"/>
+    <ellipse cx="294.88" cy="149.58" rx="2.0802" ry="2.0215" stroke="#000" stroke-width=".8228" class="forwardingUnit"/>
+    <text transform="scale(1.0144 .98578)" x="177.89503" y="258.27155" fill="#000000" font-family="Arial" font-size="8.6539px" stroke-width=".4114px" style="font-variant: normal; line-height: 0%; white-space: pre;" class="forwardingUnit"><tspan x="177.89503" y="258.27155" font-family="Arial" font-size="8.6539px" stroke-width=".4114px" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">Rs</tspan></text>
     <text transform="scale(1.0144 .98578)" x="108.65893" y="-8.4556999" fill="#000000" font-family="Arial" font-size="8.6539px" stroke-width=".4114px" style="font-variant: normal; line-height: 0%; white-space: pre;" class="hazardUnit"><tspan x="108.65893" y="-8.4556999" font-family="Arial" font-size="8.6539px" stroke-width=".4114px" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">Rs</tspan></text>
     <text transform="scale(1.0144 .98578)" x="7.1522942" y="18.257309" fill="#000000" font-family="Arial" font-size="8.6539px" stroke-width=".4114px" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="7.1522942" y="18.257309" font-family="Arial" font-size="8.6539px" stroke-width=".4114px" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">PCSrc</tspan></text>
-    <path d="m258.3 255.74-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
+    <path d="m258.3 255.74-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576" class="forwardingUnit"/>
     <path d="m258.16 243.88-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
     <path d="m258.3 232.53-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
     <path d="m390.05 233.06-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
     <path d="m390.27 243.69-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
     <path d="m258.19 120.22-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
-    <path d="m328.09 120.32-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
-    <path d="m328.03 104.79-6.3831-1.7383-0.0659 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
-    <path d="m328.2 91.888-6.3831-1.7383-0.0659 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
+    <path d="m328.09 120.32-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576" class="forwardingUnit"/>
+    <path d="m328.03 104.79-6.3831-1.7383-0.0659 4.9282 6.4456-1.5932z" stroke-width=".087576" class="forwardingUnit"/>
+    <path d="m328.2 91.888-6.3831-1.7383-0.0659 4.9282 6.4456-1.5932z" stroke-width=".087576" class="forwardingUnit"/>
     <path d="m434.9 105.39-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
     <path d="m380.16 83.793-6.3832-1.7383-0.0659 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
     <path d="m505.91 70.233-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
@@ -243,9 +257,9 @@
     <path d="m146.65-23.952-1.7373 6.3869 4.9253 0.06602-1.5922-6.4494z" stroke-width=".087576" class="hazardUnit"/>
     <path d="m257.47 7.2125-6.3831-1.7383-0.0659 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
     <path d="m258.39 175.44-6.3831-1.7383-0.0659 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
-    <path d="m328.3 175.64-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
-    <path d="m327.79 161.17-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
-    <path d="m327.77 148.8-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
+    <path d="m328.3 175.64-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576" class="forwardingUnit"/>
+    <path d="m327.79 161.17-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576" class="forwardingUnit"/>
+    <path d="m327.77 148.8-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576" class="forwardingUnit"/>
     <path d="m389.11 162.41-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
     <path d="m434.78 170.52-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
     <path d="m478.18 130.96h26.296" stroke="#000" stroke-width=".8228"/>
@@ -271,16 +285,14 @@
     <path d="m389.58 181.14-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
     <path d="m279.18 293.88h80.818v-111.94h28.49" fill="none" stroke="#000" stroke-width=".8204px"/>
     <path d="m352.71 163.43v36.445h152.74" fill="none" stroke="#000" stroke-width=".8204px"/>
-    <path d="m369.34 307.6v-89.193h-32.718v-36.609" fill="none" stroke="#00f" stroke-width=".51162"/>
-    <path d="m376.07 307.59v-172.41h-37.752v-9.3377" fill="none" stroke="#00f" stroke-width=".51162"/>
-    <path d="m287.17 233.44v103.27h71.11" fill="none" stroke="#000" stroke-width=".8204px"/>
-    <path d="m278.74 257.51h61.187v64.258h18.797" fill="none" stroke="#000" stroke-width=".8204px"/>
-    <path d="m726.99 210.29h15.61v148.67h-590.87v-185.12h14.454" fill="none" stroke="#000" stroke-width=".8204px"/>
+    <path d="m369.34 307.6v-89.193h-32.718v-36.609" fill="none" stroke="#00f" stroke-width=".51162" class="forwardingUnit"/>
+    <path d="m376.07 307.59v-172.41h-37.752v-9.3377" fill="none" stroke="#00f" stroke-width=".51162" class="forwardingUnit"/>
+    <path d="m287.17 233.44v103.27h71.11" fill="none" stroke="#000" stroke-width=".8204px" class="forwardingUnit"/>
+    <path d="m278.74 257.51h61.187v64.258h18.797" fill="none" stroke="#000" stroke-width=".8204px" class="forwardingUnit"/>
     <path d="m685.37 238.63h13.876v127.85h-559.65v-208.84h25.439" fill="none" stroke="#000" stroke-width=".8204px"/>
-    <path d="m542.16 150.75v230.15h-229.75v-275.37h15.126" fill="none" stroke="#000" stroke-width=".8204px"/>
-    <path d="m294.82 358.4v-265.89h32.296" fill="none" stroke="#000" stroke-width=".8204px"/>
-    <path d="m474.2 366.6v-27.79h-46.252" fill="none" stroke="#000" stroke-width=".8204px"/>
-    <path d="m562.35 237.43v87.301h-134.08" fill="none" stroke="#000" stroke-width=".8204px"/>
+    <path d="m294.82 358.4v-265.89h32.296" fill="none" stroke="#000" stroke-width=".8204px" class="forwardingUnit"/>
+    <path d="m474.2 366.6v-27.79h-46.252" fill="none" stroke="#000" stroke-width=".8204px" class="forwardingUnit"/>
+    <path d="m562.35 237.43v87.301h-134.08" fill="none" stroke="#000" stroke-width=".8204px" class="forwardingUnit"/>
     <rect x="257.97" y="2.8965" width="20.813" height="10.558" fill="none" stroke="#000" stroke-width=".51162"/>
     <rect x="258.03" y="13.481" width="20.813" height="10.558" fill="none" stroke="#000" stroke-width=".51162"/>
     <text transform="scale(1.0144 .98578)" x="502.57941" y="45.938835" fill="#000000" font-family="Arial" font-size="8.654px" stroke-width=".4114px" style="font-variant: normal; line-height: 0%; white-space: pre;"><tspan x="502.57941" y="45.938835" font-family="Arial" font-size="8.654px" stroke-width=".4114px" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">WB</tspan></text>
@@ -312,8 +324,8 @@
     <path d="m664.12 55.657-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
     <path d="m278.47 19.324h169.66v34.293h57.439" fill="none" stroke="#000" stroke-width=".8204px"/>
     <path d="m526.81 42.626h109.13v13.825h28.329" fill="none" stroke="#000" stroke-width=".8204px"/>
-    <path d="m428.11 316.8h106.6v-273.52" fill="none" stroke="#000" stroke-width=".8204px"/>
-    <path d="m684.36 55.831h8.0443v275.88h-264.31" fill="none" stroke="#000" stroke-width=".8204px"/>
+    <path d="m428.11 316.8h106.6v-273.52" fill="none" stroke="#000" stroke-width=".8204px" class="forwardingUnit"/>
+    <path d="m684.36 55.831h8.0443v275.88h-264.31" fill="none" stroke="#000" stroke-width=".8204px" class="forwardingUnit"/>
     <path d="m108.95 70.865v262.06h-41.049" fill="none" stroke="#000" stroke-width=".8204px"/>
     <path d="m72.241 365.75h40.148v-18.089h121.45v-25.443" fill="none" stroke="#000" stroke-width=".8204px"/>
     <path d="m43.04 347.97h-137.02v-315.86h124.74v18.223h-14.454" fill="none" stroke="#000" stroke-width=".8204px"/>
@@ -386,9 +398,37 @@
     <path transform="matrix(-3.5267 0 0 -6.9293 1823.2 4329.5)" d="m313.44 597.57h-0.82798l0.41399-0.71705z" fill="#ff51ff" stroke="#ff51ff" stroke-width=".10349"/>
     <path d="m132.95 121.42v-89.424h9.2295" fill="none" stroke="#000" stroke-width=".8204px"/>
     <path transform="matrix(-3.5267 0 0 -6.9293 1051.8 4360.3)" d="m313.44 597.57h-0.82798l0.41399-0.71705z" fill="#00f" stroke="#00f" stroke-width=".10349" class="hazardUnit"/>
-    <path transform="matrix(3.5267 0 0 6.9293 -767.29 -3955.2)" d="m313.44 597.57h-0.82798l0.41399-0.71705z" fill="#00f" stroke="#00f" stroke-width=".10349"/>
-    <path transform="matrix(3.5267 0 0 6.9293 -765.62 -4011.6)" d="m313.44 597.57h-0.82798l0.41399-0.71705z" fill="#00f" stroke="#00f" stroke-width=".10349"/>
+    <path transform="matrix(3.5267 0 0 6.9293 -767.29 -3955.2)" d="m313.44 597.57h-0.82798l0.41399-0.71705z" fill="#00f" stroke="#00f" stroke-width=".10349" class="forwardingUnit"/>
+    <path transform="matrix(3.5267 0 0 6.9293 -765.62 -4011.6)" d="m313.44 597.57h-0.82798l0.41399-0.71705z" fill="#00f" stroke="#00f" stroke-width=".10349" class="forwardingUnit"/>
     <path transform="matrix(-3.5267 0 0 -6.9293 1562.5 4237.1)" d="m313.44 597.57h-0.82798l0.41399-0.71705z" fill="#ff51ff" stroke="#ff51ff" stroke-width=".10349"/>
     <text transform="matrix(0.991879, 0, 0, 1.008202, -150.473663, 70.340103)" style="font-family: Arial; font-size: 9.62647px; line-height: 6.8925px; stroke-width: 0.4114px; white-space: pre; text-anchor: middle;" x="170.15199279785156" y="169.81199645996094">Instruction<tspan x="170.15199279785156" dy="1em">​</tspan>Memory</text>
+    <path d="M 345.054 105.91 L 345.054 121.177 L 278.881 121.177" fill="none" stroke="#000" stroke-width=".8204px" class="noForwardingUnit" style=""/>
+    <path d="M 278.725 176.375 L 324.206 176.375 L 324.206 163.234 L 383.942 163.234" fill="none" stroke="#000" stroke-width=".82041px" style="noForwardingUnit" class="noForwardingUnit"/>
+    <path d="M 504.689 187.562 L 579.654 187.562" stroke="#000" stroke-width=".8228" style="noForwardingUnit" transform="matrix(0, -1, 1, 0, 354.609497, 729.73349)"/>
+    <path d="M 684.94 55.877 L 692.549 55.877" stroke="#000" stroke-width=".8228" style=""/>
+    <path d="M 196.075 32.204 L 217.75 32.204 L 217.75 19.481 L 246.219 19.481" fill="none" stroke="#000" stroke-width=".82041px" style="" class="noHazardUnit"/>
+    <g transform="matrix(0.832099, 0, 0, 0.808611, 164.730499, 69.135429)">
+      <rect x="386.637" y="85.404" width="8.093" height="56.246" stroke="#000" stroke-width="1.0031" style="fill: rgb(255, 255, 255);"/>
+      <text style="font-family: Arial, sans-serif; font-size: 10.1px; white-space: pre;" transform="matrix(0.863417, 0, 0, 0.863416, 56.756466, -3.97502)" x="383.777" y="110" id="ex_result">a<tspan x="383.7770080566406" dy="0.8em">​</tspan>a<tspan x="383.7770080566406" dy="0.8em">​</tspan>a<tspan x="383.7770080566406" dy="0.8em">​</tspan>a<tspan x="383.7770080566406" dy="0.8em">​</tspan>b<tspan x="383.7770080566406" dy="0.8em">​</tspan>b<tspan x="383.7770080566406" dy="0.8em">​</tspan>b<tspan x="383.7770080566406" dy="0.8em">​</tspan>b</text>
+    </g>
+    <text transform="matrix(1.0144, 0, 0, 0.98578, 105.386612, 3.95703)" x="376.4588" y="126.7964" fill="#000000" font-family="Arial" font-size="8.6539px" stroke-width=".4114px" style="font-variant: normal; line-height: 0%; white-space: pre;" id="ex_zero"><tspan x="376.4588" y="126.7964" font-family="Arial" font-size="8.6539px" stroke-width=".4114px" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">0</tspan></text>
+    <g transform="matrix(0.832099, 0, 0, 0.808611, 226.20192, 53.007271)">
+      <rect x="386.637" y="85.404" width="8.093" height="56.246" stroke="#000" stroke-width="1.0031" style="fill: rgb(255, 255, 255);"/>
+      <text style="font-family: Arial, sans-serif; font-size: 10.1px; white-space: pre;" transform="matrix(0.863417, 0, 0, 0.863416, 56.756466, -3.97502)" x="383.777" y="110" id="mem_address">a<tspan x="383.7770080566406" dy="0.8em">​</tspan>a<tspan x="383.7770080566406" dy="0.8em">​</tspan>a<tspan x="383.7770080566406" dy="0.8em">​</tspan>a<tspan x="383.7770080566406" dy="0.8em">​</tspan>b<tspan x="383.7770080566406" dy="0.8em">​</tspan>b<tspan x="383.7770080566406" dy="0.8em">​</tspan>b<tspan x="383.7770080566406" dy="0.8em">​</tspan>b</text>
+    </g>
+    <g transform="matrix(0.832099, 0, 0, 0.808611, 226.159653, 103.177383)">
+      <rect x="386.637" y="85.404" width="8.093" height="56.246" stroke="#000" stroke-width="1.0031" style="fill: rgb(255, 255, 255);"/>
+      <text style="font-family: Arial, sans-serif; font-size: 10.1px; white-space: pre;" transform="matrix(0.863417, 0, 0, 0.863416, 56.756466, -3.97502)" x="383.777" y="110" id="mem_writeData">a<tspan x="383.7770080566406" dy="0.8em">​</tspan>a<tspan x="383.7770080566406" dy="0.8em">​</tspan>a<tspan x="383.7770080566406" dy="0.8em">​</tspan>a<tspan x="383.7770080566406" dy="0.8em">​</tspan>b<tspan x="383.7770080566406" dy="0.8em">​</tspan>b<tspan x="383.7770080566406" dy="0.8em">​</tspan>b<tspan x="383.7770080566406" dy="0.8em">​</tspan>b</text>
+    </g>
+    <g transform="matrix(0.832099, 0, 0, 0.808611, 317.61911, 104.772026)">
+      <rect x="386.637" y="85.404" width="8.093" height="56.246" stroke="#000" stroke-width="1.0031" style="fill: rgb(255, 255, 255);"/>
+      <text style="font-family: Arial, sans-serif; font-size: 10.1px; white-space: pre;" transform="matrix(0.863417, 0, 0, 0.863416, 56.756466, -3.97502)" x="383.777" y="110" id="mem_readData">a<tspan x="383.7770080566406" dy="0.8em">​</tspan>a<tspan x="383.7770080566406" dy="0.8em">​</tspan>a<tspan x="383.7770080566406" dy="0.8em">​</tspan>a<tspan x="383.7770080566406" dy="0.8em">​</tspan>b<tspan x="383.7770080566406" dy="0.8em">​</tspan>b<tspan x="383.7770080566406" dy="0.8em">​</tspan>b<tspan x="383.7770080566406" dy="0.8em">​</tspan>b</text>
+    </g>
+    <text transform="matrix(1.0144, 0, 0, 0.98578, -40.627087, 7.442347)" x="376.4588" y="126.7964" fill="#000000" font-family="Arial" font-size="8.6539px" stroke-width=".4114px" style="font-variant: normal; line-height: 0%; white-space: pre;" class="forwardingUnit" id="forwarding_val0" ><tspan x="376.4588" y="126.7964" font-family="Arial" font-size="8.6539px" stroke-width=".4114px" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">0</tspan></text>
+    <text transform="matrix(1.0144, 0, 0, 0.98578, -42.551277, 64.219429)" x="376.4588" y="126.7964" fill="#000000" font-family="Arial" font-size="8.6539px" stroke-width=".4114px" style="font-variant: normal; line-height: 0%; white-space: pre;" class="forwardingUnit" id="forwarding_val1" ><tspan x="376.4588" y="126.7964" font-family="Arial" font-size="8.6539px" stroke-width=".4114px" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1">0</tspan></text>
+    <g transform="matrix(0.832099, 0, 0, 0.808611, -86.043785, 84.415443)">
+      <rect x="386.637" y="85.404" width="8.093" height="56.246" stroke="#000" stroke-width="1.0031" style="fill: rgb(255, 255, 255);"/>
+      <text style="font-family: Arial, sans-serif; font-size: 10.1px; white-space: pre;" transform="matrix(0.863417, 0, 0, 0.863416, 56.756466, -3.97502)" x="383.777" y="110" id="id_readData2">a<tspan x="383.7770080566406" dy="0.8em">​</tspan>a<tspan x="383.7770080566406" dy="0.8em">​</tspan>a<tspan x="383.7770080566406" dy="0.8em">​</tspan>a<tspan x="383.7770080566406" dy="0.8em">​</tspan>b<tspan x="383.7770080566406" dy="0.8em">​</tspan>b<tspan x="383.7770080566406" dy="0.8em">​</tspan>b<tspan x="383.7770080566406" dy="0.8em">​</tspan>b</text>
+    </g>
   </g>
 </svg>

@@ -1,6 +1,6 @@
 import deepcopy from "deepcopy";
 import { stackRange } from "./memory"
-import { store } from '../App'
+import { store } from '../index'
 
 export interface IRegister {
     name: ERegisters;

@@ -1,5 +1,5 @@
 import * as I from "./instruction"
-import * as R from "./registr";
+import * as R from "./register";
 import * as M from "./memory"
 import * as P from "./program"
 import * as IF from "./pipeline_parts/fetch"
@@ -12,7 +12,7 @@ import * as F from "./pipeline_parts/forwardingUnit"
 import { IParsed } from "./parser"
 
 import deepcopy from 'deepcopy';
-import { store } from '../App'
+import { store } from '../index'
 
 export interface IPipelineIns {
     instruction: I.IInstruction;
@@ -20,7 +20,14 @@ export interface IPipelineIns {
     val0?: number;
     val1?: number;
     res?: number;
-    resHiLo?: { hi: number, lo: number }
+    resHiLo?: { hi: number, lo: number };
+    logs?: Ilogs
+}
+
+export interface Ilogs {
+    memUsedAddress?: number
+    forwardedVal0?: number
+    forwardedVal1?: number
 }
 
 export enum EPipelineMem {
@@ -51,6 +58,9 @@ const setStagesState = (value: StagesState) => {
         payload: value
     })
 }
+
+export type SetMem = (mem: EPipelineMem, value: IPipelineIns) => void
+export type GetMem = (mem: EPipelineMem) => IPipelineIns
 export class Pipeline {
     private reg: R.Registers;
     private mem: M.Memory;
@@ -165,7 +175,9 @@ export class Pipeline {
             case EPipelineMem.ex_mem:
                 return deepcopy(this.ex_mem)
             case EPipelineMem.mem_wb:
-                return deepcopy(this.mem_wb)
+                let a = deepcopy(this.mem_wb)
+                console.log(this.mem_wb, a)
+                return a//deepcopy(this.mem_wb)
         }
     }
 

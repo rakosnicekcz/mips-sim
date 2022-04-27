@@ -1,10 +1,10 @@
-import * as R from "./registr";
+import * as R from "./register";
 import * as P from "./pipeline";
 import * as M from "./memory"
 import * as Prg from "./program";
 import Long from "long"
 import compare from 'just-compare';
-import { store } from '../App'
+import { store } from '../index'
 import { setError } from "../App"
 
 export enum EInstructionName {
@@ -137,7 +137,7 @@ export const instruction_set: TInstruction_set = {
         changedValues: [editableValues.RD], requireSpecial: [],
         execute(ins: P.IPipelineIns, prg: Prg.Program, mem: M.Memory): P.IPipelineIns {
             let array32 = new Int32Array(3);
-            if (ins.val0 !== undefined && ins.val1 !== undefined) { // for TS to be happy
+            if (ins.val0 !== undefined && ins.val1 !== undefined) {
                 array32[0] = ins.val0;
                 array32[1] = ins.val1;
                 array32[2] = array32[0] + array32[1];
@@ -159,7 +159,7 @@ export const instruction_set: TInstruction_set = {
         changedValues: [editableValues.RD], requireSpecial: [],
         execute(ins: P.IPipelineIns, prg: Prg.Program, mem: M.Memory): P.IPipelineIns {
             let array32 = new Int32Array(3);
-            if (ins.val0 !== undefined && ins.val1 !== undefined) { // for TS to be happy
+            if (ins.val0 !== undefined && ins.val1 !== undefined) {
                 array32[0] = ins.val0;
                 array32[1] = ins.val1;
                 array32[2] = array32[0] - array32[1];
@@ -181,7 +181,7 @@ export const instruction_set: TInstruction_set = {
         changedValues: [editableValues.RD], requireSpecial: [],
         execute(ins: P.IPipelineIns, prg: Prg.Program, mem: M.Memory): P.IPipelineIns {
             let array32 = new Int32Array(3);
-            if (ins.val0 !== undefined && typeof ins.instruction.imm === "number") { // for TS to be happy
+            if (ins.val0 !== undefined && typeof ins.instruction.imm === "number") {
                 array32[0] = ins.val0;
                 array32[1] = ins.instruction.imm;
                 array32[2] = array32[0] + array32[1];
@@ -419,7 +419,7 @@ export const instruction_set: TInstruction_set = {
         changedValues: [], requireSpecial: [],
         execute(ins: P.IPipelineIns, prg: Prg.Program, mem: M.Memory): P.IPipelineIns { return ins },
         ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns {
-            doStoreOp(ins, mem, M.EMemBitLenOperation.word, this.paramTypes)
+            ins = doStoreOp(ins, mem, M.EMemBitLenOperation.word, this.paramTypes)
             return ins;
         },
         checkParsed(ins: IInstruction): IInstruction { return ins }
@@ -446,7 +446,7 @@ export const instruction_set: TInstruction_set = {
         changedValues: [], requireSpecial: [],
         execute(ins: P.IPipelineIns, prg: Prg.Program, mem: M.Memory): P.IPipelineIns { return ins },
         ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns {
-            doStoreOp(ins, mem, M.EMemBitLenOperation.halfword, this.paramTypes)
+            ins = doStoreOp(ins, mem, M.EMemBitLenOperation.halfword, this.paramTypes)
             return ins;
         },
         checkParsed(ins: IInstruction): IInstruction { return ins }
@@ -473,7 +473,7 @@ export const instruction_set: TInstruction_set = {
         changedValues: [], requireSpecial: [],
         execute(ins: P.IPipelineIns, prg: Prg.Program, mem: M.Memory): P.IPipelineIns { return ins },
         ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns {
-            doStoreOp(ins, mem, M.EMemBitLenOperation.byte, this.paramTypes)
+            ins = doStoreOp(ins, mem, M.EMemBitLenOperation.byte, this.paramTypes)
             return ins;
         },
         checkParsed(ins: IInstruction): IInstruction { return ins }
@@ -794,47 +794,63 @@ export const instruction_set: TInstruction_set = {
     }
 }
 
-let doLoadOp = (ins: P.IPipelineIns, mem: M.Memory, memOp: M.EMemBitLenOperation, paramType: EInstructionParamType[][]) => {
+let doLoadOp = (ins: P.IPipelineIns, mem: M.Memory, memOp: M.EMemBitLenOperation, paramType: EInstructionParamType[][]): P.IPipelineIns => {
     console.log("doLoadOp", ins.instruction.paramType, paramType[2])
     if (compare(ins.instruction.paramType, paramType[0])) {
         if (ins.val0 !== undefined && typeof ins.instruction.imm === "number") {
             let address = ins.val0 + Number(ins.instruction.imm);
             ins.res = mem.load(memOp, address)
+            ins = logAddress(ins, address);
         }
     } else if (compare(ins.instruction.paramType, paramType[1])) {
         if (ins.val0 !== undefined && typeof ins.instruction.imm === "string") {
             ins.res = mem.load(memOp, ins.val0, ins.instruction.imm)
+            ins = logAddress(ins, mem.getLabel(ins.instruction.imm).address + ins.val0);
         }
     } else if (compare(ins.instruction.paramType, paramType[2])) {
         if (typeof ins.instruction.imm === "number") {
             ins.res = mem.load(memOp, ins.instruction.imm)
+            ins = logAddress(ins, ins.instruction.imm);
         }
     } else if (compare(ins.instruction.paramType, paramType[3])) {
         if (typeof ins.instruction.imm === "string") {
-            console.log("executing load op with label")
             ins.res = mem.load(memOp, 0, ins.instruction.imm)
+            ins = logAddress(ins, mem.getLabel(ins.instruction.imm).address);
         }
     }
     return ins;
 }
 
-let doStoreOp = (ins: P.IPipelineIns, mem: M.Memory, memOp: M.EMemBitLenOperation, paramType: EInstructionParamType[][]) => {
+let doStoreOp = (ins: P.IPipelineIns, mem: M.Memory, memOp: M.EMemBitLenOperation, paramType: EInstructionParamType[][]): P.IPipelineIns => {
     if (compare(ins.instruction.paramType, paramType[0])) {
         if (ins.val0 !== undefined && ins.val1 !== undefined && typeof ins.instruction.imm === "number") {
             let address = ins.val1 + Number(ins.instruction.imm);
             mem.store(memOp, address, ins.val0)
+            ins = logAddress(ins, address)
         }
     } else if (compare(ins.instruction.paramType, paramType[1])) {
         if (ins.val0 && ins.val1 !== undefined && typeof ins.instruction.imm === "string") {
             mem.store(memOp, ins.val1, ins.val0, ins.instruction.imm)
+            ins = logAddress(ins, mem.getLabel(ins.instruction.imm).address + ins.val0);
         }
     } else if (compare(ins.instruction.paramType, paramType[2])) {
         if (ins.val0 !== undefined && typeof ins.instruction.imm === "number") {
             mem.store(memOp, ins.instruction.imm, ins.val0)
+            ins = logAddress(ins, ins.instruction.imm);
         }
     } else if (compare(ins.instruction.paramType, paramType[3])) {
         if (ins.val0 !== undefined && typeof ins.instruction.imm === "string") {
             mem.store(memOp, 0, ins.val0, ins.instruction.imm)
+            ins = logAddress(ins, mem.getLabel(ins.instruction.imm).address);
         }
     }
+    return ins
+}
+
+let logAddress = (ins: P.IPipelineIns, address: number): P.IPipelineIns => {
+    if (ins.logs === undefined) {
+        ins.logs = {};
+    }
+    ins.logs.memUsedAddress = address
+    return ins
 }

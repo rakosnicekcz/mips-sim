@@ -1,5 +1,5 @@
 import * as I from "./instruction"
-import * as R from "./registr"
+import * as R from "./register"
 import * as M from "./memory"
 import * as P from "./program"
 import deepcopy from "deepcopy";

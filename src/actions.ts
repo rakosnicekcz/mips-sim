@@ -1,5 +1,5 @@
 import { StagesState } from "./sim_core/pipeline";
-import * as R from "./sim_core/registr";
+import * as R from "./sim_core/register";
 
 export const setOutputValue = (value: string) => {
     return {

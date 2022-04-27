@@ -1,12 +1,10 @@
 import * as I from "../instruction"
-import * as R from "../registr";
-import * as M from "../memory"
+import * as R from "../register";
 import * as Prg from "../program"
 import * as Pip from "../pipeline"
 
 export class Decode {
     private stall = false;
-    private flush = false;
     private data: Pip.IPipelineIns;
 
     private pipeline: Pip.Pipeline
@@ -18,11 +16,6 @@ export class Decode {
         this.registers = registers;
         this.program = prg
     }
-
-    setFlush() {
-        this.flush = true
-    }
-
     setStall() {
         this.stall = true;
     }

@@ -1,5 +1,5 @@
 import * as I from "../instruction"
-import * as R from "../registr";
+import * as R from "../register";
 import * as M from "../memory"
 import * as Prg from "../program"
 import * as Pip from "../pipeline"
@@ -25,14 +25,12 @@ export class Memory {
     runRisingEdge() {
         this.data = this.pipeline.getMem(Pip.EPipelineMem.ex_mem);
 
-        // TODO: cond jump
         if (this.data.instruction.description.isBranchInstruction && this.data.res === 1) {
             if (typeof this.data.instruction.imm === "string") {
                 this.program.setPCofLabel(this.data.instruction.imm);
                 this.fetch.setFlush();
                 this.pipeline.setMem(Pip.EPipelineMem.if_id, { ...Pip.NOP, pc: this.data.pc });
                 this.pipeline.setMem(Pip.EPipelineMem.id_ex, { ...Pip.NOP, pc: this.data.pc });
-                // this.pipeline.stallIF();
             }
         }
 

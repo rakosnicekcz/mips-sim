@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 import { StagesState, NOP } from "./sim_core/pipeline";
-import * as R from "./sim_core/registr"
+import * as R from "./sim_core/register"
+import { errorState } from "./App"
 
 export const outputValueReducer = (state: string = "", action) => {
     switch (action.type) {
@@ -40,7 +41,7 @@ export const registersReducer = (state: R.IAllRegister[] = [], action) => {
     }
 }
 
-export const errorReducer = (state = { isError: false, message: "" }, action) => {
+export const errorReducer = (state: errorState = { isError: false, message: "" }, action) => {
     switch (action.type) {
         case 'SET_ERROR':
             return { isError: true, message: action.payload };

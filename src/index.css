@@ -64,3 +64,11 @@ code {
   width: 200px;
   background-color: rgba(255, 255, 255, 1)
 }
+
+.displayNone {
+  display: none;
+}
+
+.displayBlock {
+  display: block;
+}
