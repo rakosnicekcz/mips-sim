@@ -390,5 +390,8 @@
     <path transform="matrix(3.5267 0 0 6.9293 -765.62 -4011.6)" d="m313.44 597.57h-0.82798l0.41399-0.71705z" fill="#00f" stroke="#00f" stroke-width=".10349"/>
     <path transform="matrix(-3.5267 0 0 -6.9293 1562.5 4237.1)" d="m313.44 597.57h-0.82798l0.41399-0.71705z" fill="#ff51ff" stroke="#ff51ff" stroke-width=".10349"/>
     <text transform="matrix(0.991879, 0, 0, 1.008202, -150.473663, 70.340103)" style="font-family: Arial; font-size: 9.62647px; line-height: 6.8925px; stroke-width: 0.4114px; white-space: pre; text-anchor: middle;" x="170.15199279785156" y="169.81199645996094">Instruction<tspan x="170.15199279785156" dy="1em">​</tspan>Memory</text>
+    <path d="M 555.833 -13.611 L 526.71 -13.611 L 526.71 130.952 L 555.833 130.952" fill="none" stroke="#000" stroke-width=".8228" style="" transform="matrix(-1, 0, 0, -1, 1082.54303, 117.340988)"/>
+    <path d="M 363.739 178.905 L 363.739 -185.041 L 342.707 -185.041" fill="none" stroke="#000" stroke-width=".8204px" class="hazardUnit" style="" transform="matrix(0, -1, 1, 0, 356.291016, 350.154999)"/>
+    <path d="M 174.479 7.413 L 168.095 5.674 L 168.029 10.603 L 174.475 9.009 L 174.479 7.413 Z" stroke-width=".087576" transform="matrix(0, 1, -1, 0, 179.392505, -163.115506)"/>
   </g>
 </svg>

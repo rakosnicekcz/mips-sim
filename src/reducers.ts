@@ -7,6 +7,8 @@ export const outputValueReducer = (state: string = "", action) => {
     switch (action.type) {
         case 'SET_OUTPUT_VALUE':
             return action.payload;
+        case 'EXTEND_OUTPUT_VALUE':
+            return state + action.payload;
         default:
             return state;
     }

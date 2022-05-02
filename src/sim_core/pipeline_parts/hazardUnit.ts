@@ -23,7 +23,11 @@ export class HazardUnit {
         const id_ex = this.pip.getMem(P.EPipelineMem.id_ex)
         const if_id = this.pip.getMem(P.EPipelineMem.if_id)
         if (this.checkDependence(if_id, id_ex) && id_ex.instruction.description.mainExecutionStage !== I.EPipelineStages.decode) {
-            if (id_ex.instruction.description.name === I.EInstructionName.syscall) {
+            // $hi and $lo cant be forwarded
+            if (if_id.instruction.description.requireSpecial.includes(I.editableValues.$hi) ||
+                if_id.instruction.description.requireSpecial.includes(I.editableValues.$lo)) {
+                this.stall()
+            } else if (id_ex.instruction.description.name === I.EInstructionName.syscall) {
                 // result of syscall ($v0) cant be forwarded
                 this.stall()
             } else if (id_ex.instruction.description.isMemoryInstruction) {
@@ -43,7 +47,11 @@ export class HazardUnit {
                 }
             }
         } else if (this.checkDependence(if_id, ex_mem) && ex_mem.instruction.description.name !== I.EInstructionName.syscall) {
-            if (if_id.instruction.description.isJumpInstruction && if_id.instruction.description.mainExecutionStage !== ex_mem.instruction.description.mainExecutionStage) {
+            // $hi and $lo cant be forwarded
+            if (if_id.instruction.description.requireSpecial.includes(I.editableValues.$hi) ||
+                if_id.instruction.description.requireSpecial.includes(I.editableValues.$lo)) {
+                this.stall()
+            } else if (if_id.instruction.description.isJumpInstruction && if_id.instruction.description.mainExecutionStage !== ex_mem.instruction.description.mainExecutionStage) {
                 this.stall();
             } else if (!this.isForwarding) {
                 this.stall()

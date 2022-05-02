@@ -53,35 +53,33 @@ export class Memory {
             }
         }
         if (heapRange.from <= address && address <= heapRange.to) {
-            address -= heapRange.from
-            return this.loadFromBuffer(oplen, this.heap, address)
+            return this.loadFromBuffer(oplen, this.heap, address, heapRange.from)
         } else if (stackRange.from <= address && address <= stackRange.to) {
-            address -= stackRange.from
-            return this.loadFromBuffer(oplen, this.stack, address)
+            return this.loadFromBuffer(oplen, this.stack, address, stackRange.from)
         } else if (dataRange.from <= address && address <= dataRange.to) {
-            address -= dataRange.from
-            return this.loadFromBuffer(oplen, this.dataBuffer, address)
+            return this.loadFromBuffer(oplen, this.dataBuffer, address, dataRange.from)
         }
         console.log(dataRange, address)
         setError(`memory load: address ${address} out of boundary`);
         throw new Error("");
     }
 
-    private loadFromBuffer(oplen: EMemBitLenOperation, buffer: ArrayBuffer, address: number) {
+    private loadFromBuffer(oplen: EMemBitLenOperation, buffer: ArrayBuffer, address: number, rangeFrom: number) {
+        const addShort = address - rangeFrom
         let view = new DataView(buffer)
         switch (oplen) {
             case EMemBitLenOperation.byte:
-                return deepcopy(view.getInt8(address));
+                return deepcopy(view.getInt8(addShort));
             case EMemBitLenOperation.halfword:
                 if (address % 2 !== 0) {
                     setError(`memory load: address ${address} not halfword aligned`);
                 }
-                return deepcopy(view.getInt16(address, true));
+                return deepcopy(view.getInt16(addShort, true));
             case EMemBitLenOperation.word:
                 if (address % 4 !== 0) {
                     setError(`memory load: address ${address} not word aligned`);
                 }
-                return deepcopy(view.getInt32(address, true));
+                return deepcopy(view.getInt32(addShort, true));
         }
     }
 
@@ -94,36 +92,34 @@ export class Memory {
         }
 
         if (heapRange.from <= address && address <= heapRange.to) {
-            address -= heapRange.from
-            this.storeToBuffer(oplen, this.heap, address, value)
+            this.storeToBuffer(oplen, this.heap, address, value, heapRange.from)
         } else if (stackRange.from <= address && address <= stackRange.to) {
-            address -= stackRange.from
-            this.storeToBuffer(oplen, this.stack, address, value)
+            this.storeToBuffer(oplen, this.stack, address, value, stackRange.from)
         } else if (dataRange.from <= address && address <= dataRange.to) {
-            address -= dataRange.from
-            this.storeToBuffer(oplen, this.dataBuffer, address, value)
+            this.storeToBuffer(oplen, this.dataBuffer, address, value, dataRange.from)
         } else {
             setError("Wrong operation with memory: " + address);
         }
     }
 
-    private storeToBuffer(oplen: EMemBitLenOperation, buffer: ArrayBuffer, address: number, value: number) {
+    private storeToBuffer(oplen: EMemBitLenOperation, buffer: ArrayBuffer, address: number, value: number, rangeFrom: number) {
+        const addShort = address - rangeFrom
         let view = new DataView(buffer)
         switch (oplen) {
             case EMemBitLenOperation.byte:
-                view.setInt8(address, value)
+                view.setInt8(addShort, value)
                 return;
             case EMemBitLenOperation.halfword:
                 if (address % 2 !== 0) {
                     setError(`memory store: address ${address} not halfword aligned`);
                 }
-                view.setInt16(address, value, true)
+                view.setInt16(addShort, value, true)
                 return;
             case EMemBitLenOperation.word:
                 if (address % 4 !== 0) {
                     setError(`memory store: address ${address} not word aligned`);
                 }
-                view.setInt32(address, value, true)
+                view.setInt32(addShort, value, true)
                 return;
         }
     }
@@ -134,11 +130,16 @@ export class Memory {
         let view = new DataView(this.dataBuffer)
         data.forEach(e => {
             if (e.align) {
-                add = add + add % Math.pow(2, e.align)
+                let pow = Math.pow(2, e.align)
+                if (add % pow !== 0) {
+                    add += (pow - (add % pow))
+                }
             } else if (e.type === EMemStaticOperations.word) {
-                add = add + add % 4
+                if (add % 4 !== 0) {
+                    add += (4 - (add % 4))
+                }
             } else if (e.type === EMemStaticOperations.half) {
-                add = add + add % 2
+                if (add % 2 !== 0) { add++ }
             }
             e.address = add
 

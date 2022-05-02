@@ -72,3 +72,16 @@ code {
 .displayBlock {
   display: block;
 }
+
+.svgLoaderContainer {
+  height: 100%;
+}
+
+.svgLoaderContainer>svg {
+  height: 99%;
+}
+
+.IDE .ace_content {
+  bottom: 0;
+  height: 100% !important;
+}

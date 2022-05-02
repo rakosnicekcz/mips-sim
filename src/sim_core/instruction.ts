@@ -104,10 +104,9 @@ export interface IInstruction {
 }
 
 export type TInstruction_set = Record<EInstructionName, IInstructionDescription>;
-// set state of outputValue in store to 'hello'
-const setOutputValue = (value: string) => {
+const extendOutputValue = (value: string) => {
     store.dispatch({
-        type: 'SET_OUTPUT_VALUE',
+        type: 'EXTEND_OUTPUT_VALUE',
         payload: value
     })
 }
@@ -729,7 +728,7 @@ export const instruction_set: TInstruction_set = {
         ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns {
             let regV0 = reg.getVal(R.ERegisters.$2)
             let regA0 = reg.getVal(R.ERegisters.$4)
-            let regA1 = reg.getVal(R.ERegisters.$4)
+            let regA1 = reg.getVal(R.ERegisters.$5)
 
             let add: number
             let str: string
@@ -738,7 +737,7 @@ export const instruction_set: TInstruction_set = {
 
             switch (regV0) {
                 case 1: // print_int
-                    setOutputValue(String(regA0))
+                    extendOutputValue(String(regA0))
                     break;
                 case 4: // print_string
                     add = regA0;
@@ -751,7 +750,7 @@ export const instruction_set: TInstruction_set = {
                         add++;
                         str += String.fromCharCode(byte);
                     }
-                    setOutputValue(str);
+                    extendOutputValue(str);
                     break;
                 case 5: // read_int
                     let num = Number(inp);
@@ -778,7 +777,7 @@ export const instruction_set: TInstruction_set = {
                     break;
                 case 11: // print_char
                     let char = String.fromCharCode(regA0);
-                    setOutputValue(char);
+                    extendOutputValue(char);
                     break;
                 case 12: // read_char
                     let val = inp.length > 0 ? inp.charCodeAt(0) : 0;
@@ -829,7 +828,7 @@ let doStoreOp = (ins: P.IPipelineIns, mem: M.Memory, memOp: M.EMemBitLenOperatio
             ins = logAddress(ins, address)
         }
     } else if (compare(ins.instruction.paramType, paramType[1])) {
-        if (ins.val0 && ins.val1 !== undefined && typeof ins.instruction.imm === "string") {
+        if (ins.val0 !== undefined && ins.val1 !== undefined && typeof ins.instruction.imm === "string") {
             mem.store(memOp, ins.val1, ins.val0, ins.instruction.imm)
             ins = logAddress(ins, mem.getLabel(ins.instruction.imm).address + ins.val0);
         }

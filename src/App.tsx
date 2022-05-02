@@ -48,6 +48,7 @@ function App() {
 		pipeline.reset()
 		parser.reset()
 		dispatch(actions.clearStageState())
+		dispatch(actions.setOutputValue(""))
 		let parsed = parser.parse(value)
 		pipeline.setProgram(parsed, isForwarding, isHazard);
 		setAssembled(true)
@@ -122,6 +123,7 @@ function App() {
 							Assemble={Assemble}
 							stop={stop}
 							pause={pause}
+							setValue={setValue}
 							assembled={assembled}
 							running={running}
 						/>

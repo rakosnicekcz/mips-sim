@@ -24,24 +24,26 @@ const Editor: React.FC<EditorProps> = (props) => {
     }
 
     return (
-        <AceEditor
-            className={"IDE"}
-            mode="mips_assembler"
-            theme={"sqlserver"}
-            fontSize={16}
-            style={{ height: "100%", width: "100%", minHeight: "500px" }}
-            name="mipsIDE"
-            editorProps={{ $blockScrolling: true }}
-            setOptions={{ tabSize: 4, wrap: false }}
-            showPrintMargin={false}
-            value={props.value}
-            onChange={(value) => {
-                props.setValue(value)
-            }}
-            readOnly={props.assembled}
-            markers={props.assembled ? markers : []}
-            highlightActiveLine={!props.assembled}
-        />
+        <div style={{ height: "85vh", overflow: "auto" }}>
+            <AceEditor
+                className={"IDE"}
+                mode="mips_assembler"
+                theme={"sqlserver"}
+                fontSize={16}
+                style={{ height: "100%", width: "100%", minHeight: "100%" }}
+                name="mipsIDE"
+                editorProps={{ $blockScrolling: true }}
+                setOptions={{ tabSize: 4, wrap: false, maxLines: Infinity }}
+                showPrintMargin={false}
+                value={props.value}
+                onChange={(value) => {
+                    props.setValue(value)
+                }}
+                readOnly={props.assembled}
+                markers={props.assembled ? markers : []}
+                highlightActiveLine={!props.assembled}
+            />
+        </div>
     )
 }
 

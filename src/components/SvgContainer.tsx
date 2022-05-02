@@ -32,7 +32,7 @@ const SvgContainer: React.FC<SvgContainerProps> = (props) => {
             mem_writeData = props.stagesState.mem.val0
         }
         setSvgContentById("mem_writeData", getHexaValue(mem_writeData), true)
-        let mem_readData = props.stagesState.mem.instruction.description.isMemoryLoadInstruction ? props.stagesState.mem.val0 : undefined
+        let mem_readData = props.stagesState.mem.instruction.description.isMemoryLoadInstruction ? props.stagesState.mem.res : undefined
         setSvgContentById("mem_readData", getHexaValue(mem_readData), true)
         let wb_writeData = props.stagesState.wb.instruction.description.writeBack ? props.stagesState.wb.res : undefined
         setSvgContentById("wb_writeData", getHexaValue(wb_writeData))
@@ -43,8 +43,6 @@ const SvgContainer: React.FC<SvgContainerProps> = (props) => {
         setSvgContentById("forwarding_val0", String(forwarding_val0 === undefined ? 2 : forwarding_val0))
         let forwarding_val1 = props.stagesState.ex.logs?.forwardedVal1
         setSvgContentById("forwarding_val1", String(forwarding_val1 === undefined ? 2 : forwarding_val1))
-
-        console.log("useEffect", props.stagesState.mem)
     })
 
     let setSvgContentById = (id: string, content: string, isVertical: boolean = false) => {

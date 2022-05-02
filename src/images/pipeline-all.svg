@@ -6,7 +6,7 @@
       <stop stop-opacity="0" offset="1"/>
     </linearGradient>
   </defs>
-  <g transform="matrix(.3225 0 0 .3225 33.059 23.813)">
+  <g transform="matrix(0.3225, 0, 0, 0.3225, 33.058998, 23.813)">
     <path d="m-81.354 62.837v202.76h14.445" fill="none" stroke="#000" stroke-width="1.0487"/>
     <path d="m726.99 210.29h15.61v148.67h-590.87v-185.12h14.454" fill="none" stroke="#000" stroke-width=".8204px"/>
     <g transform="matrix(.8321 0 0 .84796 517.79 -216.84)" stroke-width=".48977">
@@ -174,11 +174,11 @@
       </g>
       <g transform="matrix(1, 0, 0, 1, -10.805085, 3.285147)" class="forwardingUnit">
         <rect x="1134.564" y="580.46" width="14.664" height="96.239" stroke="#000" stroke-width="1.0031" style="fill: rgb(255, 255, 255);" transform="matrix(0, -1, 1, 0, -18.104132, 1506.329712)"/>
-        <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px;" transform="matrix(0.491907, 0, 0, 0.506196, 572.027039, 369.247955)" id="mem_forward_result"></text>
+        <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px;" transform="matrix(0.491907, 0, 0, 0.506196, 572.027039, 369.247955)" id="mem_forward_result"/>
       </g>
       <g transform="matrix(0.999999, 0, 0, 1.000001, 216.094391, -29.303658)">
         <rect x="1134.564" y="580.46" width="14.664" height="96.239" stroke="#000" stroke-width="1.0031" style="fill: rgb(255, 255, 255);" transform="matrix(0, -1, 1, 0, -18.104132, 1506.329712)"/>
-        <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px;" transform="matrix(0.491907, 0, 0, 0.506196, 572.027039, 369.247955)" id="wb_writeData"></text>
+        <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px;" transform="matrix(0.491907, 0, 0, 0.506196, 572.027039, 369.247955)" id="wb_writeData"/>
       </g>
     </g>
     <g transform="matrix(1.9932 0 0 1.9944 -.95535 -635.44)">
@@ -332,7 +332,6 @@
     <path d="m360.69 181.89v-97.188h19.946" fill="none" stroke="#000" stroke-width=".8204px"/>
     <path d="m278.93 72.495h43.984v-13.23h57.771" fill="none" stroke="#000" stroke-width=".82041px"/>
     <path d="m380.09 58.541-6.3831-1.7383-0.066 4.9282 6.4456-1.5932z" stroke-width=".087576"/>
-    <path d="m527.11 70.422h16.381v-75.267h-502.91v65.961h-24.674" fill="none" stroke="#000" stroke-width=".8204px"/>
     <path d="m109.24 11.863h38.158v-34.999" fill="none" stroke="#000" stroke-width=".8204px" class="hazardUnit"/>
     <path d="m93.688-43.712h-11.856v100.25" fill="none" stroke="#00f" stroke-width=".51162" class="hazardUnit"/>
     <path d="m164.2-34.66h55.217v34.411" fill="none" stroke="#00f" stroke-width=".51162" class="hazardUnit"/>
@@ -383,7 +382,7 @@
           <text transform="matrix(1.605624, 0, 0, 1.636202, -1052.614502, 161.556488)" style="font-family: Arial; font-size: 9.62647px; line-height: 6.8925px; stroke-width: 0.4114px; white-space: pre; text-anchor: middle;" y="169.81199645996094" x="170.15199279785156">Instruction Fetch<tspan x="170.15199279785156" dy="1em">​</tspan></text>
           <text transform="matrix(1.605624, 0, 0, 1.636202, -799.850342, 161.556488)" style="font-family: Arial; font-size: 9.62647px; line-height: 6.8925px; stroke-width: 0.4114px; white-space: pre; text-anchor: middle;" y="169.81199645996094" x="170.15199279785156">Instruction Decode<tspan x="170.15199279785156" dy="1em">​</tspan></text>
           <text transform="matrix(1.605624, 0, 0, 1.636202, -520.021179, 161.556488)" style="font-family: Arial; font-size: 9.62647px; line-height: 6.8925px; stroke-width: 0.4114px; white-space: pre; text-anchor: middle;" y="169.81199645996094" x="170.15199279785156">Execute<tspan x="170.15199279785156" dy="1em">​</tspan></text>
-          <text transform="matrix(1.605624, 0, 0, 1.636202, -274.479065, 161.556488)" style="font-family: Arial; font-size: 9.62647px; line-height: 6.8925px; stroke-width: 0.4114px; white-space: pre; text-anchor: middle;" y="169.81199645996094" x="170.15199279785156">Instruction Decode<tspan x="170.15199279785156" dy="1em">​</tspan></text>
+          <text transform="matrix(1.605624, 0, 0, 1.636202, -274.479065, 161.556488)" style="font-family: Arial; font-size: 9.62647px; line-height: 6.8925px; stroke-width: 0.4114px; white-space: pre; text-anchor: middle;" y="169.81199645996094" x="170.15199279785156">Memory Access<tspan x="170.15199279785156" dy="1em">​</tspan></text>
           <text transform="matrix(1.605624, 0, 0, 1.636202, -56.449024, 161.556488)" style="font-family: Arial; font-size: 9.62647px; line-height: 6.8925px; stroke-width: 0.4114px; white-space: pre; text-anchor: middle;" y="169.81199645996094" x="170.15199279785156">Write Back<tspan x="170.15199279785156" dy="1em">​</tspan></text>
         </g>
       </g>
@@ -430,5 +429,11 @@
       <rect x="386.637" y="85.404" width="8.093" height="56.246" stroke="#000" stroke-width="1.0031" style="fill: rgb(255, 255, 255);"/>
       <text style="font-family: Arial, sans-serif; font-size: 10.1px; white-space: pre; text-anchor: middle;" transform="matrix(0.863417, 0, 0, 0.863416, 59.271622, -3.861704)" x="383.777" y="110" id="id_readData2"> <tspan x="383.7770080566406" dy="0.8em">​</tspan></text>
     </g>
+    <path d="M 545.389 -10.256 L 527.123 -10.256 L 527.123 130.897 L 545.389 130.897" fill="none" stroke="#000" stroke-width=".8228" style="" transform="matrix(-1, 0, 0, -1, 1072.511963, 120.641001)"/>
+    <path d="M 362.599 181.575 L 362.599 -180.907 L 341.424 -180.907" fill="none" stroke="#000" stroke-width=".8204px" style="" transform="matrix(0, -1, 1, 0, 351.677505, 352.345505)"/>
+    <path d="M 173.963 7.426 L 167.58 5.688 L 167.514 10.616 L 173.96 9.023 L 173.963 7.426 Z" stroke-width=".087576" transform="matrix(0, 1, -1, 0, 178.890503, -162.586502)"/>
+    <path d="M 540.912 -4.179 L 526.763 -4.179 L 526.763 71.046 L 540.912 71.046" fill="none" stroke="#000" stroke-width=".8228" style="" transform="matrix(-1, 0, 0, -1, 1067.674988, 66.866999)"/>
+    <path d="M 304.962 243.821 L 304.962 -230.453 L 283.243 -230.453" fill="none" stroke="#000" stroke-width=".8204px" style="" transform="matrix(0, -1, 1, 0, 287.418518, 300.786499)"/>
+    <path d="M 18.805 60.944 L 56.963 60.944 L 56.963 13.282" fill="none" stroke="#000" stroke-width=".8204px" style=""/>
   </g>
 </svg>

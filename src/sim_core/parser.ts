@@ -111,8 +111,13 @@ export class Parser {
             return;
         }
 
-        if (/^[a-zA-Z][a-zA-Z0-9]*:$/.test(lineParts[0])) {
+        if (/^_?[a-zA-Z][a-zA-Z0-9_]*:$/.test(lineParts[0])) {
             con.name = lineParts[0].slice(0, -1);
+            if (Object.values(I.EInstructionName).includes(con.name as unknown as I.EInstructionName)) {
+                setError("Label cant have same name as instruction");
+            } else if (this.staticData.some(e => e.name === con.name)) {
+                setError("Label cant have same name as other label");
+            }
         } else {
             setError("Wrong name of static value: " + lineParts[0]);
         }
@@ -136,10 +141,12 @@ export class Parser {
                 setError("Wrong ascii/z definition");
             }
             let enc = new TextEncoder();
+            let txt = lineParts[2].slice(1, -1)
+            txt = txt.replace(/\\n/g, '\n');
             if (con.type === M.EMemStaticOperations.asciiz) {
-                con.value = new Int8Array([...enc.encode(lineParts[2].slice(1, -1)), 0x00])
+                con.value = new Int8Array([...enc.encode(txt), 0x00])
             } else {
-                con.value = new Int8Array([...enc.encode(lineParts[2].slice(1, -1))]);
+                con.value = new Int8Array([...enc.encode(txt)]);
             }
         } else {
             let vals = lineParts.slice(2).map(e => {

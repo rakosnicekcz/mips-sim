@@ -8,6 +8,13 @@ export const setOutputValue = (value: string) => {
     }
 }
 
+export const extendOutputValue = (value: string) => {
+    return {
+        type: 'EXTEND_OUTPUT_VALUE',
+        payload: value
+    }
+}
+
 export const setInputValue = (value: string) => {
     return {
         type: 'SET_INPUT_VALUE',

@@ -11,8 +11,8 @@ export class ForwardingUnit {
     }
 
     run(): void {
-        this.check(P.EPipelineMem.ex_mem)
         this.check(P.EPipelineMem.mem_wb)
+        this.check(P.EPipelineMem.ex_mem)
     }
 
     private check(pipelineMem: P.EPipelineMem) {
