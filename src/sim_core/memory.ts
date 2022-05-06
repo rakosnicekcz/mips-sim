@@ -1,12 +1,12 @@
 import deepcopy from "deepcopy";
 import { setError } from "../App"
+import { store } from '../index'
 
 export enum EMemBitLenOperation {
     byte = 1,
     halfword = 2,
     word = 4
 }
-
 export enum EMemStaticOperations {
     word = ".word",
     half = ".half",
@@ -25,9 +25,15 @@ export interface IMemStaticData {
     align?: number
 }
 
-const dataRange = { from: 0x10010000, to: 0x1003ffff } as const
-const heapRange = { from: 0x10040000, to: 0x1FFFFFFF } as const
-export const stackRange = { from: 0x70000000, to: 0x7ffffffc } as const
+interface segmentRange {
+    from: number
+    to: number
+}
+
+export const dataRange: segmentRange = { from: 0x10010000, to: 0x1003ffff } as const
+export const heapRange: segmentRange = { from: 0x10040000, to: 0x1FFFFFFF } as const
+export const stackRange: segmentRange = { from: 0x70000000, to: 0x80000000 } as const
+export const SPInit: number = stackRange.to - 4
 
 export class Memory {
     private heap: ArrayBuffer;
@@ -37,6 +43,7 @@ export class Memory {
     private dataBuffer: ArrayBuffer;
 
     private stack: ArrayBuffer;
+    private lastRange: { from: number, to: number } = { from: 0, to: 0 };
 
     constructor() {
         this.heap = new ArrayBuffer(heapRange.to - heapRange.from);
@@ -91,15 +98,36 @@ export class Memory {
             }
         }
 
-        if (heapRange.from <= address && address <= heapRange.to) {
+        if (heapRange.from <= address && address < heapRange.to) {
             this.storeToBuffer(oplen, this.heap, address, value, heapRange.from)
-        } else if (stackRange.from <= address && address <= stackRange.to) {
+        } else if (stackRange.from <= address && address < stackRange.to) {
             this.storeToBuffer(oplen, this.stack, address, value, stackRange.from)
-        } else if (dataRange.from <= address && address <= dataRange.to) {
+        } else if (dataRange.from <= address && address < dataRange.to) {
             this.storeToBuffer(oplen, this.dataBuffer, address, value, dataRange.from)
         } else {
             setError("Wrong operation with memory: " + address);
         }
+        this.setMemoryRangeBuffer(this.lastRange.from, this.lastRange.to)
+    }
+
+    setMemoryRangeBuffer(from: number = dataRange.from, to: number = dataRange.from + 4 * 15): void {
+        this.lastRange = { from, to }
+        let data: ArrayBuffer = new ArrayBuffer(0);
+
+        if (from >= dataRange.from && to <= dataRange.to) {
+            data = this.dataBuffer.slice(from - dataRange.from, to - dataRange.from)
+        } else if (from >= heapRange.from && to <= heapRange.to) {
+            data = this.heap.slice(from - heapRange.from, to - heapRange.from)
+        } else if (from >= stackRange.from && to <= stackRange.to) {
+            data = this.stack.slice(from - stackRange.from, to - stackRange.from)
+        } else {
+            setError("Wrong memory range");
+        }
+        console.log("data:", data, from, to)
+        store.dispatch({
+            type: 'SET_MEMORY_BUFFER',
+            payload: data
+        })
     }
 
     private storeToBuffer(oplen: EMemBitLenOperation, buffer: ArrayBuffer, address: number, value: number, rangeFrom: number) {
@@ -150,6 +178,7 @@ export class Memory {
         })
         this.data = data;
         console.log(view)
+        this.setMemoryRangeBuffer()
     }
 
     allocateHeap(size: number): number {

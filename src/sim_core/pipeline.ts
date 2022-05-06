@@ -193,6 +193,10 @@ export class Pipeline {
         this.if_stage.setStall();
     }
 
+    updateMemoryRangeBuffer(start: number, end: number) {
+        this.mem.setMemoryRangeBuffer(start, end);
+    }
+
     reset() {
         this.pause();
         this.if_id = this.id_ex = this.ex_mem = this.mem_wb = NOP;
@@ -210,5 +214,6 @@ export class Pipeline {
         this.hazardUnit = new H.HazardUnit(this.if_stage, this.id_stage, this, this.isForwarding)
         this.forwarding = new F.ForwardingUnit(this);
         this.reg.setAllRegisters()
+        this.mem.setMemoryRangeBuffer()
     }
 }

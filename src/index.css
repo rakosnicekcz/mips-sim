@@ -49,10 +49,16 @@ code {
   background-color: #ffadad
 }
 
-.registersContainer {
+.regMemContainer {
   position: absolute;
   top: 0;
   right: 0;
+}
+
+.regMemContainer>div {
+  float: right;
+  margin-right: 10px !important;
+  margin-top: 0px !important;
 }
 
 .modalError {

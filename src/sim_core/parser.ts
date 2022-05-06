@@ -206,7 +206,7 @@ export class Parser {
             let instr = deepcopy(ins);
             instr.paramType = paramType;
 
-            if (instr.description.isMemoryInstruction && lineParts.length === 3 && /^\w+\([a-zA-Z0-9_$]+\)$/.test(lineParts[2])) { //instr rt, imm(rs)
+            if (instr.description.isMemoryInstruction && lineParts.length === 3 && /^[a-zA-Z0-9_-]+\([a-zA-Z0-9_$]+\)$/.test(lineParts[2])) { //instr rt, imm(rs)
                 let parts = lineParts[2].split("(");
                 lineParts[2] = parts[0];
                 lineParts.push(parts[1].slice(0, -1))

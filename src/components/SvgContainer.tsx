@@ -3,17 +3,23 @@ import { useEffect, useRef } from "react";
 import { SvgLoader, SvgProxy } from 'react-svgmt';
 import { StagesState } from '../sim_core/pipeline';
 import * as R from '../sim_core/register';
+import * as M from '../sim_core/memory';
 
 import pipelineSvg from '../images/pipeline-all.svg';
 
 
 import RegistersAccordition from './RegistersAccordition'
+import MemoryAccordition from './MemoryAccordition'
 
 type SvgContainerProps = {
     isForwarding: boolean,
     isHazard: boolean,
     stagesState: StagesState,
-    registers: R.IAllRegister[]
+    registers: R.IAllRegister[],
+    memory: ArrayBuffer,
+    setMemoryRange: (start: number, end: number) => void
+    base: string,
+    setBase: (value: string) => void
 };
 
 const SvgContainer: React.FC<SvgContainerProps> = (props) => {
@@ -108,9 +114,15 @@ const SvgContainer: React.FC<SvgContainerProps> = (props) => {
                 <SvgProxy selector=".noHazardUnit" class={props.isHazard ? "displayNone" : "displayBlock"} />
                 <SvgProxy selector=".hazardUnit" class={!props.isHazard ? "displayNone" : "displayBlock"} />
             </SvgLoader>
-            <div className='registersContainer'>
+            <div className='regMemContainer'>
                 <RegistersAccordition
                     registers={props.registers}
+                />
+                <MemoryAccordition
+                    memory={props.memory}
+                    setMemoryRange={props.setMemoryRange}
+                    base={props.base}
+                    setBase={props.setBase}
                 />
             </div>
         </div>

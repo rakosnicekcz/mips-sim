@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Pipeline } from './sim_core/pipeline';
 import { Parser } from './sim_core/parser'
 import * as R from './sim_core/register';
+import * as M from './sim_core/memory';
 
 import { useSelector, useDispatch, Provider } from 'react-redux'
 import * as actions from './actions'
@@ -37,10 +38,12 @@ function App() {
 	const [isHazard, setIsHazard] = useState(true)
 	const [assembled, setAssembled] = useState(false)
 	const [running, setRunning] = useState(false)
+	const [base, setBase] = useState('Data')
 	const inputValue = useSelector((state: RootState) => state.inputValue)
 	const outputValue: string = useSelector((state: RootState) => state.outputValue);
 	const stagesState: StagesState = useSelector((state: RootState) => state.stagesState);
 	const registers: R.IAllRegister[] = useSelector((state: RootState) => state.registers);
+	const memory: ArrayBuffer = useSelector((state: RootState) => state.memory);
 	const error: errorState = useSelector((state: RootState) => state.error);
 	const dispatch = useDispatch()
 
@@ -63,6 +66,7 @@ function App() {
 		dispatch(actions.clearStageState())
 		setAssembled(false)
 		setRunning(false)
+		setBase('Data')
 	}
 
 	let run = () => {
@@ -90,6 +94,10 @@ function App() {
 		dispatch(actions.setInputValue(value))
 	}
 
+	let setMemoryRange = (start: number, end: number) => {
+		pipeline.updateMemoryRangeBuffer(start, end)
+	}
+
 	return (
 		<Provider store={store}>
 			<Box sx={{ flexGrow: 1 }}>
@@ -113,6 +121,10 @@ function App() {
 							registers={registers}
 							isForwarding={isForwarding}
 							isHazard={isHazard}
+							memory={memory}
+							setMemoryRange={setMemoryRange}
+							base={base}
+							setBase={setBase}
 						/>
 
 					</Grid>

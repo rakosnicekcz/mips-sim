@@ -54,3 +54,10 @@ export const clearError = () => {
         type: 'CLEAR_ERROR'
     }
 }
+
+export const setMemoryBuffer = (buffer: ArrayBuffer) => {
+    return {
+        type: 'SET_MEMORY_BUFFER',
+        payload: buffer
+    }
+}

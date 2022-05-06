@@ -1,5 +1,5 @@
 import deepcopy from "deepcopy";
-import { stackRange } from "./memory"
+import { SPInit } from "./memory"
 import { store } from '../index'
 
 export interface IRegister {
@@ -56,7 +56,7 @@ interface IDefaultValues {
     value: number;
 }
 
-const defaultValues: IDefaultValues[] = [{ register: ERegisters.$29, value: stackRange.to }]
+const defaultValues: IDefaultValues[] = [{ register: ERegisters.$29, value: SPInit }]
 
 const setRegistersForRedux = (registers: IAllRegister[]) => {
     store.dispatch({

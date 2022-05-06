@@ -56,6 +56,9 @@ export class Program {
         if (address < textSegmentStart || address > textSegmentEnd) {
             setError(`PC ${address} out of range`)
         }
+        if (address % 4 !== 0) {
+            setError(`PC ${address} not word aligned`)
+        }
         this.PC = address
     }
 

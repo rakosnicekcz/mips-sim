@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 import { StagesState, NOP } from "./sim_core/pipeline";
 import * as R from "./sim_core/register"
+import * as M from "./sim_core/memory"
 import { errorState } from "./App"
 
 export const outputValueReducer = (state: string = "", action) => {
@@ -54,11 +55,21 @@ export const errorReducer = (state: errorState = { isError: false, message: "" }
     }
 }
 
+export const memoryReducer = (state: ArrayBuffer = new ArrayBuffer(0), action) => {
+    switch (action.type) {
+        case 'SET_MEMORY_BUFFER':
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
 export const rootReducer = combineReducers({
     outputValue: outputValueReducer,
     inputValue: inputValueReducer,
     stagesState: stagesStateReducer,
     registers: registersReducer,
-    error: errorReducer
+    error: errorReducer,
+    memory: memoryReducer
 })
 

@@ -80,7 +80,7 @@ export const Buttons: React.FC<ButtonsProps> = (props) => {
                     labelId="example-select-label"
                     id="example-select"
                     value={value.text}
-                    label="Exapmle"
+                    label="Example"
                     onChange={handleChange}
                 >
                     <MenuItem value={""}>
