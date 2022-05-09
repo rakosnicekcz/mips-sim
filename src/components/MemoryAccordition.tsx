@@ -13,7 +13,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import InfiniteScroll from 'react-infinite-scroll-component'
 import Switch from '@mui/material/Switch';
 
-import { FormControlLabel, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material';
+import { FormControlLabel, Table, TableHead, TableRow, TableCell, TableBody, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 import FormHelperText from '@mui/material/FormHelperText';
 
 type MemoryAccorditionProps = {

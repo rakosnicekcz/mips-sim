@@ -37,8 +37,8 @@ type RootState = ReturnType<typeof store.getState>
 
 function App() {
 	const [value, setValue] = useState("add $10 $11 $12")
-	const [pipeline, setPipeline] = useState(new Pipeline())
-	const [parser, setParser] = useState(new Parser())
+	const [pipeline] = useState(new Pipeline())
+	const [parser] = useState(new Parser())
 	const [isForwarding, setIsForwarding] = useState(true)
 	const [isHazard, setIsHazard] = useState(true)
 	const [assembled, setAssembled] = useState(false)
