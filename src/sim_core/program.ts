@@ -1,6 +1,9 @@
+/*
+    Modul: program.ts
+    Autor: Hůlek Matěj
+*/
+
 import * as I from "./instruction";
-import * as R from "./register";
-import * as M from "./memory";
 import * as P from "./pipeline"
 import { setError } from "../App"
 
@@ -52,7 +55,6 @@ export class Program {
     }
 
     setPC(address: number): void {
-        console.log("setPC", address)
         if (address < textSegmentStart || address > textSegmentEnd) {
             setError(`PC ${address} out of range`)
         }

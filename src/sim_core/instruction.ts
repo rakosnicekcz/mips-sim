@@ -1,3 +1,8 @@
+/*
+    Modul: instruction.ts
+    Autor: Hůlek Matěj
+*/
+
 import * as R from "./register";
 import * as P from "./pipeline";
 import * as M from "./memory"
@@ -79,7 +84,7 @@ export interface IInstructionDescription {
     requireSpecial: TEditableValue[]; // required values which is not part of syntax (mfhi, mflo)
     paramTypes: EInstructionParamType[][];
     execute(ins: P.IPipelineIns, prg: Prg.Program, mem: M.Memory): P.IPipelineIns;
-    ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns;
+    executeMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns;
     checkParsed(ins: IInstruction): IInstruction;
 }
 
@@ -117,7 +122,7 @@ export const instruction_set: TInstruction_set = {
         mainExecutionStage: EPipelineStages.fetch, writeBack: false, isBranchInstruction: false, noRDparam: false,
         paramTypes: [[]], changedValues: [], requireSpecial: [],
         execute(ins: P.IPipelineIns, prg: Prg.Program, mem: M.Memory): P.IPipelineIns { return ins },
-        ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins },
+        executeMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins },
         checkParsed(ins: IInstruction): IInstruction { return ins }
     },
     [EInstructionName.halt]: {
@@ -125,7 +130,7 @@ export const instruction_set: TInstruction_set = {
         mainExecutionStage: EPipelineStages.fetch, writeBack: false, isBranchInstruction: false, noRDparam: false,
         paramTypes: [[]], changedValues: [], requireSpecial: [],
         execute(ins: P.IPipelineIns, prg: Prg.Program, mem: M.Memory): P.IPipelineIns { return ins },
-        ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins },
+        executeMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins },
         checkParsed(ins: IInstruction): IInstruction { return ins }
     },
     // Arithmetic instructions
@@ -148,7 +153,7 @@ export const instruction_set: TInstruction_set = {
             ins.res = array32[2];
             return ins;
         },
-        ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins },
+        executeMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins },
         checkParsed(ins: IInstruction): IInstruction { return ins }
     },
     [EInstructionName.sub]: {
@@ -170,7 +175,7 @@ export const instruction_set: TInstruction_set = {
             ins.res = array32[2];
             return ins;
         },
-        ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins },
+        executeMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins },
         checkParsed(ins: IInstruction): IInstruction { return ins }
     },
     [EInstructionName.addi]: {
@@ -191,7 +196,7 @@ export const instruction_set: TInstruction_set = {
             ins.res = array32[2];
             return ins;
         },
-        ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins },
+        executeMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins },
         checkParsed(ins: IInstruction): IInstruction { return ins }
     },
     [EInstructionName.addu]: {
@@ -209,7 +214,7 @@ export const instruction_set: TInstruction_set = {
             ins.res = array32[2];
             return ins;
         },
-        ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins },
+        executeMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins },
         checkParsed(ins: IInstruction): IInstruction { return ins }
     },
     [EInstructionName.subu]: {
@@ -227,7 +232,7 @@ export const instruction_set: TInstruction_set = {
             ins.res = array32[2];
             return ins;
         },
-        ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins },
+        executeMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins },
         checkParsed(ins: IInstruction): IInstruction { return ins }
     },
     [EInstructionName.addiu]: {
@@ -245,7 +250,7 @@ export const instruction_set: TInstruction_set = {
             ins.res = array32[2];
             return ins;
         },
-        ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins },
+        executeMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins },
         checkParsed(ins: IInstruction): IInstruction { return ins }
     },
     [EInstructionName.mul]: {
@@ -263,7 +268,7 @@ export const instruction_set: TInstruction_set = {
             ins.res = array32[2];
             return ins;
         },
-        ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins },
+        executeMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins },
         checkParsed(ins: IInstruction): IInstruction { return ins }
     },
     [EInstructionName.mult]: {
@@ -279,7 +284,7 @@ export const instruction_set: TInstruction_set = {
             }
             return ins
         },
-        ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins },
+        executeMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins },
         checkParsed(ins: IInstruction): IInstruction { return ins }
     },
     [EInstructionName.div]: {
@@ -293,7 +298,7 @@ export const instruction_set: TInstruction_set = {
             }
             return ins
         },
-        ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins },
+        executeMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins },
         checkParsed(ins: IInstruction): IInstruction { return ins }
     },
     // Logical instructions
@@ -308,7 +313,7 @@ export const instruction_set: TInstruction_set = {
             }
             return ins
         },
-        ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins },
+        executeMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins },
         checkParsed(ins: IInstruction): IInstruction { return ins }
     },
     [EInstructionName.or]: {
@@ -322,7 +327,7 @@ export const instruction_set: TInstruction_set = {
             }
             return ins
         },
-        ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins },
+        executeMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins },
         checkParsed(ins: IInstruction): IInstruction { return ins }
     },
     [EInstructionName.andi]: {
@@ -336,7 +341,7 @@ export const instruction_set: TInstruction_set = {
             }
             return ins
         },
-        ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins },
+        executeMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins },
         checkParsed(ins: IInstruction): IInstruction { return ins }
     },
     [EInstructionName.ori]: {
@@ -350,7 +355,7 @@ export const instruction_set: TInstruction_set = {
             }
             return ins
         },
-        ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins },
+        executeMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins },
         checkParsed(ins: IInstruction): IInstruction { return ins }
     },
     [EInstructionName.sll]: {
@@ -364,7 +369,7 @@ export const instruction_set: TInstruction_set = {
             }
             return ins
         },
-        ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins },
+        executeMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins },
         checkParsed(ins: IInstruction): IInstruction {
             if (typeof ins.imm === "number") {
                 if (ins.imm < 0 || ins.imm > 31) {
@@ -385,7 +390,7 @@ export const instruction_set: TInstruction_set = {
             }
             return ins
         },
-        ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins },
+        executeMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins },
         checkParsed(ins: IInstruction): IInstruction {
             if (typeof ins.imm === "number") {
                 if (ins.imm < 0 || ins.imm > 31) {
@@ -404,7 +409,7 @@ export const instruction_set: TInstruction_set = {
         [EInstructionParamType.register, EInstructionParamType.adress], [EInstructionParamType.register, EInstructionParamType.labelD]],
         changedValues: [editableValues.RD], requireSpecial: [],
         execute(ins: P.IPipelineIns, prg: Prg.Program, mem: M.Memory): P.IPipelineIns { return ins },
-        ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns {
+        executeMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns {
             return doLoadOp(ins, mem, M.EMemBitLenOperation.word, this.paramTypes)
         },
         checkParsed(ins: IInstruction): IInstruction { return ins }
@@ -417,7 +422,7 @@ export const instruction_set: TInstruction_set = {
         [EInstructionParamType.register, EInstructionParamType.adress], [EInstructionParamType.register, EInstructionParamType.labelD]],
         changedValues: [], requireSpecial: [],
         execute(ins: P.IPipelineIns, prg: Prg.Program, mem: M.Memory): P.IPipelineIns { return ins },
-        ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns {
+        executeMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns {
             ins = doStoreOp(ins, mem, M.EMemBitLenOperation.word, this.paramTypes)
             return ins;
         },
@@ -431,7 +436,7 @@ export const instruction_set: TInstruction_set = {
         [EInstructionParamType.register, EInstructionParamType.adress], [EInstructionParamType.register, EInstructionParamType.labelD]],
         changedValues: [editableValues.RD], requireSpecial: [],
         execute(ins: P.IPipelineIns, prg: Prg.Program, mem: M.Memory): P.IPipelineIns { return ins },
-        ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns {
+        executeMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns {
             return doLoadOp(ins, mem, M.EMemBitLenOperation.halfword, this.paramTypes)
         },
         checkParsed(ins: IInstruction): IInstruction { return ins }
@@ -444,7 +449,7 @@ export const instruction_set: TInstruction_set = {
         [EInstructionParamType.register, EInstructionParamType.adress], [EInstructionParamType.register, EInstructionParamType.labelD]],
         changedValues: [], requireSpecial: [],
         execute(ins: P.IPipelineIns, prg: Prg.Program, mem: M.Memory): P.IPipelineIns { return ins },
-        ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns {
+        executeMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns {
             ins = doStoreOp(ins, mem, M.EMemBitLenOperation.halfword, this.paramTypes)
             return ins;
         },
@@ -458,7 +463,7 @@ export const instruction_set: TInstruction_set = {
         [EInstructionParamType.register, EInstructionParamType.adress], [EInstructionParamType.register, EInstructionParamType.labelD]],
         changedValues: [editableValues.RD], requireSpecial: [],
         execute(ins: P.IPipelineIns, prg: Prg.Program, mem: M.Memory): P.IPipelineIns { return ins },
-        ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns {
+        executeMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns {
             return doLoadOp(ins, mem, M.EMemBitLenOperation.byte, this.paramTypes)
         },
         checkParsed(ins: IInstruction): IInstruction { return ins }
@@ -471,7 +476,7 @@ export const instruction_set: TInstruction_set = {
         [EInstructionParamType.register, EInstructionParamType.adress], [EInstructionParamType.register, EInstructionParamType.labelD]],
         changedValues: [], requireSpecial: [],
         execute(ins: P.IPipelineIns, prg: Prg.Program, mem: M.Memory): P.IPipelineIns { return ins },
-        ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns {
+        executeMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns {
             ins = doStoreOp(ins, mem, M.EMemBitLenOperation.byte, this.paramTypes)
             return ins;
         },
@@ -490,7 +495,7 @@ export const instruction_set: TInstruction_set = {
             }
             return ins
         },
-        ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins; },
+        executeMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins; },
         checkParsed(ins: IInstruction): IInstruction {
             if (typeof ins.imm !== 'number' || ins.imm > 0xffff) {
                 setError(`line ${ins.line}: LUI immidiate is higher then 0xffff`);
@@ -519,7 +524,7 @@ export const instruction_set: TInstruction_set = {
             }
             return ins
         },
-        ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins; },
+        executeMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins; },
         checkParsed(ins: IInstruction): IInstruction { return ins }
     },
     [EInstructionName.li]: {
@@ -533,7 +538,7 @@ export const instruction_set: TInstruction_set = {
             }
             return ins
         },
-        ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins; },
+        executeMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins; },
         checkParsed(ins: IInstruction): IInstruction { return ins }
     },
     [EInstructionName.mfhi]: {
@@ -546,7 +551,7 @@ export const instruction_set: TInstruction_set = {
             }
             return ins
         },
-        ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins; },
+        executeMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins; },
         checkParsed(ins: IInstruction): IInstruction { return ins }
     },
     [EInstructionName.mflo]: {
@@ -559,7 +564,7 @@ export const instruction_set: TInstruction_set = {
             }
             return ins
         },
-        ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins; },
+        executeMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins; },
         checkParsed(ins: IInstruction): IInstruction { return ins }
     },
     [EInstructionName.move]: {
@@ -573,7 +578,7 @@ export const instruction_set: TInstruction_set = {
             }
             return ins
         },
-        ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins; },
+        executeMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins; },
         checkParsed(ins: IInstruction): IInstruction { return ins }
     },
     // Conditional Branch instructions
@@ -589,7 +594,7 @@ export const instruction_set: TInstruction_set = {
             }
             return ins
         },
-        ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins; },
+        executeMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins; },
         checkParsed(ins: IInstruction): IInstruction { return ins }
     },
     [EInstructionName.bne]: {
@@ -604,7 +609,7 @@ export const instruction_set: TInstruction_set = {
             }
             return ins
         },
-        ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins; },
+        executeMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins; },
         checkParsed(ins: IInstruction): IInstruction { return ins }
     },
     [EInstructionName.bgt]: {
@@ -619,7 +624,7 @@ export const instruction_set: TInstruction_set = {
             }
             return ins
         },
-        ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins; },
+        executeMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins; },
         checkParsed(ins: IInstruction): IInstruction { return ins }
     },
     [EInstructionName.bge]: {
@@ -634,7 +639,7 @@ export const instruction_set: TInstruction_set = {
             }
             return ins
         },
-        ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins; },
+        executeMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins; },
         checkParsed(ins: IInstruction): IInstruction { return ins }
     },
     [EInstructionName.blt]: {
@@ -649,7 +654,7 @@ export const instruction_set: TInstruction_set = {
             }
             return ins
         },
-        ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins; },
+        executeMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins; },
         checkParsed(ins: IInstruction): IInstruction { return ins }
     },
     [EInstructionName.ble]: {
@@ -664,7 +669,7 @@ export const instruction_set: TInstruction_set = {
             }
             return ins
         },
-        ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins; },
+        executeMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins; },
         checkParsed(ins: IInstruction): IInstruction { return ins }
     },
     [EInstructionName.slt]: {
@@ -678,7 +683,7 @@ export const instruction_set: TInstruction_set = {
             }
             return ins
         },
-        ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins; },
+        executeMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins; },
         checkParsed(ins: IInstruction): IInstruction { return ins }
     },
     [EInstructionName.slti]: {
@@ -692,7 +697,7 @@ export const instruction_set: TInstruction_set = {
             }
             return ins
         },
-        ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins; },
+        executeMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins; },
         checkParsed(ins: IInstruction): IInstruction { return ins }
     },
     // Unconditional jump instructions
@@ -701,7 +706,7 @@ export const instruction_set: TInstruction_set = {
         mainExecutionStage: EPipelineStages.decode, writeBack: false, isBranchInstruction: false, noRDparam: false,
         paramTypes: [[EInstructionParamType.labelT]], changedValues: [], requireSpecial: [],
         execute(ins: P.IPipelineIns, prg: Prg.Program, mem: M.Memory): P.IPipelineIns { return ins },
-        ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins; },
+        executeMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins; },
         checkParsed(ins: IInstruction): IInstruction { return ins }
     },
     [EInstructionName.jr]: {
@@ -709,7 +714,7 @@ export const instruction_set: TInstruction_set = {
         mainExecutionStage: EPipelineStages.decode, writeBack: false, isBranchInstruction: false, noRDparam: true,
         paramTypes: [[EInstructionParamType.register]], changedValues: [], requireSpecial: [],
         execute(ins: P.IPipelineIns, prg: Prg.Program, mem: M.Memory): P.IPipelineIns { return ins },
-        ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins; },
+        executeMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins; },
         checkParsed(ins: IInstruction): IInstruction { return ins }
     },
     [EInstructionName.jal]: {
@@ -717,7 +722,7 @@ export const instruction_set: TInstruction_set = {
         mainExecutionStage: EPipelineStages.decode, writeBack: false, isBranchInstruction: false, noRDparam: false,
         paramTypes: [[EInstructionParamType.labelT]], changedValues: [editableValues.$31], requireSpecial: [],
         execute(ins: P.IPipelineIns, prg: Prg.Program, mem: M.Memory): P.IPipelineIns { return ins },
-        ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins; },
+        executeMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns { return ins; },
         checkParsed(ins: IInstruction): IInstruction { return ins }
     },
     [EInstructionName.syscall]: {
@@ -725,7 +730,7 @@ export const instruction_set: TInstruction_set = {
         mainExecutionStage: EPipelineStages.memory, writeBack: false, isBranchInstruction: false, noRDparam: false,
         paramTypes: [[]], changedValues: [editableValues.$2], requireSpecial: [],
         execute(ins: P.IPipelineIns, prg: Prg.Program, mem: M.Memory): P.IPipelineIns { return ins },
-        ExecuteMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns {
+        executeMem(ins: P.IPipelineIns, mem: M.Memory, reg: R.Registers): P.IPipelineIns {
             let regV0 = reg.getVal(R.ERegisters.$2)
             let regA0 = reg.getVal(R.ERegisters.$4)
             let regA1 = reg.getVal(R.ERegisters.$5)
@@ -794,7 +799,6 @@ export const instruction_set: TInstruction_set = {
 }
 
 let doLoadOp = (ins: P.IPipelineIns, mem: M.Memory, memOp: M.EMemBitLenOperation, paramType: EInstructionParamType[][]): P.IPipelineIns => {
-    console.log("doLoadOp", ins.instruction.paramType, paramType[2])
     if (compare(ins.instruction.paramType, paramType[0])) {
         if (ins.val0 !== undefined && typeof ins.instruction.imm === "number") {
             let address = ins.val0 + Number(ins.instruction.imm);

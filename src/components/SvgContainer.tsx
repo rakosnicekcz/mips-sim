@@ -1,9 +1,13 @@
+/*
+    Modul: SvgContainer.tsx
+    Autor: Hůlek Matěj
+*/
+
 import { useEffect, useRef } from "react";
 
 import { SvgLoader, SvgProxy } from 'react-svgmt';
 import { StagesState } from '../sim_core/pipeline';
 import * as R from '../sim_core/register';
-import * as M from '../sim_core/memory';
 
 import pipelineSvg from '../images/pipeline-all.svg';
 
@@ -20,6 +24,10 @@ type SvgContainerProps = {
     setMemoryRange: (start: number, end: number) => void
     base: string,
     setBase: (value: string) => void
+    start: number,
+    setStart: (value: number) => void
+    end: number,
+    setEnd: (value: number) => void
 };
 
 const SvgContainer: React.FC<SvgContainerProps> = (props) => {
@@ -123,6 +131,10 @@ const SvgContainer: React.FC<SvgContainerProps> = (props) => {
                     setMemoryRange={props.setMemoryRange}
                     base={props.base}
                     setBase={props.setBase}
+                    start={props.start}
+                    setStart={props.setStart}
+                    end={props.end}
+                    setEnd={props.setEnd}
                 />
             </div>
         </div>

@@ -1,3 +1,8 @@
+/*
+    Modul: MemoryAccordion.tsx
+    Autor: Hůlek Matěj
+*/
+
 import { useState } from 'react';
 import * as M from '../sim_core/memory';
 
@@ -16,38 +21,40 @@ type MemoryAccorditionProps = {
     setMemoryRange: (start: number, end: number) => void
     base: string,
     setBase: (value: string) => void
+    start: number
+    setStart: (value: number) => void
+    end: number
+    setEnd: (value: number) => void
 };
 
 const MemoryAccordition: React.FC<MemoryAccorditionProps> = (props) => {
-    const [start, setStart] = useState(M.dataRange.from);
-    const [end, setEnd] = useState(M.dataRange.from + 4 * 20);
     const [isHexa, setIsHexa] = useState(true)
 
     const loadMore = async () => {
         if (props.base === "Stack") {
-            props.setMemoryRange(start - 4 * 10, end)
-            setStart(start - 4 * 10);
+            props.setMemoryRange(props.start - 4 * 10, props.end)
+            props.setStart(props.start - 4 * 10);
         } else {
-            props.setMemoryRange(start, end + 4 * 10)
-            setEnd(end + 4 * 10)
+            props.setMemoryRange(props.start, props.end + 4 * 10)
+            props.setEnd(props.end + 4 * 10)
         }
     };
 
     const handleSegmentChange = (event: SelectChangeEvent) => {
         switch (event.target.value) {
             case "Data":
-                setStart(M.dataRange.from);
-                setEnd(M.dataRange.from + 4 * 20);
+                props.setStart(M.dataRange.from);
+                props.setEnd(M.dataRange.from + 4 * 20);
                 props.setMemoryRange(M.dataRange.from, M.dataRange.from + 4 * 20)
                 break;
             case "Heap":
-                setStart(M.heapRange.from);
-                setEnd(M.heapRange.from + 4 * 20);
+                props.setStart(M.heapRange.from);
+                props.setEnd(M.heapRange.from + 4 * 20);
                 props.setMemoryRange(M.heapRange.from, M.heapRange.from + 4 * 20)
                 break;
             case "Stack":
-                setStart(M.stackRange.to - 4 * 20);
-                setEnd(M.stackRange.to);
+                props.setStart(M.stackRange.to - 4 * 20);
+                props.setEnd(M.stackRange.to);
                 props.setMemoryRange(M.stackRange.to - 4 * 20, M.stackRange.to)
                 break;
             default:
@@ -73,13 +80,13 @@ const MemoryAccordition: React.FC<MemoryAccorditionProps> = (props) => {
 
     const getMemAddress = (index: number) => {
         if (props.base === "Stack") {
-            return end - 4 - index * 4
+            return props.end - 4 - index * 4
         } else {
-            return start + index * 4
+            return props.start + index * 4
         }
     }
 
-    console.log(props.memory, start, end)
+    console.log(props.memory, props.start, props.end)
     let vals = [...(new Int32Array(props.memory))];
     vals = props.base === "Stack" ? vals.reverse() : vals;
 

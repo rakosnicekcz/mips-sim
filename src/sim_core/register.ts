@@ -1,3 +1,8 @@
+/*
+    Modul: register.ts
+    Autor: Hůlek Matěj
+*/
+
 import deepcopy from "deepcopy";
 import { SPInit } from "./memory"
 import { store } from '../index'

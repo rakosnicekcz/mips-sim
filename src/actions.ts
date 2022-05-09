@@ -1,3 +1,8 @@
+/*
+    Modul: actions.ts
+    Autor: Hůlek Matěj
+*/
+
 import { StagesState } from "./sim_core/pipeline";
 import * as R from "./sim_core/register";
 

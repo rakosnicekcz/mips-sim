@@ -1,3 +1,8 @@
+/*
+    Modul: decode.ts
+    Autor: Hůlek Matěj
+*/
+
 import * as I from "../instruction"
 import * as R from "../register";
 import * as Prg from "../program"
@@ -30,7 +35,6 @@ export class Decode {
 
         this.data = this.pipeline.getMem(Pip.EPipelineMem.if_id);
         this.readRegisters();
-        console.log("ID:", this.data);
     }
 
     runFallingEdge() {

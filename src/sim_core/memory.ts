@@ -1,3 +1,8 @@
+/*
+    Modul: memory.ts
+    Autor: Hůlek Matěj
+*/
+
 import deepcopy from "deepcopy";
 import { setError } from "../App"
 import { store } from '../index'
@@ -52,7 +57,6 @@ export class Memory {
     }
 
     load(oplen: EMemBitLenOperation, address: number, label?: string): number {
-        console.log("load", address, label)
         if (label) {
             let data = this.data.find(e => e.name === label)
             if (data) {
@@ -66,7 +70,6 @@ export class Memory {
         } else if (dataRange.from <= address && address <= dataRange.to) {
             return this.loadFromBuffer(oplen, this.dataBuffer, address, dataRange.from)
         }
-        console.log(dataRange, address)
         setError(`memory load: address ${address} out of boundary`);
         throw new Error("");
     }
@@ -123,7 +126,6 @@ export class Memory {
         } else {
             setError("Wrong memory range");
         }
-        console.log("data:", data, from, to)
         store.dispatch({
             type: 'SET_MEMORY_BUFFER',
             payload: data
@@ -153,7 +155,6 @@ export class Memory {
     }
 
     setData(data: IMemStaticData[]) {
-        console.log("data:", data)
         let add: number = dataRange.from;
         let view = new DataView(this.dataBuffer)
         data.forEach(e => {
@@ -177,7 +178,6 @@ export class Memory {
             })
         })
         this.data = data;
-        console.log(view)
         this.setMemoryRangeBuffer()
     }
 

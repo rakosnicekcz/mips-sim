@@ -1,3 +1,8 @@
+/*
+    Modul: Editor.tsx
+    Autor: Hůlek Matěj
+*/
+
 import AceEditor, { IMarker } from "react-ace";
 import { StagesState } from '../sim_core/pipeline';
 import 'brace/mode/mips_assembler';

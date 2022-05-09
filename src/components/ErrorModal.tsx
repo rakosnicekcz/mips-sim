@@ -1,3 +1,8 @@
+/*
+    Modul: ErrorModal.tsx
+    Autor: Hůlek Matěj
+*/
+
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';

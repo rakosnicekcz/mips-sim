@@ -1,3 +1,8 @@
+/*
+	Modul: App.tsx
+	Autor: Hůlek Matěj
+*/
+
 import { useState } from 'react';
 import { Pipeline } from './sim_core/pipeline';
 import { Parser } from './sim_core/parser'
@@ -38,7 +43,11 @@ function App() {
 	const [isHazard, setIsHazard] = useState(true)
 	const [assembled, setAssembled] = useState(false)
 	const [running, setRunning] = useState(false)
+
 	const [base, setBase] = useState('Data')
+	const [start, setStart] = useState(M.dataRange.from);
+	const [end, setEnd] = useState(M.dataRange.from + 4 * 20);
+
 	const inputValue = useSelector((state: RootState) => state.inputValue)
 	const outputValue: string = useSelector((state: RootState) => state.outputValue);
 	const stagesState: StagesState = useSelector((state: RootState) => state.stagesState);
@@ -67,6 +76,8 @@ function App() {
 		setAssembled(false)
 		setRunning(false)
 		setBase('Data')
+		setStart(M.dataRange.from);
+		setEnd(M.dataRange.from + 4 * 20);
 	}
 
 	let run = () => {
@@ -75,7 +86,6 @@ function App() {
 	}
 
 	let endCallback = () => {
-		console.log("end")
 		setRunning(false)
 		setAssembled(false)
 	}
@@ -125,6 +135,10 @@ function App() {
 							setMemoryRange={setMemoryRange}
 							base={base}
 							setBase={setBase}
+							start={start}
+							setStart={setStart}
+							end={end}
+							setEnd={setEnd}
 						/>
 
 					</Grid>

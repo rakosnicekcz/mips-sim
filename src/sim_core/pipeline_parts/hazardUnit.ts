@@ -1,6 +1,9 @@
+/*
+    Modul: hazardUnit.ts
+    Autor: Hůlek Matěj
+*/
+
 import * as I from "../instruction";
-import * as R from "../register";
-import * as M from "../memory";
 import * as P from "../pipeline"
 import { Fetch } from "./fetch"
 import { Decode } from "./decode"

@@ -1,3 +1,8 @@
+/*
+    Modul: parser.ts
+    Autor: Hůlek Matěj
+*/
+
 import * as I from "./instruction"
 import * as R from "./register"
 import * as M from "./memory"
@@ -35,11 +40,9 @@ export class Parser {
     }
 
     parse(code: string): IParsed {
-        console.log(code)
         let codeLines = code.split("\n").map((e) => { return e.split(/#(?![^"]*")/g)[0].trim() }); // split for comments
         for (let i = 0; i < codeLines.length; i++) {
             let lineParts = this.getLineParts(codeLines[i])
-            console.log(lineParts);
 
             if (lineParts.length === 0) {
                 continue;
@@ -60,7 +63,6 @@ export class Parser {
 
         for (let i = 0; i < codeLines.length; i++) {
             let lineParts = this.getLineParts(codeLines[i])
-            console.log(lineParts);
 
             if (lineParts.length === 0) {
                 continue;
@@ -78,7 +80,6 @@ export class Parser {
             }
         }
 
-        console.log(this.Instructions, this.labels, this.staticData)
         return { instructions: this.Instructions, labels: this.labels, data: this.staticData }
     }
 
@@ -210,7 +211,6 @@ export class Parser {
                 let parts = lineParts[2].split("(");
                 lineParts[2] = parts[0];
                 lineParts.push(parts[1].slice(0, -1))
-                console.log("new lineParts", lineParts)
             }
 
             if (lineParts.length !== paramType.length + 1) {
@@ -237,6 +237,9 @@ export class Parser {
                     } else if (isNaN(Number(param))) {
                         continue paramTypeLoop;
                     } else {
+                        if (Number(param) > 0xffffffff) {
+                            setError("Immidiate value is too big");
+                        }
                         instr.imm = Number(param)
                     }
                 } else if (type === I.EInstructionParamType.labelT) {

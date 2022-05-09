@@ -1,7 +1,11 @@
+/*
+    Modul: reducer.ts
+    Autor: Hůlek Matěj
+*/
+
 import { combineReducers } from "redux";
 import { StagesState, NOP } from "./sim_core/pipeline";
 import * as R from "./sim_core/register"
-import * as M from "./sim_core/memory"
 import { errorState } from "./App"
 
 export const outputValueReducer = (state: string = "", action) => {

@@ -1,5 +1,8 @@
-import * as I from "../instruction"
-import * as R from "../register";
+/*
+    Modul: execute.ts
+    Autor: Hůlek Matěj
+*/
+
 import * as M from "../memory"
 import * as Prg from "../program"
 import * as Pip from "../pipeline"
@@ -32,7 +35,6 @@ export class Execute {
 
         this.data = this.pipeline.getMem(Pip.EPipelineMem.id_ex);
         this.data = this.data.instruction.description.execute(this.data, this.program, this.memory)
-        console.log("EX:", this.data);
     }
 
     runFallingEdge() {

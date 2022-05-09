@@ -1,7 +1,10 @@
+/*
+    Modul: writeBack.ts
+    Autor: Hůlek Matěj
+*/
+
 import * as I from "../instruction"
 import * as R from "../register";
-import * as M from "../memory"
-import * as Prg from "../program"
 import * as Pip from "../pipeline"
 
 export class WriteBack {

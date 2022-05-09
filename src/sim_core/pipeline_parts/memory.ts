@@ -1,3 +1,8 @@
+/*
+    Modul: memory.ts
+    Autor: Hůlek Matěj
+*/
+
 import * as I from "../instruction"
 import * as R from "../register";
 import * as M from "../memory"
@@ -34,8 +39,7 @@ export class Memory {
             }
         }
 
-        this.data = this.data.instruction.description.ExecuteMem(this.data, this.memory, this.registers);
-        console.log("MEM:", this.data);
+        this.data = this.data.instruction.description.executeMem(this.data, this.memory, this.registers);
     }
 
     runFallingEdge() {

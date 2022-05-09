@@ -1,6 +1,9 @@
-import * as I from "../instruction";
+/*
+    Modul: forwardingUnit.ts
+    Autor: Hůlek Matěj
+*/
+
 import * as R from "../register";
-import * as M from "../memory";
 import * as P from "../pipeline"
 
 export class ForwardingUnit {

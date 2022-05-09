@@ -1,3 +1,8 @@
+/*
+  Modul: index.tsx
+  Autor: Hůlek Matěj
+*/
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';

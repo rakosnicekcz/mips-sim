@@ -1,3 +1,8 @@
+/*
+    Modul: pipeline.ts
+    Autor: Hůlek Matěj
+*/
+
 import * as I from "./instruction"
 import * as R from "./register";
 import * as M from "./memory"
@@ -137,7 +142,6 @@ export class Pipeline {
         this.mem_stage.runFallingEdge();
         this.ex_stage.runFallingEdge();
         this.id_stage.runFallingEdge();
-        console.log("if_id:", this.if_id, "id_ex:", this.id_ex, "ex_mem:", this.ex_mem, "mem_wb:", this.mem_wb)
 
         let completed: StagesState = {
             if: this.if_stage.getData(),
@@ -175,9 +179,7 @@ export class Pipeline {
             case EPipelineMem.ex_mem:
                 return deepcopy(this.ex_mem)
             case EPipelineMem.mem_wb:
-                let a = deepcopy(this.mem_wb)
-                console.log(this.mem_wb, a)
-                return a//deepcopy(this.mem_wb)
+                return deepcopy(this.mem_wb)
         }
     }
 

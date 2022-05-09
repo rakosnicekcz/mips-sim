@@ -1,3 +1,8 @@
+/*
+    Modul: Inputs.tsx
+    Autor: Hůlek Matěj
+*/
+
 import { useState } from 'react';
 
 import Stack from '@mui/material/Stack';

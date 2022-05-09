@@ -1,3 +1,8 @@
+/*
+    Modul: RegisterAccordion.tsx
+    Autor: Hůlek Matěj
+*/
+
 import { useState } from 'react';
 import * as R from '../sim_core/register';
 
