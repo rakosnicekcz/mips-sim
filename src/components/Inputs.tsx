@@ -80,7 +80,7 @@ export const Buttons: React.FC<ButtonsProps> = (props) => {
                 ASSEMBLE
             </Button>
             <FormControl sx={{ m: 1, minWidth: 200 }} style={{ display: props.assembled ? "none" : "flex" }}>
-                <InputLabel id="example-select-label">Exapmle</InputLabel>
+                <InputLabel id="example-select-label">Example</InputLabel>
                 <Select
                     labelId="example-select-label"
                     id="example-select"
