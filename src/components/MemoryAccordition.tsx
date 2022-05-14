@@ -15,6 +15,7 @@ import Switch from '@mui/material/Switch';
 
 import { FormControlLabel, Table, TableHead, TableRow, TableCell, TableBody, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 import FormHelperText from '@mui/material/FormHelperText';
+import React from 'react';
 
 type MemoryAccorditionProps = {
     memory: ArrayBuffer
@@ -86,7 +87,6 @@ const MemoryAccordition: React.FC<MemoryAccorditionProps> = (props) => {
         }
     }
 
-    console.log(props.memory, props.start, props.end)
     let vals = [...(new Int32Array(props.memory))];
     vals = props.base === "Stack" ? vals.reverse() : vals;
 
@@ -157,4 +157,4 @@ const MemoryAccordition: React.FC<MemoryAccorditionProps> = (props) => {
     )
 }
 
-export default MemoryAccordition;
+export default React.memo(MemoryAccordition);

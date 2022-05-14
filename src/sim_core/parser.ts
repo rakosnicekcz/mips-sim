@@ -23,21 +23,12 @@ export interface IParsed {
 
 export class Parser {
     private parsingArea: ParsingArea = ParsingArea.text
-    private globl: string
+    private globl: string | undefined;
     private labels: P.Ilabel[] = [];
     private Instructions: I.IInstruction[] = [];
     private staticData: M.IMemStaticData[] = [];
     private staticDataAdd: number = 0;
     private alignNext: number = -1; // -1 = no align
-
-    reset() {
-        this.parsingArea = ParsingArea.text
-        this.Instructions = [];
-        this.labels = [];
-        this.staticData = [];
-        this.staticDataAdd = 0;
-        this.alignNext = -1;
-    }
 
     parse(code: string): IParsed {
         let codeLines = code.split("\n").map((e) => { return e.split(/#(?![^"]*")/g)[0].trim() }); // split for comments
@@ -152,7 +143,7 @@ export class Parser {
         } else {
             let vals = lineParts.slice(2).map(e => {
                 if (isNaN(Number(e))) {
-                    if (!/^'.'$/.test(e)) {
+                    if (!/^'.'$/.test(e)) { // not char
                         setError("Wrong number definition");
                     }
                     return e.charCodeAt(1);
@@ -193,7 +184,7 @@ export class Parser {
                 description: I.instruction_set[insName], address: 0, line: i + 1, paramType: [],
                 originalNotation: lineParts.join(", ").replace(",", "")
             };
-            ins = this.parseInstruction(insName, ins, lineParts);
+            ins = this.parseInstruction(ins, lineParts);
             ins = ins.description.checkParsed(ins)
             this.Instructions.push(ins)
         } else {
@@ -201,9 +192,9 @@ export class Parser {
         }
     }
 
-    private parseInstruction(insName: I.EInstructionName, ins: I.IInstruction, lineParts: string[]): I.IInstruction {
+    private parseInstruction(ins: I.IInstruction, lineParts: string[]): I.IInstruction {
         paramTypeLoop:
-        for (const paramType of I.instruction_set[insName].paramTypes) {
+        for (const paramType of ins.description.paramTypes) {
             let instr = deepcopy(ins);
             instr.paramType = paramType;
 

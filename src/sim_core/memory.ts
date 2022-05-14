@@ -36,8 +36,8 @@ interface segmentRange {
 }
 
 export const dataRange: segmentRange = { from: 0x10010000, to: 0x1003ffff } as const
-export const heapRange: segmentRange = { from: 0x10040000, to: 0x1FFFFFFF } as const
-export const stackRange: segmentRange = { from: 0x70000000, to: 0x80000000 } as const
+export const heapRange: segmentRange = { from: 0x10040000, to: 0x1006ffff } as const
+export const stackRange: segmentRange = { from: 0x7ffd0000, to: 0x80000000 } as const
 export const SPInit: number = stackRange.to - 4
 
 export class Memory {

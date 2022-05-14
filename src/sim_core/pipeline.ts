@@ -105,6 +105,9 @@ export class Pipeline {
         this.forwarding = new F.ForwardingUnit(this);
         this.isForwarding = isForwarding
         this.isHazardUnit = isHazardUnit
+
+        // this.reg.setAllRegisters()
+        // this.mem.setMemoryRangeBuffer()
     }
 
     run(callback?: () => any) {
@@ -197,25 +200,5 @@ export class Pipeline {
 
     updateMemoryRangeBuffer(start: number, end: number) {
         this.mem.setMemoryRangeBuffer(start, end);
-    }
-
-    reset() {
-        this.pause();
-        this.if_id = this.id_ex = this.ex_mem = this.mem_wb = NOP;
-
-        this.reg = new R.Registers();
-        this.mem = new M.Memory();
-        this.prg = new P.Program();
-
-        this.if_stage = new IF.Fetch(this, this.prg)
-        this.id_stage = new ID.Decode(this, this.reg, this.prg);
-        this.ex_stage = new EX.Execute(this, this.prg, this.mem)
-        this.mem_stage = new MEM.Memory(this, this.mem, this.prg, this.reg, this.if_stage);
-        this.wb_stage = new WB.WriteBack(this, this.reg)
-
-        this.hazardUnit = new H.HazardUnit(this.if_stage, this.id_stage, this, this.isForwarding)
-        this.forwarding = new F.ForwardingUnit(this);
-        this.reg.setAllRegisters()
-        this.mem.setMemoryRangeBuffer()
     }
 }

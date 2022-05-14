@@ -4,7 +4,7 @@ Ke spušťení je pořeba nainstalovat [Node.js](https://nodejs.org/en/).
 
 ### `npm install`
 
-Stáhne všechny potřebné moduly, které jsou potřeba ke spuštění aplikace.
+Stáhne všechny potřebné moduly a knihovny, které jsou potřeba ke spuštění aplikace.
 
 ### `npm start`
 
@@ -16,6 +16,8 @@ Při uprávě kódu se stránka automaticky znovu načte.
 
 Vytvoří produkční verzi aplikace ve složce `build`.
 
-Tato verze je pro lepší výkon optimalizována a minifikována. 
+Tato verze je pro lepší výkon optimalizována a minifikována.
+
+Spustit produkční verzi aplikace lze pomocí `serve -s build`. (pro instalaci serve: `npm install -g serve`)
 
 Více informací zde: [https://create-react-app.dev/docs/deployment/](https://create-react-app.dev/docs/deployment/).

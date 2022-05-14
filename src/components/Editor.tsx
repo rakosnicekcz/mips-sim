@@ -3,10 +3,15 @@
     Autor: Hůlek Matěj
 */
 
+import React from "react";
 import AceEditor, { IMarker } from "react-ace";
 import { StagesState } from '../sim_core/pipeline';
 import 'brace/mode/mips_assembler';
 import "brace/theme/sqlserver"
+
+import "ace-builds/src-noconflict/mode-java";
+import "ace-builds/src-noconflict/theme-github";
+import "ace-builds/src-noconflict/ext-language_tools";
 
 type EditorProps = {
     value: string,
@@ -52,4 +57,4 @@ const Editor: React.FC<EditorProps> = (props) => {
     )
 }
 
-export default Editor;
+export default React.memo(Editor);

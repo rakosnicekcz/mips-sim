@@ -4,6 +4,7 @@
 */
 
 import { useEffect, useRef } from "react";
+import React from "react";
 
 import { SvgLoader, SvgProxy } from 'react-svgmt';
 import { StagesState } from '../sim_core/pipeline';
@@ -57,7 +58,7 @@ const SvgContainer: React.FC<SvgContainerProps> = (props) => {
         setSvgContentById("forwarding_val0", String(forwarding_val0 === undefined ? 2 : forwarding_val0))
         let forwarding_val1 = props.stagesState.ex.logs?.forwardedVal1
         setSvgContentById("forwarding_val1", String(forwarding_val1 === undefined ? 2 : forwarding_val1))
-    })
+    }, [props.stagesState])
 
     let setSvgContentById = (id: string, content: string, isVertical: boolean = false) => {
 
@@ -141,4 +142,4 @@ const SvgContainer: React.FC<SvgContainerProps> = (props) => {
     )
 }
 
-export default SvgContainer;
+export default React.memo(SvgContainer);
