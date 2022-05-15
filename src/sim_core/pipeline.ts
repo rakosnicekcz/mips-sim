@@ -105,9 +105,6 @@ export class Pipeline {
         this.forwarding = new F.ForwardingUnit(this);
         this.isForwarding = isForwarding
         this.isHazardUnit = isHazardUnit
-
-        // this.reg.setAllRegisters()
-        // this.mem.setMemoryRangeBuffer()
     }
 
     run(callback?: () => any) {
@@ -146,14 +143,14 @@ export class Pipeline {
         this.ex_stage.runFallingEdge();
         this.id_stage.runFallingEdge();
 
-        let completed: StagesState = {
+        let completedStagesState: StagesState = {
             if: this.if_stage.getData(),
             id: this.id_ex,
             ex: this.ex_mem,
             mem: this.mem_wb,
             wb: wb
         }
-        setStagesState(completed)
+        setStagesState(completedStagesState)
     }
 
     setMem(mem: EPipelineMem, value: IPipelineIns): void {
@@ -192,10 +189,6 @@ export class Pipeline {
         this.isForwarding = isForwarding
         this.hazardUnit.setForwarding(isForwarding)
         this.isHazardUnit = isHazardUnit
-    }
-
-    stallIF() {
-        this.if_stage.setStall();
     }
 
     updateMemoryRangeBuffer(start: number, end: number) {
