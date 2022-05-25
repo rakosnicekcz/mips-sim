@@ -194,4 +194,8 @@ export class Pipeline {
     updateMemoryRangeBuffer(start: number, end: number) {
         this.mem.setMemoryRangeBuffer(start, end);
     }
+
+    setRegistersRedux() {
+        this.reg.setRegistersRedux();
+    }
 }

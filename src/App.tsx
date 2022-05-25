@@ -67,6 +67,7 @@ function App() {
 	let parseAndSetProgram = async () => {
 		let parsed = parser.parse(value)
 		pipeline.setProgram(parsed, isForwarding, isHazard);
+		pipeline.setRegistersRedux();
 	}
 
 	let Assemble = useCallback(() => {

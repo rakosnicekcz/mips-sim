@@ -81,7 +81,6 @@ export class Registers {
             this.registers.push({ name: ERegisters[e as keyof typeof ERegisters], value: new Int32Array(1) })
         });
         defaultValues.forEach(e => this.setVal(e.register, e.value, false))
-        // setRegistersForRedux([...this.registers, { name: EHiLoRegisters.$hi, value: this.$hi }, { name: EHiLoRegisters.$lo, value: this.$lo }])
     }
 
     setVal(name: ERegisters, value: number, rerender: boolean = true): void {
@@ -116,7 +115,7 @@ export class Registers {
         console.log(this.registers)
     }
 
-    setAllRegisters(): void {
+    setRegistersRedux(): void {
         setRegistersForRedux([...this.registers, { name: EHiLoRegisters.$hi, value: this.$hi }, { name: EHiLoRegisters.$lo, value: this.$lo }])
     }
 }
