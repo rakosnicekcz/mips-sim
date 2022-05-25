@@ -84,14 +84,20 @@ function App() {
 		pipeline.step(endCallback);
 	}, [pipeline])
 
+	let pause = useCallback(() => {
+		pipeline.pause()
+		setRunning(false)
+	}, [pipeline])
+
 	let stop = useCallback(() => {
 		dispatch(actions.clearStageState())
+		pause()
 		setAssembled(false)
 		setRunning(false)
 		setBase('Data')
 		setStart(M.dataRange.from);
 		setEnd(M.dataRange.from + 4 * 20);
-	}, [])
+	}, [pause])
 
 	let run = useCallback(() => {
 		pipeline.run(endCallback)
@@ -102,11 +108,6 @@ function App() {
 		setRunning(false)
 		setAssembled(false)
 	}, [])
-
-	let pause = useCallback(() => {
-		pipeline.pause()
-		setRunning(false)
-	}, [pipeline])
 
 	let closeErrorModal = useCallback(() => {
 		dispatch(actions.clearError())
