@@ -75,6 +75,7 @@ function App() {
 		dispatch(actions.clearStageState())
 		dispatch(actions.setOutputValue(""))
 		setAssembled(true)
+		setBase('Data')
 	}, [])
 
 	let step = useCallback(() => {

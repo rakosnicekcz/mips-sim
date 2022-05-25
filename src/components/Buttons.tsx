@@ -59,7 +59,7 @@ const Buttons: React.FC<ButtonsProps> = (props) => {
 
     return (
         <Stack spacing={2} direction={{ xs: 'column', sm: 'row' }} margin={"10px"}>
-            <Button variant="contained" onClick={props.run} startIcon={<PlayArrowIcon />} disabled={!props.assembled} style={{ display: !props.assembled ? "none" : "flex" }} >
+            <Button variant="contained" onClick={props.run} startIcon={<PlayArrowIcon />} disabled={!props.assembled || props.running} style={{ display: !props.assembled ? "none" : "flex" }} >
                 RUN
             </Button>
             <Button variant="contained" onClick={props.step} startIcon={<MoveDownIcon />} disabled={!props.assembled || props.running} style={{ display: !props.assembled ? "none" : "flex" }} >
