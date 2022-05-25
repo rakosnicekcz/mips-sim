@@ -53,10 +53,7 @@ const Buttons: React.FC<ButtonsProps> = (props) => {
             setValue(example);
             fetch(example.link)
                 .then(response => response.text())
-                .then(data => {
-                    props.setValue(data);
-                });
-
+                .then(data => props.setValue(data));
         }
     };
 

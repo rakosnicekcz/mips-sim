@@ -24,6 +24,8 @@ import SvgContainer from './components/SvgContainer';
 import Inputs from './components/Inputs';
 import Checkboxes from './components/Checkboxes';
 import Buttons from './/components/Buttons';
+import RegistersAccordition from './components/RegistersAccordition'
+import MemoryAccordition from './components/MemoryAccordition'
 
 export function setError(error: string) {
 	store.dispatch(actions.setError(error))
@@ -59,9 +61,13 @@ function App() {
 	const dispatch = useDispatch()
 
 	useEffect(() => {
+		parseAndSetProgram()
+	}, [parser])
+
+	let parseAndSetProgram = async () => {
 		let parsed = parser.parse(value)
 		pipeline.setProgram(parsed, isForwarding, isHazard);
-	}, [parser])
+	}
 
 	let Assemble = useCallback(() => {
 		setPipeline(new Pipeline())
@@ -101,8 +107,9 @@ function App() {
 
 	let closeErrorModal = useCallback(() => {
 		dispatch(actions.clearError())
+		pause()
 		setAssembled(false)
-	}, [])
+	}, [pause])
 
 	let setInputValue = useCallback((value: string) => {
 		dispatch(actions.setInputValue(value))
@@ -128,22 +135,28 @@ function App() {
 					/>
 				</Grid>
 
-				<Grid item xl={9} sm={8} xs={12}>
+				<Grid item xl={9} sm={8} xs={12} className="pRelative">
 					<SvgContainer
 						stagesState={stagesState}
 						registers={registers}
 						isForwarding={isForwarding}
 						isHazard={isHazard}
-						memory={memory}
-						setMemoryRange={setMemoryRange}
-						base={base}
-						setBase={setBase}
-						start={start}
-						setStart={setStart}
-						end={end}
-						setEnd={setEnd}
 					/>
-
+					<div className='regMemContainer'>
+						<RegistersAccordition
+							registers={registers}
+						/>
+						<MemoryAccordition
+							memory={memory}
+							setMemoryRange={setMemoryRange}
+							base={base}
+							setBase={setBase}
+							start={start}
+							setStart={setStart}
+							end={end}
+							setEnd={setEnd}
+						/>
+					</div>
 				</Grid>
 				<Grid item xs="auto">
 					<Buttons

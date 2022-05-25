@@ -21,8 +21,11 @@ code {
   min-width: 950px;
 }
 
-.svgLoaderContainer {
+.pRelative {
   position: relative;
+}
+
+.svgLoaderContainer {
   overflow-x: auto;
 }
 
