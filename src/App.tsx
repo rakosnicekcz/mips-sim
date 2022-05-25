@@ -76,6 +76,8 @@ function App() {
 		dispatch(actions.setOutputValue(""))
 		setAssembled(true)
 		setBase('Data')
+		setStart(M.dataRange.from);
+		setEnd(M.dataRange.from + 4 * 20);
 	}, [])
 
 	let step = useCallback(() => {
